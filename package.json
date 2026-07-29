@@ -1,0 +1,17 @@
+{
+  "name": "btec-online-landing",
+  "version": "1.0.0",
+  "description": "Landing page for BTEC Online - affordable online qualifications",
+  "scripts": {
+    "dev": "echo 'Open index.html in a browser'",
+    "build": "echo 'No build needed'"
+  },
+  "keywords": [
+    "BTEC",
+    "education",
+    "online learning",
+    "qualifications"
+  ],
+  "author": "Rhys",
+  "license": "MIT"
+}
