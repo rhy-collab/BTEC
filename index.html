@@ -3,394 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BTEC Business Online - UK's Top Online Pearson BTEC School</title>
+    <title>UK BTEC Online - UK's Top Online Pearson Edexcel BTEC School</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #1f2937;
-        }
-        
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 2rem;
-            opacity: 0.9;
-            transition: opacity 0.3s;
-        }
-        
-        nav a:hover {
-            opacity: 1;
-        }
-        
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 6rem 2rem;
-            text-align: center;
-        }
-        
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-            line-height: 1.2;
-        }
-        
-        .subheadline {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            line-height: 1.6;
-        }
-        
-        .cta-primary {
-            display: inline-block;
-            background: white;
-            color: #667eea;
-            padding: 1rem 2.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
-            font-size: 1.1rem;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .cta-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-        
-        .section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .section-alt {
-            background: #f9fafb;
-        }
-        
-        h2 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-            color: #111827;
-        }
-        
-        .section-intro {
-            font-size: 1.1rem;
-            color: #6b7280;
-            margin-bottom: 3rem;
-            max-width: 700px;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .section-alt .feature-card {
-            background: white;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 24px rgba(0,0,0,0.12);
-        }
-        
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: #111827;
-        }
-        
-        .feature-card p {
-            color: #6b7280;
-            line-height: 1.7;
-        }
-        
-        .two-column {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        
-        .two-column h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #111827;
-        }
-        
-        .two-column ul {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-        
-        .two-column li {
-            padding: 0.5rem 0 0.5rem 2rem;
-            position: relative;
-            color: #4b5563;
-            line-height: 1.8;
-        }
-        
-        .two-column li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #667eea;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        
-        .testimonial-section {
-            background: white;
-            padding: 3rem;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-            margin: 2rem 0;
-        }
-        
-        .testimonial-text {
-            font-size: 1.1rem;
-            font-style: italic;
-            color: #374151;
-            margin-bottom: 1rem;
-        }
-        
-        .testimonial-author {
-            color: #6b7280;
-            font-weight: 500;
-        }
-        
-        .pricing-section {
-            text-align: center;
-        }
-        
-        .pricing-intro {
-            max-width: 600px;
-            margin: 0 auto 3rem;
-        }
-        
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        
-        .pricing-card {
-            background: white;
-            border: 2px solid #e5e7eb;
-            border-radius: 10px;
-            padding: 2.5rem;
-            text-align: center;
-            transition: all 0.3s;
-        }
-        
-        .pricing-card.featured {
-            border-color: #667eea;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
-            transform: scale(1.05);
-        }
-        
-        .pricing-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: #111827;
-        }
-        
-        .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #667eea;
-            margin: 1rem 0;
-        }
-        
-        .price span {
-            font-size: 1rem;
-            color: #6b7280;
-        }
-        
-        .pricing-features {
-            list-style: none;
-            text-align: left;
-            margin: 2rem 0;
-            min-height: 180px;
-        }
-        
-        .pricing-features li {
-            padding: 0.8rem 0;
-            color: #6b7280;
-            border-bottom: 1px solid #f3f4f6;
-        }
-        
-        .pricing-features li:last-child {
-            border-bottom: none;
-        }
-        
-        .cta-secondary {
-            display: inline-block;
-            background: #f3f4f6;
-            color: #667eea;
-            padding: 0.8rem 2rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-        
-        .pricing-card.featured .cta-secondary {
-            background: #667eea;
-            color: white;
-        }
-        
-        .cta-secondary:hover {
-            border-color: #667eea;
-        }
-        
-        .faq {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .faq-item {
-            background: white;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-        }
-        
-        .faq-question {
-            font-weight: 600;
-            color: #111827;
-            cursor: pointer;
-            margin-bottom: 0.5rem;
-        }
-        
-        .faq-answer {
-            color: #6b7280;
-            line-height: 1.8;
-        }
-        
-        .cta-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-            border-radius: 10px;
-            margin-top: 3rem;
-        }
-        
-        .cta-section h2 {
-            color: white;
-            margin-bottom: 1rem;
-        }
-        
-        .cta-section p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-        
-        footer {
-            background: #1f2937;
-            color: #d1d5db;
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-        
-        footer a {
-            color: #667eea;
-            text-decoration: none;
-        }
-        
-        footer a:hover {
-            text-decoration: underline;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #1f2937; }
+        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
+        nav a { color: white; text-decoration: none; margin-left: 2rem; opacity: 0.9; transition: opacity 0.3s; }
+        nav a:hover { opacity: 1; }
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 0; }
+        .hero-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; min-height: 500px; }
+        .hero-text { display: flex; flex-direction: column; justify-content: center; padding: 4rem 2rem 4rem 4rem; }
+        .hero-image { display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        h1 { font-size: 2.8rem; margin-bottom: 1rem; font-weight: 800; line-height: 1.2; }
+        .subheadline { font-size: 1.15rem; margin-bottom: 2rem; opacity: 0.95; line-height: 1.7; }
+        .cta-primary { display: inline-block; background: white; color: #667eea; padding: 1rem 2.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.3s, box-shadow 0.3s; font-size: 1.1rem; border: none; cursor: pointer; align-self: flex-start; }
+        .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .section-full { background: #f9fafb; padding: 5rem 0; }
+        .section-full .section { padding: 0 2rem; }
+        h2 { font-size: 2.2rem; margin-bottom: 0.5rem; color: #111827; }
+        .section-intro { font-size: 1.1rem; color: #6b7280; margin-bottom: 3rem; max-width: 700px; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .feature-card { background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; }
+        .feature-card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,0.12); }
+        .feature-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .feature-card h3 { font-size: 1.3rem; margin-bottom: 0.8rem; color: #111827; }
+        .feature-card p { color: #6b7280; line-height: 1.7; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .two-col h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #111827; }
+        .two-col ul { list-style: none; margin-bottom: 1.5rem; }
+        .two-col li { padding: 0.5rem 0 0.5rem 2rem; position: relative; color: #4b5563; line-height: 1.8; }
+        .two-col li:before { content: "\2713\0020"; position: absolute; left: 0; color: #667eea; font-weight: bold; font-size: 1.2rem; }
+        .two-col-img img { width: 100%; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); display: block; }
+        .teacher-card { background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: start; }
+        .teacher-avatar { width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: white; flex-shrink: 0; }
+        .teacher-info h3 { font-size: 1.3rem; margin-bottom: 0.3rem; color: #111827; }
+        .teacher-info .role { color: #667eea; font-weight: 500; margin-bottom: 1rem; }
+        .teacher-info p { color: #6b7280; line-height: 1.7; }
+        .teacher-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+        .teacher-stat { text-align: center; padding: 1rem; background: #f9fafb; border-radius: 8px; }
+        .teacher-stat .num { font-size: 1.5rem; font-weight: 700; color: #667eea; }
+        .teacher-stat .label { font-size: 0.85rem; color: #6b7280; margin-top: 0.2rem; }
+        .uni-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .uni-badge { background: white; border-radius: 10px; padding: 1.5rem 1rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 130px; }
+        .uni-badge:hover { transform: translateY(-3px); }
+        .uni-badge .uni-name { font-size: 0.75rem; font-weight: 600; color: #374151; line-height: 1.3; }
+        .uni-badge .uni-group { font-size: 0.6rem; color: #8b5cf6; font-weight: 500; margin-top: 0.2rem; }
+        .testi { background: white; padding: 2.5rem; border-radius: 10px; border-left: 4px solid #667eea; margin: 1.5rem 0; }
+        .testi-txt { font-size: 1.05rem; font-style: italic; color: #374151; margin-bottom: 0.8rem; }
+        .testi-auth { color: #6b7280; font-weight: 500; }
+        .ps { text-align: center; }
+        .ps-intro { max-width: 600px; margin: 0 auto 3rem; }
+        .ps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .ps-card { background: white; border: 2px solid #e5e7eb; border-radius: 10px; padding: 2.5rem; text-align: center; transition: all 0.3s; }
+        .ps-card.featured { border-color: #667eea; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2); transform: scale(1.05); }
+        .ps-card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: #111827; }
+        .price { font-size: 2.5rem; font-weight: 700; color: #667eea; margin: 1rem 0; }
+        .price span { font-size: 1rem; color: #6b7280; }
+        .ps-feat { list-style: none; text-align: left; margin: 2rem 0; }
+        .ps-feat li { padding: 0.8rem 0; color: #6b7280; border-bottom: 1px solid #f3f4f6; }
+        .ps-feat li:last-child { border-bottom: none; }
+        .cta2 { display: inline-block; background: #f3f4f6; color: #667eea; padding: 0.8rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.3s; border: 2px solid transparent; }
+        .ps-card.featured .cta2 { background: #667eea; color: white; }
+        .cta2:hover { border-color: #667eea; }
+        .faq { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: white; padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; border-left: 4px solid #667eea; }
+        .faq-q { font-weight: 600; color: #111827; cursor: pointer; margin-bottom: 0.5rem; }
+        .faq-a { color: #6b7280; line-height: 1.8; }
+        .cta-sec { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 4rem 2rem; text-align: center; border-radius: 10px; margin-top: 3rem; }
+        .cta-sec h2 { color: white; margin-bottom: 1rem; }
+        .cta-sec p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.95; }
+        footer { background: #1f2937; color: #d1d5db; padding: 3rem 2rem; text-align: center; }
+        footer a { color: #8b5cf6; text-decoration: none; }
+        .fl { display: flex; justify-content: center; align-items: center; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .fl img { height: 30px; opacity: 0.7; }
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .subheadline {
-                font-size: 1.1rem;
-            }
-            
-            h2 {
-                font-size: 1.7rem;
-            }
-            
-            .two-column {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero {
-                padding: 3rem 1rem;
-            }
-            
-            .section {
-                padding: 3rem 1rem;
-            }
-            
-            nav {
-                display: none;
-            }
+            h1 { font-size: 2rem; } .subheadline { font-size: 1.1rem; } h2 { font-size: 1.7rem; }
+            .hero-grid { grid-template-columns: 1fr; } .hero-text { padding: 3rem 1.5rem; } .hero-image { display: none; }
+            .two-col { grid-template-columns: 1fr; } .section { padding: 3rem 1rem; } nav { display: none; }
+            .teacher-card { grid-template-columns: 1fr; text-align: center; } .teacher-avatar { margin: 0 auto; }
+            .teacher-stats { grid-template-columns: 1fr; } .uni-grid { grid-template-columns: repeat(3, 1fr); }
         }
     </style>
 </head>
@@ -400,204 +95,331 @@
             <div class="logo">UK BTEC Online</div>
             <nav>
                 <a href="#why">Why Us</a>
+                <a href="#teachers">Teachers</a>
                 <a href="#how">How It Works</a>
+                <a href="#universities">Universities</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#faq">FAQ</a>
             </nav>
         </div>
     </header>
-    
+
+    <!-- HERO -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>UK's Top Online Pearson BTEC School</h1>
-            <p class="subheadline">A UK online school offering the Pearson BTEC Business qualification. Over two years you complete 4-5 long written reports with 95% of our students achieving a Distinction — the equivalent of an A-level at the highest grade. If exams aren't your strength, this is your route to university.</p>
-            <button class="cta-primary">Start Your Free Consultation</button>
+        <div class="hero-grid">
+            <div class="hero-text">
+                <h1>UK&rsquo;s Top Online Pearson Edexcel BTEC School</h1>
+                <p class="subheadline">A UK online school offering the Pearson Edexcel BTEC Business qualification. Over two years you complete 4-5 long written reports with 95% of students achieving a Distinction &mdash; the highest grade, equivalent to A-level. If exams aren&rsquo;t your strength, this is your route to university.</p>
+                <button class="cta-primary">Start Your Free Consultation</button>
+            </div>
+            <div class="hero-image">
+                <img src="images/pexels-diva-plavalaguna-6937697.jpg" alt="Student studying online from home with UK BTEC Online">
+            </div>
         </div>
     </section>
-    
+
+    <!-- WHY CHOOSE -->
     <section class="section" id="why">
         <h2>Why Choose Our UK Online BTEC School?</h2>
-        <p class="section-intro">We are a UK-based online school offering the genuine Pearson BTEC qualification — a respected alternative to A-levels that is accepted by universities around the world. If you struggle with traditional exams, this pathway is built for you.</p>
-        
+        <p class="section-intro">We are a UK-based online school offering the genuine Pearson Edexcel BTEC qualification &mdash; a respected alternative to A-levels accepted by universities worldwide. If you struggle with traditional exams, this written-report pathway is built for you.</p>
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">🇬🇧</div>
                 <h3>UK Online School</h3>
-                <p>A proper UK-based online school offering the official Pearson BTEC qualification. You get the same recognised qualification as UK students, delivered online from the UK.</p>
+                <p>A proper UK-based online school offering the official Pearson Edexcel BTEC qualification. You get the same recognised qualification as UK students, delivered online from the UK by UK-qualified teachers.</p>
             </div>
-            
             <div class="feature-card">
                 <div class="feature-icon">📝</div>
                 <h3>Written Reports, Not Exams</h3>
-                <p>If exams make you freeze, this is your answer. Over two years you complete 4-5 long written research reports instead of sitting exam halls. No stressful timed papers — just clear, guided project work.</p>
+                <p>If exams make you freeze, this is your answer. Over two years you complete 4-5 long written research reports instead of sitting exam halls. No stressful timed papers &mdash; just clear, guided project work.</p>
             </div>
-            
             <div class="feature-card">
                 <div class="feature-icon">🏆</div>
                 <h3>95% Distinction Rate</h3>
-                <p>95% of our students achieve a Distinction — the highest grade, equivalent to an A* at A-level. Our structured support, feedback cycles, and clear guidance deliver real results.</p>
+                <p>95% of our students achieve a Distinction &mdash; the highest grade, equivalent to an A* at A-level. Our structured support, detailed feedback, and UK-qualified teachers deliver real results that open university doors.</p>
             </div>
-            
             <div class="feature-card">
                 <div class="feature-icon">🎓</div>
-                <h3>A-level Equivalent — University Entry</h3>
-                <p>Pearson BTEC qualifications are equivalent to A-levels and accepted by universities worldwide. A Distinction at Level 3 is the same UCAS tariff as an A* at A-level — it gets you into university.</p>
+                <h3>A-level Equivalent &mdash; University Entry</h3>
+                <p>Pearson Edexcel BTEC qualifications are equivalent to A-levels and accepted by universities worldwide including Russell Group institutions. A Distinction at Level 3 carries the same UCAS tariff as an A*.</p>
             </div>
-            
             <div class="feature-card">
-                <div class="feature-icon">💷</div>
-                <h3>Fraction of Private-School Cost</h3>
-                <p>We remove the expensive parts you don't need — campuses, uniforms, overhead — and focus on what matters: UK-qualified teachers, clear structure, and real qualification outcomes.</p>
+                <div class="feature-icon">📚</div>
+                <h3>Pearson Edexcel Qualification</h3>
+                <p>We deliver the official Pearson Edexcel BTEC &mdash; one of the UK&rsquo;s most trusted awarding bodies. Over 2 million learners worldwide take Pearson Edexcel qualifications each year. This is the real thing.</p>
             </div>
-            
             <div class="feature-card">
                 <div class="feature-icon">👨‍🏫</div>
                 <h3>UK-Qualified Teachers</h3>
-                <p>Learn from experienced UK educators with real teaching credentials. You get human support, personalised feedback, and a teacher who knows your name — not just an algorithm.</p>
+                <p>Learn from experienced UK educators with years of experience teaching BTEC Business. Our teachers have helped hundreds of students achieve Distinctions and progress to university.</p>
+            </div>
+        </div>
+        <div class="two-col" style="margin-top: 2rem;">
+            <div class="two-col-img">
+                <img src="images/pexels-jonathanborba-17771084.jpg" alt="Student focused on online study with UK BTEC">
+            </div>
+            <div>
+                <h3>Real Students, Real Results</h3>
+                <p style="color: #6b7280; line-height: 1.8;">Every student who joins our UK online school gets a dedicated UK-qualified teacher, a clear 2-year written-report pathway, and structured support that helps them achieve a Distinction. Our 95% Distinction rate is not a marketing line &mdash; it&rsquo;s the outcome of a system built around clear guidance, detailed feedback, and the right assessment method for students who struggle with exams.</p>
+                <p style="color: #6b7280; line-height: 1.8; margin-top: 1rem;">With a Pearson Edexcel BTEC qualification, you don&rsquo;t just pass &mdash; you open doors to Russell Group universities and higher education around the world.</p>
             </div>
         </div>
     </section>
-    
-    <section class="section section-alt" id="how">
-        <h2>How It Works</h2>
-        <p class="section-intro">Over two years, you complete 4-5 long written reports with full teacher support. No exam halls, no timed papers — just structured project work that leads to a recognised UK qualification.</p>
-        
-        <div class="two-column">
+
+    <!-- MEET YOUR TEACHERS -->
+    <section class="section-full" id="teachers">
+        <div class="section">
+            <h2>Meet Your Teachers</h2>
+            <p class="section-intro">Our UK-qualified teachers have years of experience delivering Pearson Edexcel BTEC courses. They know the specification inside out and have helped hundreds of learners achieve Distinctions.</p>
+            <div class="teacher-card">
+                <div class="teacher-avatar">👨‍🏫</div>
+                <div class="teacher-info">
+                    <h3>Rhys Coombes</h3>
+                    <div class="role">Lead BTEC Business Teacher &bull; UK-Qualified Educator</div>
+                    <p>Rhys is a UK-qualified Business Studies and Economics teacher with years of classroom and online experience delivering Pearson Edexcel BTEC qualifications. He has taught hundreds of BTEC Business students, with 95% achieving Distinction &mdash; the highest possible grade. His teaching approach focuses on breaking down complex business concepts into clear, manageable written reports that build confidence and skill. Based in Dubai, Rhys understands the needs of international families seeking a genuine UK qualification pathway at an affordable price.</p>
+                    <div class="teacher-stats">
+                        <div class="teacher-stat">
+                            <div class="num">95%</div>
+                            <div class="label">Distinction Rate</div>
+                        </div>
+                        <div class="teacher-stat">
+                            <div class="num">7+</div>
+                            <div class="label">Years Teaching BTEC</div>
+                        </div>
+                        <div class="teacher-stat">
+                            <div class="num">500+</div>
+                            <div class="label">Students Taught</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" id="how">
+        <h2>How It Works: Your 2-Year BTEC Journey</h2>
+        <p class="section-intro">Over two years you complete 4-5 long written reports with full UK teacher support. No exam halls, no timed papers &mdash; just structured project work that leads to a recognised UK qualification worth UCAS points.</p>
+        <div class="two-col">
             <div>
-                <h3>Your 2-Year BTEC Journey</h3>
+                <h3>Your Path to a Distinction</h3>
                 <ul>
-                    <li>Free consultation to check this is the right pathway for you</li>
-                    <li>You enrol on the Pearson BTEC Business Level 3 qualification — equivalent to A-levels</li>
-                    <li>Over two years you complete 4-5 long written research reports — each one guided, scaffolded, and reviewed by your UK-qualified teacher</li>
-                    <li>Weekly live lessons with your teacher, always recorded if you need to catch up</li>
+                    <li>Free consultation to check if this pathway is right for you</li>
+                    <li>You enrol on the Pearson Edexcel BTEC Business Level 3 qualification &mdash; equivalent to A-levels</li>
+                    <li>Over two years you complete 4-5 long written research reports &mdash; guided and reviewed by your UK-qualified teacher</li>
+                    <li>Weekly live lessons with your teacher, always recorded for catch-up</li>
                     <li>Detailed assignment walkthroughs so you know exactly what each report needs</li>
-                    <li>Structured feedback cycles — submit, get feedback, improve, resubmit</li>
-                    <li>95% of our students achieve a Distinction — the highest grade, equivalent to A* at A-level</li>
-                    <li>Your Pearson BTEC qualification is recognised by universities worldwide</li>
+                    <li>Structured feedback cycles &mdash; submit, get feedback, improve, resubmit</li>
+                    <li>95% of students achieve a Distinction &mdash; the highest grade, equivalent to A* at A-level</li>
+                    <li>Your Pearson Edexcel BTEC qualification is accepted by universities worldwide</li>
                 </ul>
             </div>
-            
-            <div>
-                <div class="testimonial-section">
-                    <div class="testimonial-text">"I always struggled with exams — I'd know the material but freeze in the hall. BTEC was perfect for me. Four written reports over two years, clear guidance, and my teacher helped me every step. I got a Distinction and got into my first-choice UK university."</div>
-                    <div class="testimonial-author">— BTEC Learner, Achieved Distinction</div>
-                </div>
-                
-                <div class="testimonial-section">
-                    <div class="testimonial-text">"We were paying £18k a year for international school fees. What we actually needed was a recognised UK qualification with real teacher support. This was less than half the cost and our son got a Distinction. Universities in the UK and Australia have accepted him."</div>
-                    <div class="testimonial-author">— Parent, International Family</div>
-                </div>
+            <div class="two-col-img">
+                <img src="images/pexels-karola-g-5877661.jpg" alt="Student studying with UK BTEC Online">
+            </div>
+        </div>
+        <div style="margin-top: 2rem;">
+            <div class="testi">
+                <div class="testi-txt">&ldquo;I always struggled with exams &mdash; I&rsquo;d know the material but freeze in the hall. BTEC was perfect for me. Four written reports over two years, clear guidance, and my teacher helped me every step. I got a Distinction and got into university.&rdquo;</div>
+                <div class="testi-auth">&mdash; BTEC Learner, Achieved Distinction</div>
+            </div>
+            <div class="testi">
+                <div class="testi-txt">&ldquo;We were paying &pound;18k a year for international school fees. What we actually needed was a recognised UK qualification with real teacher support. This was less than half the cost and our daughter got a Distinction.&rdquo;</div>
+                <div class="testi-auth">&mdash; Parent, International Family</div>
             </div>
         </div>
     </section>
-    
+
+    <!-- UNIVERSITIES -->
+    <section class="section-full" id="universities">
+        <div class="section">
+            <h2>Where Can a BTEC Distinction Take You?</h2>
+            <p class="section-intro">A Distinction in Pearson Edexcel BTEC Business Level 3 is equivalent to an A* at A-level and carries the same UCAS tariff points. Our students have progressed to leading universities around the world, including Russell Group universities in the UK.</p>
+
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h3 style="font-size: 1.3rem; color: #111827;">Russell Group Universities That Accept BTEC Business</h3>
+                <p style="color: #6b7280; margin-top: 0.5rem;">With a Distinction in BTEC Business, you can apply to these top UK universities</p>
+            </div>
+
+            <div class="uni-grid">
+                <div class="uni-badge">
+                    <img src="images/Cambridge_University_Crest_-_flat.png" alt="University of Cambridge" style="width: 55px; height: auto; margin-bottom: 0.5rem;">
+                    <div class="uni-name">University of Cambridge</div>
+                    <div class="uni-group">Russell Group</div>
+                </div>
+                <div class="uni-badge">
+                    <svg viewBox="0 0 100 100" style="width:55px;height:55px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#002147"/><path d="M50 15 L85 85 L15 85 Z" fill="#F5A623"/><text x="50" y="55" text-anchor="middle" fill="#002147" font-size="14" font-weight="bold">B</text></svg>
+                    <div class="uni-name">University of Birmingham</div>
+                    <div class="uni-group">Russell Group</div>
+                </div>
+                <div class="uni-badge">
+                    <svg viewBox="0 0 100 100" style="width:55px;height:55px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#007B3D"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFD700"/><text x="50" y="55" text-anchor="middle" fill="#007B3D" font-size="14" font-weight="bold">L</text></svg>
+                    <div class="uni-name">University of Leeds</div>
+                    <div class="uni-group">Russell Group</div>
+                </div>
+                <div class="uni-badge">
+                    <svg viewBox="0 0 100 100" style="width:55px;height:55px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#660099"/><path d="M50 15 L85 85 L15 85 Z" fill="#F5A623"/><text x="50" y="55" text-anchor="middle" fill="#660099" font-size="14" font-weight="bold">M</text></svg>
+                    <div class="uni-name">University of Manchester</div>
+                    <div class="uni-group">Russell Group</div>
+                </div>
+                <div class="uni-badge">
+                    <svg viewBox="0 0 100 100" style="width:55px;height:55px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#0080B0"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFD700"/><text x="50" y="55" text-anchor="middle" fill="#0080B0" font-size="14" font-weight="bold">N</text></svg>
+                    <div class="uni-name">University of Nottingham</div>
+                    <div class="uni-group">Russell Group</div>
+                </div>
+                <div class="uni-badge">
+                    <svg viewBox="0 0 100 100" style="width:55px;height:55px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#002E5D"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFD100"/><text x="50" y="55" text-anchor="middle" fill="#002E5D" font-size="14" font-weight="bold">W</text></svg>
+                    <div class="uni-name">University of Warwick</div>
+                    <div class="uni-group">Russell Group</div>
+                </div>
+                <div class="uni-badge">
+                    <svg viewBox="0 0 100 100" style="width:55px;height:55px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#68246D"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFD700"/><text x="50" y="55" text-anchor="middle" fill="#68246D" font-size="14" font-weight="bold">D</text></svg>
+                    <div class="uni-name">Durham University</div>
+                    <div class="uni-group">Russell Group</div>
+                </div>
+                <div class="uni-badge">
+                    <svg viewBox="0 0 100 100" style="width:55px;height:55px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#006747"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFFFFF"/><text x="50" y="55" text-anchor="middle" fill="#006747" font-size="14" font-weight="bold">E</text></svg>
+                    <div class="uni-name">University of Exeter</div>
+                    <div class="uni-group">Russell Group</div>
+                </div>
+                <div class="uni-badge">
+                    <svg viewBox="0 0 100 100" style="width:55px;height:55px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#003366"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFFFFF"/><text x="50" y="55" text-anchor="middle" fill="#003366" font-size="14" font-weight="bold">Y</text></svg>
+                    <div class="uni-name">University of York</div>
+                    <div class="uni-group">Russell Group</div>
+                </div>
+                <div class="uni-badge">
+                    <svg viewBox="0 0 100 100" style="width:55px;height:55px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#E31B23"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFD700"/><text x="50" y="55" text-anchor="middle" fill="#E31B23" font-size="14" font-weight="bold">Q</text></svg>
+                    <div class="uni-name">Queen Mary London</div>
+                    <div class="uni-group">Russell Group</div>
+                </div>
+                <div class="uni-badge">
+                    <svg viewBox="0 0 100 100" style="width:55px;height:55px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#0056A0"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFFFFF"/><text x="50" y="55" text-anchor="middle" fill="#0056A0" font-size="14" font-weight="bold">S</text></svg>
+                    <div class="uni-name">University of Southampton</div>
+                    <div class="uni-group">Russell Group</div>
+                </div>
+            </div>
+
+            <div class="testi" style="margin-top: 2rem;">
+                <div class="testi-txt">BTEC Business with a Distinction is a real university-entry qualification. It carries UCAS tariff points equal to an A* at A-level and is listed on the UCAS website as an accepted qualification for university applications. Many Russell Group universities, including Birmingham, Leeds, Manchester, Nottingham, and Warwick, accept BTEC for entry onto business-related and other degree courses.</div>
+                <div class="testi-auth">&mdash; Based on published UCAS tariff and university admissions guidance</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
     <section class="section" id="pricing">
-        <div class="pricing-section">
+        <div class="ps">
             <h2>Clear, Transparent Pricing</h2>
-            <p class="section-intro pricing-intro">No hidden fees. No surprise add-ons. Choose the level of UK teacher support that fits your needs.</p>
-            
-            <div class="pricing-grid">
-                <div class="pricing-card">
+            <p class="section-intro ps-intro">No hidden fees. No surprise add-ons. Choose the level of UK teacher support that fits your needs.</p>
+            <div class="ps-grid">
+                <div class="ps-card">
                     <h3>Guided Study</h3>
-                    <div class="price">£199<span>/month</span></div>
-                    <p style="color: #6b7280; margin-bottom: 1.5rem;">For independent learners who need Pearson BTEC structure and UK resources</p>
-                    <ul class="pricing-features">
-                        <li>✓ Access to UK recorded lesson library</li>
-                        <li>✓ Pearson BTEC assignment walkthroughs</li>
-                        <li>✓ Progress dashboard & tracking</li>
-                        <li>✓ Asynchronous feedback (2-3 days)</li>
-                        <li>✓ Monthly progress report</li>
+                    <div class="price">&pound;199<span>/month</span></div>
+                    <p style="color: #6b7280; margin-bottom: 1.5rem;">For independent learners who need Pearson Edexcel BTEC structure and UK resources</p>
+                    <ul class="ps-feat">
+                        <li>&check; Access to UK recorded lesson library</li>
+                        <li>&check; Pearson Edexcel assignment walkthroughs</li>
+                        <li>&check; Progress dashboard &amp; tracking</li>
+                        <li>&check; Asynchronous feedback (2-3 days)</li>
+                        <li>&check; Monthly progress report</li>
                     </ul>
-                    <a href="#" class="cta-secondary">Learn More</a>
+                    <a href="#" class="cta2">Learn More</a>
                 </div>
-                
-                <div class="pricing-card featured">
+                <div class="ps-card featured">
                     <h3>Full Support</h3>
-                    <div class="price">£399<span>/month</span></div>
-                    <p style="color: #6b7280; margin-bottom: 1.5rem;">Our most popular option — live UK lessons and priority Pearson BTEC support</p>
-                    <ul class="pricing-features">
-                        <li>✓ Weekly live teacher-led UK lessons</li>
-                        <li>✓ Recorded Pearson BTEC lesson library</li>
-                        <li>✓ Detailed written report guidance</li>
-                        <li>✓ Priority feedback (24-48 hours)</li>
-                        <li>✓ Parent progress updates</li>
-                        <li>✓ 1-to-1 catch-up sessions</li>
+                    <div class="price">&pound;399<span>/month</span></div>
+                    <p style="color: #6b7280; margin-bottom: 1.5rem;">Our most popular &mdash; live UK lessons and priority Pearson Edexcel support</p>
+                    <ul class="ps-feat">
+                        <li>&check; Weekly live teacher-led UK lessons</li>
+                        <li>&check; Recorded Pearson Edexcel lesson library</li>
+                        <li>&check; Detailed written report guidance</li>
+                        <li>&check; Priority feedback (24-48 hours)</li>
+                        <li>&check; Parent progress updates</li>
+                        <li>&check; 1-to-1 catch-up sessions</li>
                     </ul>
-                    <a href="#" class="cta-secondary">Get Started</a>
+                    <a href="#" class="cta2">Get Started</a>
                 </div>
-                
-                <div class="pricing-card">
+                <div class="ps-card">
                     <h3>Intensive 1-to-1</h3>
-                    <div class="price">£599<span>/month</span></div>
-                    <p style="color: #6b7280; margin-bottom: 1.5rem;">For learners who need personalised UK teacher attention and acceleration</p>
-                    <ul class="pricing-features">
-                        <li>✓ Everything in Full Support</li>
-                        <li>✓ 2 weekly 1-to-1 sessions</li>
-                        <li>✓ Personalised Pearson BTEC learning plan</li>
-                        <li>✓ Direct UK teacher communication</li>
-                        <li>✓ Priority access to resources</li>
+                    <div class="price">&pound;599<span>/month</span></div>
+                    <p style="color: #6b7280; margin-bottom: 1.5rem;">For learners who need personalised UK teacher attention</p>
+                    <ul class="ps-feat">
+                        <li>&check; Everything in Full Support</li>
+                        <li>&check; 2 weekly 1-to-1 sessions</li>
+                        <li>&check; Personalised Pearson Edexcel learning plan</li>
+                        <li>&check; Direct UK teacher communication</li>
+                        <li>&check; Priority access to resources</li>
                     </ul>
-                    <a href="#" class="cta-secondary">Explore Option</a>
+                    <a href="#" class="cta2">Explore Option</a>
                 </div>
             </div>
         </div>
     </section>
-    
-    <section class="section section-alt" id="faq">
-        <h2>Questions Answered</h2>
-        <p class="section-intro">Everything you need to know about our UK online Pearson BTEC school.</p>
-        
-        <div class="faq">
-            <div class="faq-item">
-                <div class="faq-question">Is BTEC the same as A-levels? Can I get into university with it?</div>
-                <div class="faq-answer">Yes. Pearson BTEC Level 3 qualifications are equivalent to A-levels and are accepted by universities worldwide — including UK universities through UCAS, Australian, Canadian, US, and European institutions. A Distinction at BTEC carries the same UCAS tariff points as an A* at A-level. It's a genuine, respected route into higher education.</div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">I struggle with exams. Is BTEC better for me?</div>
-                <div class="faq-answer">Absolutely. This is one of the main reasons learners choose BTEC. Instead of sitting timed exam papers in a hall, you complete 4-5 long written research reports over two years. Each report is broken down step-by-step, with clear guidance and feedback from your UK teacher before you submit. No exam anxiety, no blank-page panic — just structured, supported project work.</div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">Is this a real UK qualification?</div>
-                <div class="faq-answer">Yes. Pearson BTEC is a genuine UK qualification awarded by Pearson, the UK's largest awarding body. It's regulated by Ofqual (the UK government's qualifications regulator) and recognised by universities and employers globally. You earn the same qualification as UK students studying in British schools and colleges.</div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">How does the 2-year written report structure work?</div>
-                <div class="faq-answer">Over two years you complete 4-5 long written research reports — no exams, no timed papers. Each report is guided by your UK teacher with detailed walkthroughs, criteria checklists, and feedback cycles. You submit draft work, receive structured feedback, improve your report, and submit your final version. This builds your research, writing, and analytical skills — exactly what universities want to see.</div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">Is 95% Distinction rate real?</div>
-                <div class="faq-answer">Yes. 95% of our students achieve a Distinction — the highest grade, equivalent to an A* at A-level. This is because our model combines clear UK teaching, structured report guidance, feedback cycles, and progress tracking. You know exactly what's needed at every stage, and your teacher makes sure you get there.</div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">Can I study from outside the UK?</div>
-                <div class="faq-answer">Yes. Our UK online school is designed for international learners. You study live online with a UK-qualified teacher, around your own schedule. Families in Dubai, Singapore, Hong Kong, Kenya, Malaysia, and beyond use our school because it gives them a genuine UK qualification without paying full private-school fees. Universities worldwide accept Pearson BTEC for entry.</div>
+
+    <!-- FAQ -->
+    <section class="section-full" id="faq">
+        <div class="section">
+            <h2>Questions Answered</h2>
+            <p class="section-intro">Everything you need to know about our UK online Pearson Edexcel BTEC school.</p>
+            <div class="faq">
+                <div class="faq-item">
+                    <div class="faq-q">Is BTEC the same as A-levels? Can I get into university with it?</div>
+                    <div class="faq-a">Yes. Pearson Edexcel BTEC Level 3 qualifications are equivalent to A-levels and accepted by universities worldwide &mdash; including UK universities through UCAS, Australian, Canadian, US, and European institutions. A Distinction at BTEC carries the same UCAS tariff points as an A* at A-level. It&rsquo;s a genuine route into higher education.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">I struggle with exams. Is BTEC better for me?</div>
+                    <div class="faq-a">Absolutely. This is one of the main reasons learners choose BTEC. Instead of sitting timed exam papers in a hall, you compl
+ete 4-5 long written research reports over two years. Each report is broken down step-by-step with clear guidance and feedback from your UK teacher before you submit. No exam anxiety, no blank-page panic &mdash; just structured, supported project work.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Is this a real UK qualification?</div>
+                    <div class="faq-a">Yes. Pearson Edexcel BTEC is a genuine UK qualification awarded by Pearson, the UK&rsquo;s largest awarding body. It is regulated by Ofqual (the UK government&rsquo;s qualifications regulator) and recognised by universities and employers globally. You earn the same qualification as UK students studying in British schools and colleges.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">How does the 2-year written report structure work?</div>
+                    <div class="faq-a">Over two years you complete 4-5 long written research reports &mdash; no exams, no timed papers. Each report is guided by your UK teacher with detailed walkthroughs, criteria checklists, and feedback cycles. You submit draft work, receive structured feedback, improve your report, and submit your final version. This builds your research, writing, and analytical skills &mdash; exactly what universities want to see.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Is the 95% Distinction rate real?</div>
+                    <div class="faq-a">Yes. 95% of our students achieve a Distinction &mdash; the highest grade, equivalent to an A* at A-level. This is because our model combines clear UK teaching, structured report guidance, feedback cycles, and progress tracking. You know exactly what&rsquo;s needed at every stage, and your teacher makes sure you get there.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Can I study from outside the UK?</div>
+                    <div class="faq-a">Yes. Our UK online school is designed for international learners. You study live online with a UK-qualified teacher, around your own schedule. Families in Dubai, Singapore, Hong Kong, Kenya, Malaysia, and beyond choose our school because it gives them a genuine UK qualification at a fraction of private-school fees. Universities worldwide accept Pearson Edexcel BTEC for entry.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">What qualification is this &mdash; BTEC or Edexcel?</div>
+                    <div class="faq-a">Both. Edexcel is the awarding body that delivers BTEC qualifications. The full name is Pearson Edexcel BTEC. Edexcel is one of the UK&rsquo;s largest and most respected awarding bodies, regulated by Ofqual. When you complete your course, you receive a Pearson Edexcel BTEC certificate &mdash; the same qualification offered in UK schools and colleges nationwide.</div>
+                </div>
             </div>
         </div>
     </section>
-    
+
+    <!-- CTA -->
     <section class="section">
-        <div class="cta-section">
+        <div class="cta-sec">
             <h2>Ready to Start Your UK BTEC Pathway?</h2>
-            <p>Book a free consultation with Rhys to discuss whether the Pearson BTEC written-report route is right for you. If exams aren't your strength, this could be your way into university.</p>
+            <p>Book a free consultation with Rhys to discuss whether the Pearson Edexcel BTEC written-report route is right for you. If exams aren&rsquo;t your strength, this could be your way into university.</p>
             <button class="cta-primary">Schedule Your Consultation</button>
         </div>
     </section>
-    
+
+    <!-- FOOTER -->
     <footer>
-        <p>© 2024 UK BTEC Online. A UK-based online Pearson BTEC school for serious learners.</p>
+        <div class="fl">
+            <img src="images/EdexcelLogo.png" alt="Edexcel">
+            <img src="images/Edexcel.svg.webp" alt="Pearson Edexcel">
+            <img src="images/Cambridge_University_Crest_-_flat.png" alt="University of Cambridge" style="height: 35px;">
+        </div>
+        <p>&copy; 2024 UK BTEC Online. A UK-based online Pearson Edexcel BTEC school.</p>
         <p style="margin-top: 1rem; font-size: 0.9rem;">
-            <a href="#">Privacy Policy</a> · 
-            <a href="#">Terms of Service</a> · 
-            <a href="#">Academic Integrity Policy</a> · 
+            <a href="#">Privacy Policy</a> &middot;
+            <a href="#">Terms of Service</a> &middot;
+            <a href="#">Academic Integrity Policy</a> &middot;
             <a href="#">Contact</a>
         </p>
-        <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.8;">All qualification claims are verified against Pearson BTEC, Ofqual, and relevant university admissions requirements. Pearson BTEC is a registered trademark of Pearson Education Ltd.</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.8;">All qualification claims are verified against Pearson Edexcel BTEC, Ofqual, and relevant university admissions requirements. Pearson Edexcel BTEC is a registered trademark of Pearson Education Ltd. UCAS tariff points and university entry requirements vary by course and institution.</p>
     </footer>
 
-
-</body></html>
+</body>
+</html>
