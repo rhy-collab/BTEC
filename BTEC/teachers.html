@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet Our Teachers — UK BTEC Online</title>
+    <meta name="description" content="Meet the UK-qualified teachers behind UK BTEC Online. Led by Rhys Coombes — 95% Distinction rate, 7+ years BTEC experience, 500+ students taught.">
+    <meta property="og:title" content="Meet Our Teachers — UK BTEC Online">
+    <meta property="og:description" content="UK-qualified educators with years of BTEC expertise. 95% Distinction rate. Learn from the best.">
+    <meta property="og:url" content="https://btec-sigma.vercel.app/teachers.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Meet Our Teachers — UK BTEC Online">
+    <meta name="twitter:description" content="UK-qualified educators with years of BTEC expertise. 95% Distinction rate.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #667eea;
+            --primary-dark: #764ba2;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-reverse: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            --primary-light: rgba(102,126,234,0.1);
+            --primary-mid: rgba(102,126,234,0.5);
+            --text-dark: #111827;
+            --text-body: #4b5563;
+            --text-muted: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 10px 30px rgba(102,126,234,0.12);
+            --shadow-lg: 0 20px 40px rgba(102,126,234,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --max-width: 1200px;
+            --header-height: 72px;
+            --section-gap: 80px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-body);
+            background: var(--bg-white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-in-stagger > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .fade-in-stagger.visible > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-in-stagger.visible > *:nth-child(1) { transition-delay: 0s; }
+        .fade-in-stagger.visible > *:nth-child(2) { transition-delay: 0.1s; }
+        .fade-in-stagger.visible > *:nth-child(3) { transition-delay: 0.2s; }
+        .fade-in-stagger.visible > *:nth-child(4) { transition-delay: 0.3s; }
+        .fade-in-stagger.visible > *:nth-child(5) { transition-delay: 0.4s; }
+        .fade-in-stagger.visible > *:nth-child(6) { transition-delay: 0.5s; }
+
+        /* Header / Nav */
+        header {
+            background: var(--gradient);
+            color: white;
+            height: var(--header-height);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+        .header-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; }
+        .logo span { opacity: 0.85; font-weight: 400; }
+        nav { display: flex; align-items: center; gap: 0.25rem; }
+        nav a {
+            color: white; text-decoration: none; padding: 0.5rem 0.9rem;
+            font-size: 0.9rem; font-weight: 500; opacity: 0.88;
+            transition: opacity 0.3s; white-space: nowrap;
+        }
+        nav a:hover { opacity: 1; }
+        .nav-cta {
+            background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.5);
+            border-radius: var(--radius-sm); padding: 0.5rem 1.2rem !important;
+            font-weight: 600 !important; opacity: 1 !important;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .nav-cta:hover { background: rgba(255,255,255,0.3); transform: scale(1.02); }
+
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            background: none; border: none; cursor: pointer; padding: 4px;
+        }
+        .hamburger span {
+            display: block; width: 24px; height: 2.5px;
+            background: white; border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* Page Hero */
+        .page-hero {
+            background: var(--gradient);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.15;
+        }
+        .page-hero p {
+            font-size: 1.2rem;
+            opacity: 0.92;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Section Styles */
+        .section { padding: var(--section-gap) 2rem; max-width: var(--max-width); margin: 0 auto; }
+        .section-full { background: var(--bg-light); padding: var(--section-gap) 0; }
+        .section-full .section { padding: 0 2rem; }
+        .section-dark {
+            background: var(--gradient); color: white; padding: var(--section-gap) 0;
+        }
+        .section-dark .section { padding: 0 2rem; }
+        .section-dark h2, .section-dark .section-intro { color: white; }
+        .section-dark .section-intro { opacity: 0.9; }
+
+        h2 {
+            font-size: 2.4rem; font-weight: 800; color: var(--text-dark);
+            margin-bottom: 0.5rem; letter-spacing: -0.5px;
+        }
+        .section-dark h2 { color: white; }
+        .section-intro {
+            font-size: 1.1rem; color: var(--text-muted);
+            margin-bottom: 3rem; max-width: 700px; line-height: 1.7;
+        }
+
+        /* Feature Cards */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem; margin-bottom: 2rem;
+        }
+        .feature-card {
+            background: var(--bg-white);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.4s, box-shadow 0.4s;
+            border: 1px solid #f3f4f6;
+        }
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+        .feature-icon-wrap {
+            width: 64px; height: 64px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+        .feature-icon-wrap svg { width: 28px; height: 28px; fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .feature-card h3 { font-size: 1.25rem; margin-bottom: 0.8rem; color: var(--text-dark); font-weight: 700; }
+        .feature-card p { color: var(--text-muted); line-height: 1.7; font-size: 0.95rem; }
+
+        /* Detailed Teacher Profile */
+        .teacher-profile {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            border: 1px solid #f3f4f6;
+        }
+        .teacher-profile-header {
+            background: var(--gradient);
+            padding: 3rem 3rem 6rem;
+            position: relative;
+        }
+        .teacher-profile-body {
+            padding: 0 3rem 3rem;
+            margin-top: -80px;
+            position: relative;
+        }
+        .teacher-profile-inner {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+        .teacher-photo-col {
+            text-align: center;
+        }
+        .teacher-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            border: 4px solid white;
+            box-shadow: var(--shadow-md);
+        }
+        .teacher-photo svg {
+            width: 80px;
+            height: 80px;
+            fill: none;
+            stroke: white;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .teacher-name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+        .teacher-role {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        .teacher-bio {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .teacher-bio p + p { margin-top: 1rem; }
+        .teacher-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+        .teacher-stat-card {
+            background: var(--bg-light);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid #f3f4f6;
+        }
+        .teacher-stat-card .num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.1;
+        }
+        .teacher-stat-card .label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+        }
+
+        /* Sub-sections within teacher profile */
+        .teacher-detail-section {
+            margin-top: 2rem;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 2rem;
+        }
+        .teacher-detail-section h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .teacher-detail-section h4 .accent {
+            display: inline-block;
+            width: 4px;
+            height: 20px;
+            background: var(--gradient);
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+        .teacher-detail-section ul {
+            list-style: none;
+        }
+        .teacher-detail-section li {
+            padding: 0.4rem 0 0.4rem 1.5rem;
+            position: relative;
+            color: var(--text-body);
+            line-height: 1.7;
+        }
+        .teacher-detail-section li:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.75rem;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Differentiators */
+        .diff-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .diff-card {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #f3f4f6;
+            text-align: center;
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+        .diff-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        .diff-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 1rem;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .diff-icon svg { width: 26px; height: 26px; fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .diff-card h3 { font-size: 1.15rem; color: var(--text-dark); font-weight: 700; margin-bottom: 0.6rem; }
+        .diff-card p { color: var(--text-muted); line-height: 1.7; font-size: 0.9rem; }
+
+        /* CTA Section */
+        .cta-sec {
+            background: var(--gradient); color: white;
+            padding: 4rem 2rem; text-align: center;
+            border-radius: var(--radius-lg);
+        }
+        .cta-sec h2 { color: white; margin-bottom: 1rem; }
+        .cta-sec p { font-size: 1.15rem; margin-bottom: 2rem; opacity: 0.95; max-width: 650px; margin-left: auto; margin-right: auto; }
+        .cta-primary {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: white; color: var(--primary);
+            padding: 1rem 2.5rem; border-radius: var(--radius-sm);
+            text-decoration: none; font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1.05rem; border: none; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+        .cta-primary .arrow { transition: transform 0.3s; }
+        .cta-primary:hover .arrow { transform: translateX(4px); }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: var(--bg-white);
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1.5rem 2rem;
+        }
+        .trust-bar-inner {
+            max-width: var(--max-width); margin: 0 auto;
+            display: flex; justify-content: center; align-items: center;
+            gap: 2.5rem; flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.85rem; color: var(--text-muted);
+        }
+        .trust-item .num {
+            font-weight: 700; color: var(--primary); font-size: 1.1rem;
+        }
+        .trust-divider { width: 1px; height: 24px; background: #d1d5db; }
+
+        /* Footer */
+        footer {
+            background: #111827; color: #9ca3af;
+            padding: 3rem 2rem 1.5rem;
+        }
+        .footer-grid {
+            max-width: var(--max-width); margin: 0 auto;
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem; margin-bottom: 2rem;
+        }
+        .footer-col h4 {
+            color: white; font-size: 0.9rem; font-weight: 600;
+            margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .footer-col p { font-size: 0.85rem; line-height: 1.7; margin-bottom: 1rem; }
+        .footer-col a {
+            display: block; color: #9ca3af; text-decoration: none;
+            font-size: 0.85rem; padding: 0.3rem 0;
+            transition: color 0.3s;
+        }
+        .footer-col a:hover { color: white; }
+        .footer-logos { display: flex; gap: 1rem; align-items: center; margin-top: 1rem; flex-wrap: wrap; }
+        .footer-logos img { height: 28px; opacity: 0.6; transition: opacity 0.3s; }
+        .footer-logos img:hover { opacity: 0.9; }
+        .social-links { display: flex; gap: 0.75rem; margin-top: 0.5rem; }
+        .social-links a {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: rgba(255,255,255,0.1); display: flex;
+            align-items: center; justify-content: center;
+            transition: background 0.3s; padding: 0;
+        }
+        .social-links a:hover { background: rgba(255,255,255,0.2); }
+        .social-links svg { width: 18px; height: 18px; fill: #9ca3af; }
+        .social-links a:hover svg { fill: white; }
+        .footer-bottom {
+            max-width: var(--max-width); margin: 0 auto;
+            border-top: 1px solid #1f2937; padding-top: 1.5rem;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 0.5rem;
+        }
+        .footer-bottom p { font-size: 0.8rem; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .page-hero h1 { font-size: 2.4rem; }
+            .teacher-profile-inner { grid-template-columns: 1fr; }
+            .teacher-photo { width: 160px; height: 160px; }
+            .teacher-photo svg { width: 60px; height: 60px; }
+            .diff-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            :root { --section-gap: 50px; }
+            h1 { font-size: 2rem; }
+            .page-hero h1 { font-size: 2rem; }
+            .page-hero p { font-size: 1.05rem; }
+            h2 { font-size: 1.7rem; }
+            .section-intro { font-size: 1rem; }
+
+            .section { padding: var(--section-gap) 1rem; }
+            .section-full .section { padding: 0 1rem; }
+
+            nav { display: none; position: fixed; top: var(--header-height); left: 0; right: 0;
+                  background: var(--gradient); flex-direction: column; padding: 1rem;
+                  box-shadow: 0 10px 20px rgba(0,0,0,0.2); gap: 0; }
+            nav.open { display: flex; }
+            nav a { padding: 0.8rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 1rem; }
+            nav a:last-child { border-bottom: none; }
+            .nav-cta { margin-top: 0.5rem; text-align: center; }
+            .hamburger { display: flex; }
+
+            .teacher-profile-header { padding: 2rem 1.5rem 5rem; }
+            .teacher-profile-body { padding: 0 1rem 2rem; }
+            .teacher-profile-inner { padding: 1.5rem; }
+            .teacher-stats-grid { grid-template-columns: 1fr; }
+            .diff-grid { grid-template-columns: 1fr; }
+
+            .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+
+            .trust-bar-inner { gap: 1rem; }
+            .trust-divider { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header>
+        <div class="header-content">
+            <div class="logo">UK BTEC <span>Online</span></div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <nav id="nav">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="visa.html">Visa Guide</a>
+                <a href="book-consultation.html" class="nav-cta">Book a Consultation</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========== TRUST BAR ========== -->
+    <div class="trust-bar">
+        <div class="trust-bar-inner">
+            <div class="trust-item"><span class="num">95%</span> Distinction Rate</div>
+            <div class="trust-divider"></div>
+            <div class="trust-item"><span class="num">7+</span> Years Teaching BTEC</div>
+            <div class="trust-divider"></div>
+            <div class="trust-item"><span class="num">500+</span> Students Taught</div>
+            <div class="trust-divider"></div>
+            <div class="trust-item"><span class="num">Russell Group</span> University Pathway</div>
+        </div>
+    </div>
+
+    <!-- ========== PAGE HERO ========== -->
+    <section class="page-hero">
+        <h1>Meet Our Teachers</h1>
+        <p>UK-qualified educators with years of BTEC expertise. Every student deserves a teacher who knows the specification inside out and genuinely cares about their success.</p>
+    </section>
+
+    <!-- ========== RHYS COOMBES EXPANDED PROFILE ========== -->
+    <section class="section" id="rhys">
+        <h2>Rhys Coombes</h2>
+        <p class="section-intro">Lead BTEC Business Teacher &bull; UK-Qualified Educator</p>
+
+        <div class="teacher-profile fade-in">
+            <div class="teacher-profile-header"></div>
+            <div class="teacher-profile-body">
+                <div class="teacher-profile-inner">
+                    <div class="teacher-photo-col">
+                        <div class="teacher-photo">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="teacher-name">Rhys Coombes</div>
+                        <div class="teacher-role">Lead BTEC Business Teacher &bull; UK-Qualified Educator</div>
+
+                        <div class="teacher-bio">
+                            <p>Rhys is a UK-qualified Business Studies and Economics teacher with extensive classroom and online experience delivering Pearson Edexcel BTEC qualifications. He has taught hundreds of BTEC Business students, with 95% achieving a Distinction — the highest possible grade, equivalent to an A* at A-level.</p>
+                            <p>Based in Dubai, Rhys understands the unique needs of international families seeking a genuine UK qualification pathway at an affordable price. His teaching philosophy centres on breaking complex business concepts into clear, manageable steps that every student can follow, regardless of their starting point.</p>
+                            <p>Rhys believes that traditional exams are not the only valid measure of a student's ability. The written-report model of BTEC allows students to demonstrate deep understanding through research, analysis, and structured writing — skills that universities value far more than the ability to memorise facts under time pressure.</p>
+                        </div>
+
+                        <div class="teacher-stats-grid">
+                            <div class="teacher-stat-card">
+                                <div class="num">95%</div>
+                                <div class="label">Distinction Rate</div>
+                            </div>
+                            <div class="teacher-stat-card">
+                                <div class="num">7+</div>
+                                <div class="label">Years Teaching BTEC</div>
+                            </div>
+                            <div class="teacher-stat-card">
+                                <div class="num">500+</div>
+                                <div class="label">Students Taught</div>
+                            </div>
+                        </div>
+
+                        <!-- Teaching Approach -->
+                        <div class="teacher-detail-section">
+                            <h4><span class="accent"></span>Teaching Approach</h4>
+                            <p style="color: var(--text-muted); margin-bottom: 1rem; line-height: 1.8;">Rhys's teaching method is built around structured guidance, iterative feedback, and building student confidence one report at a time. Every student receives:</p>
+                            <ul>
+                                <li><strong>Weekly live lessons</strong> — recorded for catch-up, with clear objectives and real-time Q&amp;A</li>
+                                <li><strong>Assignment walkthroughs</strong> — each report is broken down into stages so you always know what to do next</li>
+                                <li><strong>Iterative feedback cycles</strong> — submit a draft, receive detailed written feedback, improve your work, then submit the final version</li>
+                                <li><strong>Personal learning plan</strong> — tailored to your pace, background, and university goals</li>
+                                <li><strong>Direct messaging support</strong> — ask questions between lessons and get answers within 24 hours</li>
+                            </ul>
+                        </div>
+
+                        <!-- Qualifications -->
+                        <div class="teacher-detail-section">
+                            <h4><span class="accent"></span>Qualifications &amp; Credentials</h4>
+                            <ul>
+                                <li>UK Qualified Teacher Status (QTS)</li>
+                                <li>PGCE in Business Education — University of the West of England</li>
+                                <li>BA (Hons) in Business Studies — University of Glamorgan</li>
+                                <li>7+ years delivering Pearson Edexcel BTEC Level 3 Business</li>
+                                <li>Extensive experience with UCAS applications and university admissions guidance</li>
+                                <li>DBS checked and safeguarding certified</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== OUR TEACHING APPROACH ========== -->
+    <section class="section-full" id="approach">
+        <div class="section">
+            <h2>Our Teaching Approach</h2>
+            <p class="section-intro">Every aspect of our teaching is designed around one goal: helping you achieve a Distinction in your Pearson Edexcel BTEC without the stress of traditional exams.</p>
+
+            <div class="features-grid fade-in-stagger" id="approachGrid">
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                    </div>
+                    <h3>Written Report Focus</h3>
+                    <p>No exam halls, no timed papers. Over two years you complete 4-5 long written research reports. Each report is broken down into clear stages with full teacher guidance at every step. You build deep subject knowledge through real research and analytical writing — exactly what universities want to see.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                            <line x1="12" y1="8" x2="12" y2="16"/>
+                            <line x1="8" y1="12" x2="16" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3>Structured Feedback</h3>
+                    <p>You never submit a final report without knowing exactly how to improve. Our iterative feedback cycle means you submit draft work, receive detailed written comments from your UK-qualified teacher, refine your understanding, and submit a stronger final version. This is how 95% of students achieve Distinction.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 010 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Personal Attention</h3>
+                    <p>Small class sizes mean your teacher knows your work, your strengths, and where you need support. You are not a number in a system — you are a learner with specific goals, and your teacher tailors their guidance to help you reach them. Direct messaging support between lessons ensures you are never stuck.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>No Exam Stress</h3>
+                    <p>The BTEC written-report model was designed for students who find traditional exams difficult. Instead of memorising facts for timed papers, you demonstrate your understanding through carefully researched, well-structured written reports. If exams make you freeze, this pathway removes that barrier entirely while still earning a recognised university-entry qualification.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== WHY OUR TEACHERS MAKE THE DIFFERENCE ========== -->
+    <section class="section" id="difference">
+        <h2>Why Our Teachers Make the Difference</h2>
+        <p class="section-intro">A qualification is only as good as the teaching behind it. Here is what sets our educators apart.</p>
+
+        <div class="diff-grid fade-in-stagger" id="diffGrid">
+            <div class="diff-card">
+                <div class="diff-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                    </svg>
+                </div>
+                <h3>UK-Qualified Expertise</h3>
+                <p>Our teachers hold UK Qualified Teacher Status (QTS) and have years of experience specifically delivering Pearson Edexcel BTEC qualifications. They know the specification, the assessment criteria, and exactly what it takes to achieve a Distinction. This is not their first time — this is what they do.</p>
+            </div>
+
+            <div class="diff-card">
+                <div class="diff-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 20h9"/>
+                        <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                    </svg>
+                </div>
+                <h3>Personalised Report Feedback</h3>
+                <p>Every report your teacher marks comes back with detailed, actionable feedback — not just a grade. You will know exactly which criteria you met, where you can improve, and how to strengthen your next submission. This iterative process is the engine behind our 95% Distinction rate.</p>
+            </div>
+
+            <div class="diff-card">
+                <div class="diff-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                </div>
+                <h3>University Pathway Guidance</h3>
+                <p>Our teachers do not stop when the course ends. They write your UCAS reference, help you craft a university application that highlights your BTEC work, and guide you through equivalency processes for international admissions. They stay with you until you are holding your acceptance letter.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA SECTION ========== -->
+    <section class="section">
+        <div class="cta-sec fade-in">
+            <h2>Start Learning with a UK-Qualified Teacher</h2>
+            <p>Book a free consultation with Rhys to discuss your goals, ask questions about the BTEC written-report pathway, and find out how our teachers can help you achieve a Distinction — without exam stress.</p>
+            <a href="book-consultation.html" class="cta-primary">
+                Book Your Free Consultation
+                <span class="arrow">→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>UK BTEC Online</h4>
+                <p>A UK-based online Pearson Edexcel BTEC school. No exams — written reports only. 95% Distinction rate. A-level equivalent. Russell Group university pathway.</p>
+                <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1rem; flex-wrap: wrap;">
+                    <img src="images/EdexcelLogo.png" alt="Edexcel" style="height: 28px; opacity: 0.6;">
+                    <img src="images/Edexcel.svg.webp" alt="Pearson Edexcel" style="height: 28px; opacity: 0.6;">
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="universities.html">Universities</a>
+                <a href="visa.html">Visa Guide</a>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <a href="contact.html">Contact Us</a>
+                <a href="book-consultation.html">Book a Consultation</a>
+                <a href="enrol.html">How to Enrol</a>
+                <a href="fees.html">Fees</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook" title="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                    </a>
+                    <a href="#" aria-label="YouTube" title="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29.22 29.22 0 001 11.75a29.22 29.22 0 00.46 5.33 2.78 2.78 0 001.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29.22 29.22 0 00.46-5.33 29.22 29.22 0 00-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram" title="Instagram">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn" title="LinkedIn">
+                        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 UK BTEC Online. A UK-based online Pearson Edexcel BTEC school.</p>
+            <p>All qualification claims verified against Pearson Edexcel BTEC, Ofqual, and relevant university admissions requirements.</p>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                nav.classList.toggle('open');
+            });
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('open');
+                });
+            });
+        }
+
+        // Intersection Observer — Fade In
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in, .fade-in-stagger').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

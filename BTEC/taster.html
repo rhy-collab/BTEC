@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Try a free BTEC Business taster lesson with Rhys. Experience a real online lesson with a UK-qualified teacher — no commitment, no pressure.">
+  <title>Free Taster Lesson | BTEC Online</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ===== CSS Custom Properties ===== */
+    :root {
+      --purple-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --purple-start: #667eea;
+      --purple-end: #764ba2;
+      --purple-mid: #6f58c8;
+      --bg-light: #ffffff;
+      --bg-section: #f8f9ff;
+      --text-dark: #1a1a2e;
+      --text-body: #4a4a6a;
+      --text-muted: #6b6b8a;
+      --border-light: #e8e8f0;
+      --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --shadow-sm: 0 2px 8px rgba(102, 126, 234, 0.08);
+      --shadow-md: 0 8px 30px rgba(102, 126, 234, 0.15);
+      --shadow-lg: 0 16px 48px rgba(102, 126, 234, 0.18);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --max-width: 1140px;
+      --header-height: 70px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-family);
+      color: var(--text-body);
+      background: var(--bg-light);
+      line-height: 1.7;
+      padding-top: var(--header-height);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color var(--transition);
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--purple-start);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 620px;
+      line-height: 1.7;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ===== Staggered Fade-in Animations ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+
+    /* ===== Header / Nav ===== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-height);
+      background: var(--purple-gradient);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 20px rgba(102, 126, 234, 0.25);
+    }
+
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span {
+      font-weight: 400;
+      opacity: 0.85;
+    }
+
+    .nav-list {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-list a {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .nav-list a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: width var(--transition);
+    }
+
+    .nav-list a:hover {
+      color: #fff;
+    }
+
+    .nav-list a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: rgba(255, 255, 255, 0.18);
+      padding: 8px 18px;
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff !important;
+      font-weight: 600;
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .nav-cta:hover {
+      background: rgba(255, 255, 255, 0.28);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .nav-cta::after {
+      display: none !important;
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 26px;
+      height: 2.5px;
+      background: #fff;
+      border-radius: 3px;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+      transform: translateY(7.5px) rotate(45deg);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+      transform: translateY(-7.5px) rotate(-45deg);
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      background: var(--purple-gradient);
+      padding: 100px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40%;
+      left: -15%;
+      width: 500px;
+      height: 500px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 6px 18px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.5rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 580px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: var(--font-family);
+      cursor: pointer;
+      border: none;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: #fff;
+      color: var(--purple-end);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .btn-outline-light {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .btn-outline-light:hover {
+      border-color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-strip {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 48px;
+      flex-wrap: wrap;
+    }
+
+    .hero-strip-item {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-strip-item svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    /* ===== Cards Grid (What You'll Experience) ===== */
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .exp-card {
+      background: var(--bg-light);
+      border-radius: var(--radius-md);
+      padding: 32px 24px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+      transition: transform var(--transition), box-shadow var(--transition);
+      text-align: center;
+    }
+
+    .exp-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .exp-card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.12), rgba(118, 75, 162, 0.12));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .exp-card-icon svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .exp-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .exp-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ===== About Section ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 16px;
+    }
+
+    .about-content h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+
+    .about-content p {
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    .about-list {
+      list-style: none;
+      margin-top: 24px;
+    }
+
+    .about-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+
+    .about-list li svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .about-visual {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.06), rgba(118, 75, 162, 0.06));
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      border: 1px solid var(--border-light);
+    }
+
+    .lesson-structure {
+      display: grid;
+      gap: 20px;
+    }
+
+    .lesson-step {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .lesson-step-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--purple-gradient);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .lesson-step-text h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+    }
+
+    .lesson-step-text p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== Video Section ===== */
+    .video-section {
+      background: var(--bg-section);
+    }
+
+    .video-wrapper {
+      max-width: 720px;
+      margin: 40px auto 0;
+    }
+
+    .video-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      background: #000;
+      cursor: pointer;
+      aspect-ratio: 16 / 9;
+    }
+
+    .video-card img,
+    .video-card .video-placeholder {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-placeholder {
+      background: linear-gradient(135deg, #2a2a4a, #1a1a3e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+    }
+
+    .video-placeholder svg {
+      width: 48px;
+      height: 48px;
+      opacity: 0.4;
+    }
+
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .play-button svg {
+      width: 28px;
+      height: 28px;
+      margin-left: 3px;
+    }
+
+    .video-card:hover .play-button {
+      transform: translate(-50%, -50%) scale(1.06);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .video-caption {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .video-url-note {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 8px 16px;
+      background: #fff;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border: 1px dashed var(--border-light);
+      font-family: 'Courier New', monospace;
+    }
+
+    /* ===== Testimonials ===== */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .testimonial-card {
+      background: var(--bg-light);
+      border-radius: var(--radius-md);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 16px;
+      left: 24px;
+      font-size: 3.5rem;
+      line-height: 1;
+      color: var(--purple-start);
+      opacity: 0.2;
+      font-family: Georgia, serif;
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 14px;
+    }
+
+    .testimonial-stars svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .testimonial-card blockquote {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--text-body);
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--purple-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .testimonial-author-info strong {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--text-dark);
+    }
+
+    .testimonial-author-info span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== Teacher Profile ===== */
+    .teacher-section {
+      background: var(--bg-section);
+    }
+
+    .teacher-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 40px;
+      align-items: start;
+      background: var(--bg-light);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-light);
+      max-width: 800px;
+      margin: 40px auto 0;
+    }
+
+    .teacher-avatar-frame {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: var(--purple-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .teacher-avatar-frame .avatar-inner {
+      width: 148px;
+      height: 148px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--purple-end);
+    }
+
+    .teacher-info h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .teacher-role {
+      font-size: 0.9rem;
+      color: var(--purple-start);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .teacher-bio {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: var(--text-body);
+    }
+
+    .teacher-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .teacher-stat {
+      text-align: center;
+      padding: 12px 8px;
+      background: var(--bg-section);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-light);
+    }
+
+    .teacher-stat-value {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--purple-end);
+    }
+
+    .teacher-stat-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 2px;
+    }
+
+    /* ===== CTA Section ===== */
+    .cta-section {
+      background: var(--purple-gradient);
+      text-align: center;
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .cta-section .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .cta-section p {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 520px;
+      margin: 0 auto 32px;
+    }
+
+    .cta-section .btn-primary {
+      background: #fff;
+      color: var(--purple-end);
+      padding: 16px 40px;
+      font-size: 1.05rem;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      background: #12122a;
+      color: rgba(255, 255, 255, 0.7);
+      padding: 60px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h4 {
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .footer-col p,
+    .footer-col a {
+      font-size: 0.85rem;
+      line-height: 1.9;
+    }
+
+    .footer-col a {
+      display: block;
+      color: rgba(255, 255, 255, 0.6);
+      transition: color var(--transition);
+    }
+
+    .footer-col a:hover {
+      color: #fff;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .footer-social a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition);
+    }
+
+    .footer-social a:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .footer-social a svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.8rem;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 992px) {
+      .experience-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .teacher-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+      }
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        padding: 56px 0;
+      }
+      .nav-list {
+        display: none;
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        background: var(--purple-gradient);
+        flex-direction: column;
+        padding: 20px 24px;
+        gap: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+      .nav-list.open {
+        display: flex;
+      }
+      .nav-toggle {
+        display: flex;
+      }
+      .hero {
+        padding: 60px 0 50px;
+      }
+      .hero-strip {
+        gap: 16px;
+        flex-direction: column;
+        align-items: center;
+      }
+      .experience-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .teacher-card {
+        padding: 24px;
+      }
+      .teacher-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+      .btn {
+        width: 100%;
+        max-width: 280px;
+      }
+      .teacher-avatar-frame {
+        width: 120px;
+        height: 120px;
+      }
+      .teacher-avatar-frame .avatar-inner {
+        width: 110px;
+        height: 110px;
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Sticky Header ===== -->
+  <header class="header" role="banner">
+    <div class="container">
+      <a href="index.html" class="logo">BTEC <span>Online</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav role="navigation" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="curriculum.html">Curriculum</a></li>
+          <li><a href="visa-guide.html">Visa Guide</a></li>
+          <li><a href="book-consultation.html" class="nav-cta">Book a Consultation</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="hero">
+    <div class="container fade-in visible">
+      <span class="hero-badge">No Commitment &bull; No Pressure</span>
+      <h1>Try a Free Taster Lesson</h1>
+      <p>Experience a real BTEC lesson with Rhys — no commitment, no pressure. See exactly how online learning works before you decide.</p>
+      <div class="hero-actions">
+        <a href="book-consultation.html" class="btn btn-primary">
+          Book Your Free Consultation
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#experience" class="btn btn-outline-light">See What's Included</a>
+      </div>
+      <div class="hero-strip fade-in visible fade-in-delay-2">
+        <span class="hero-strip-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Free — no card needed
+        </span>
+        <span class="hero-strip-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          45 minutes
+        </span>
+        <span class="hero-strip-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          1-to-1 with a UK teacher
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== What You'll Experience ===== -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="text-center fade-in" data-animate>
+        <span class="section-label">What to Expect</span>
+        <h2 class="section-title">What You'll Experience</h2>
+        <p class="section-subtitle mx-auto">A genuine taster of how our BTEC lessons work — nothing held back, no hidden agenda.</p>
+      </div>
+      <div class="experience-grid">
+        <div class="exp-card fade-in" data-animate>
+          <div class="exp-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-start)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Real Lesson with a UK Teacher</h3>
+          <p>Live, interactive session with Rhys, a fully qualified UK educator who knows the BTEC specification inside out.</p>
+        </div>
+        <div class="exp-card fade-in fade-in-delay-1" data-animate>
+          <div class="exp-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-start)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <h3>See How Written Reports Work</h3>
+          <p>Understand the BTEC assessment style — no exams, just structured written coursework with clear feedback.</p>
+        </div>
+        <div class="exp-card fade-in fade-in-delay-2" data-animate>
+          <div class="exp-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-start)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="12" y1="7" x2="12" y2="13"/><line x1="9" y1="10" x2="15" y2="10"/></svg>
+          </div>
+          <h3>Q&amp;A Session Afterwards</h3>
+          <p>Ask anything about the course, the qualifications, or online study — no question is too small.</p>
+        </div>
+        <div class="exp-card fade-in fade-in-delay-3" data-animate>
+          <div class="exp-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-start)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <h3>No Sales Pitch</h3>
+          <p>This is a real lesson, not a marketing call. Experience the quality first, then decide at your own pace.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== About This Lesson ===== -->
+  <section class="section bg-section" id="about-lesson" style="background: var(--bg-section);">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content fade-in" data-animate>
+          <span class="section-label">About This Lesson</span>
+          <h2>What the Taster Covers</h2>
+          <p>This free session is built around <strong>Unit 1: Exploring Business</strong> — the foundational module of the Pearson BTEC Level 3 Business qualification. You'll get a genuine feel for how lessons run, how content is explained, and how you'll build your written assignments.</p>
+          <p>We'll cover the different types of business ownership (sole trader, partnership, limited company) and explore real-world examples so you can see how theory connects to practice.</p>
+          <ul class="about-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-start)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Business types explained</strong> — sole traders, partnerships, and Ltd companies</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-start)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Real-world case studies</strong> — apply theory to familiar brands</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-start)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Assignment walkthrough</strong> — see how a BTEC report is structured</span>
+            </li>
+          </ul>
+        </div>
+        <div class="about-visual fade-in fade-in-delay-1" data-animate>
+          <h3 style="font-size:1.1rem;font-weight:700;color:var(--text-dark);margin-bottom:20px;">A Typical Lesson Structure</h3>
+          <div class="lesson-structure">
+            <div class="lesson-step">
+              <span class="lesson-step-number">1</span>
+              <div class="lesson-step-text">
+                <h4>Warmup (5 min)</h4>
+                <p>Quick starter activity to get you thinking like a business analyst.</p>
+              </div>
+            </div>
+            <div class="lesson-step">
+              <span class="lesson-step-number">2</span>
+              <div class="lesson-step-text">
+                <h4>Content Delivery (15 min)</h4>
+                <p>Core teaching with examples, visuals, and real business stories.</p>
+              </div>
+            </div>
+            <div class="lesson-step">
+              <span class="lesson-step-number">3</span>
+              <div class="lesson-step-text">
+                <h4>Activity (15 min)</h4>
+                <p>Guided task — you'll start building a written response with support.</p>
+              </div>
+            </div>
+            <div class="lesson-step">
+              <span class="lesson-step-number">4</span>
+              <div class="lesson-step-text">
+                <h4>Q&amp;A (10 min)</h4>
+                <p>Open floor for your questions about the lesson, the course, or BTECs.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Video Embed Section ===== -->
+  <section class="section video-section" id="video-preview">
+    <div class="container">
+      <div class="text-center fade-in" data-animate>
+        <span class="section-label">Watch a Sample</span>
+        <h2 class="section-title">See a BTEC Lesson in Action</h2>
+        <p class="section-subtitle mx-auto">This short clip gives you a taste of our teaching style and lesson format.</p>
+      </div>
+      <div class="video-wrapper fade-in fade-in-delay-1" data-animate>
+        <div class="video-card" role="button" aria-label="Play video preview" tabindex="0">
+          <!-- YouTube-style placeholder thumbnail -->
+          <div class="video-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+            <span>Lesson Preview</span>
+          </div>
+          <div class="play-button">
+            <svg viewBox="0 0 24 24" fill="var(--purple-end)"><polygon points="8 5 19 12 8 19 8 5" fill="var(--purple-end)"/></svg>
+          </div>
+        </div>
+        <p class="video-caption">
+          A short clip from one of our BTEC Business lessons
+          <br>
+          <span class="video-url-note">&#9679; Replace this placeholder with your YouTube embed URL</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Testimonials ===== -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="text-center fade-in" data-animate>
+        <span class="section-label">Student Stories</span>
+        <h2 class="section-title">What Students Say About Our Lessons</h2>
+        <p class="section-subtitle mx-auto">Hear from students who started with a taster and went on to complete their qualification.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-in" data-animate>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24" fill="#f5a623" stroke="#f5a623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" fill="#f5a623" stroke="#f5a623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" fill="#f5a623" stroke="#f5a623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" fill="#f5a623" stroke="#f5a623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" fill="#f5a623" stroke="#f5a623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote>"I was nervous about online learning, but the taster lesson made it so clear. Rhys explains everything step by step and the written report format actually makes sense."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SM</div>
+            <div class="testimonial-author-info">
+              <strong>Sarah M.</strong>
+              <span>BTEC Business, Year 12</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-in fade-in-delay-1" data-animate>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24" fill="#f5a623" stroke="#f5a623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" fill="#f5a623" stroke="#f5a623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" fill="#f5a623" stroke="#f5a623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" fill="#f5a623" stroke="#f5a623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" fill="#f5a623" stroke="#f5a623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote>"The free taster was exactly what I needed. No pressure, no sales pitch — just a proper lesson. I signed up because I actually enjoyed the learning."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">JK</div>
+            <div class="testimonial-author-info">
+              <strong>James K.</strong>
+              <span>BTEC Business, Year 13</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-in fade-in-delay-2" data-animate>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24" fill="#f5a623" stroke="#f5a623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" fill="#f5a623" stroke="#f5a623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" fill="#f5a623" stroke="#f5a623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" fill="#f5a623" stroke="#f5a623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" fill="#f5a623" stroke="#f5a623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote>"The Q&A at the end was the best part — I asked about UCAS points, how the coursework is graded, and even got advice on uni applications. All in one free session."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">AL</div>
+            <div class="testimonial-author-info">
+              <strong>Aisha L.</strong>
+              <span>BTEC Business, Year 12</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Meet Your Teacher ===== -->
+  <section class="section teacher-section" id="teacher">
+    <div class="container">
+      <div class="text-center fade-in" data-animate>
+        <span class="section-label">Your Tutor</span>
+        <h2 class="section-title">Meet Your Teacher</h2>
+        <p class="section-subtitle mx-auto">Every taster lesson is led by Rhys — the founder of BTEC Online and a passionate Business educator.</p>
+      </div>
+      <div class="teacher-card fade-in fade-in-delay-1" data-animate>
+        <div class="teacher-avatar-frame">
+          <div class="avatar-inner">RC</div>
+        </div>
+        <div class="teacher-info">
+          <h3>Rhys Coombes</h3>
+          <p class="teacher-role">Founder &amp; Lead Business Tutor</p>
+          <p class="teacher-bio">
+            Rhys is a qualified educator specialising in Pearson BTEC Business qualifications. With years of experience guiding students through Unit 1 through to the final diploma, he knows exactly what examiners look for. His teaching style is clear, patient, and built around real-world business examples — making every lesson practical and engaging.
+          </p>
+          <div class="teacher-stats">
+            <div class="teacher-stat">
+              <div class="teacher-stat-value">500+</div>
+              <div class="teacher-stat-label">Students Taught</div>
+            </div>
+            <div class="teacher-stat">
+              <div class="teacher-stat-value">98%</div>
+              <div class="teacher-stat-label">Pass Rate</div>
+            </div>
+            <div class="teacher-stat">
+              <div class="teacher-stat-value">7+</div>
+              <div class="teacher-stat-label">Years Experience</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Ready to Join? CTA ===== -->
+  <section class="cta-section" id="ready">
+    <div class="container fade-in" data-animate>
+      <h2>Ready to Join a Real Lesson?</h2>
+      <p>Book your free consultation and we'll set up your taster at a time that works for you. No commitment, no catches.</p>
+      <a href="book-consultation.html" class="btn btn-primary">
+        Book Your Free Consultation
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>BTEC Online</h4>
+          <p>UK-based online school offering Pearson Edexcel BTEC Level 3 Business qualifications. Live lessons, personalised support, and clear pathways to university and careers.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram" title="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" aria-label="TikTok" title="TikTok">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube" title="YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" title="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="curriculum.html">Curriculum</a>
+          <a href="visa-guide.html">Visa Guide</a>
+          <a href="taster.html">Free Taster Lesson</a>
+          <a href="book-consultation.html">Book a Consultation</a>
+        </div>
+        <div class="footer-col">
+          <h4>Qualifications</h4>
+          <a href="#">BTEC Level 3 Business</a>
+          <a href="#">Pearson Edexcel</a>
+          <a href="#">UCAS Tariff Points</a>
+          <a href="#">International Students</a>
+          <a href="#">Funding &amp; Fees</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:hello@bteconline.co.uk">hello@bteconline.co.uk</a>
+          <a href="book-consultation.html">Book a Call</a>
+          <p style="margin-top:12px;font-size:0.8rem;">&copy; 2026 BTEC Online. All rights reserved.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>BTEC Online is an independent online education provider.</span>
+        <span>Not affiliated with Pearson Edexcel.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Scroll-Triggered Fade-In Script ===== -->
+  <script>
+    (function() {
+      'use strict';
+
+      // ---- Mobile Nav Toggle ----
+      const toggle = document.querySelector('.nav-toggle');
+      const navList = document.querySelector('.nav-list');
+
+      if (toggle && navList) {
+        toggle.addEventListener('click', function() {
+          const isOpen = navList.classList.toggle('open');
+          toggle.classList.toggle('active');
+          toggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close nav on link click (mobile)
+        navList.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            navList.classList.remove('open');
+            toggle.classList.remove('active');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // ---- Intersection Observer for Fade-In Animations ----
+      const animateElements = document.querySelectorAll('[data-animate]');
+
+      if (animateElements.length && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              // Optional: keep observing or unobserve after reveal
+              // observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.15,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        animateElements.forEach(function(el) {
+          observer.observe(el);
+        });
+      } else {
+        // Fallback: reveal all immediately if observer not supported
+        animateElements.forEach(function(el) {
+          el.classList.add('visible');
+        });
+      }
+
+      // ---- Video Card Click Handler ----
+      const videoCard = document.querySelector('.video-card');
+      if (videoCard) {
+        videoCard.addEventListener('click', function() {
+          // Placeholder for YouTube embed replacement.
+          // Replace the contents of .video-placeholder with an actual
+          // <iframe> when you have your YouTube URL.
+          console.log('Video play requested — replace .video-placeholder with your YouTube iframe.');
+        });
+
+        // Keyboard support
+        videoCard.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            videoCard.click();
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UK BTEC Online — UK's Top Online Pearson Edexcel BTEC School</title>
-    <meta name="description" content="UK BTEC Online: a UK-based online Pearson Edexcel BTEC school. No exams — 4-5 written reports over 2 years. 95% Distinction rate. A-level equivalent. Russell Group university pathway. From £49.99/month.">
+    <meta name="description" content="UK BTEC Online: a UK-based online Pearson Edexcel BTEC school. BTEC Extended Diploma equivalent to 3 A-Levels. No exams — written reports only. 95% Distinction rate. Russell Group university pathway. From £49.99/month.">
     <meta property="og:title" content="UK BTEC Online — UK's Top Online Pearson Edexcel BTEC School">
-    <meta property="og:description" content="No exams — 4-5 written reports over 2 years with 95% Distinction rate. A-level equivalent, Russell Group university pathway. From £49.99/month.">
+    <meta property="og:description" content="BTEC Extended Diploma equivalent to 3 A-Levels. No exams — written reports over 2 years with 95% Distinction rate. Russell Group university pathway. From £49.99/month.">
     <meta property="og:image" content="https://btec-sigma.vercel.app/images/pexels-karola-g-5877661.jpg">
     <meta property="og:url" content="https://btec-sigma.vercel.app/">
     <meta property="og:type" content="website">
@@ -20,19 +20,19 @@
       "@context": "https://schema.org",
       "@type": "EducationalOrganization",
       "name": "UK BTEC Online",
-      "description": "UK-based online Pearson Edexcel BTEC school offering Business qualifications. No exams — written reports only. 95% Distinction rate.",
+      "description": "UK-based online Pearson Edexcel BTEC school offering Business qualifications. Extended Diploma equivalent to 3 A-Levels. No exams — written reports only. 95% Distinction rate.",
       "url": "https://www.ukbtec.online",
       "email": "rhys.coombes@gmail.com",
       "founder": { "@type": "Person", "name": "Rhys Coombes" },
       "teaches": {
         "@type": "Course",
         "name": "Pearson Edexcel BTEC Level 3 Business",
-        "description": "A 2-year written-report based qualification equivalent to A-levels. Students complete 4-5 research reports with UK-qualified teacher support.",
+        "description": "A 2-year written-report based qualification equivalent to 3 A-Levels. Students complete 4-5 research reports with UK-qualified teacher support.",
         "provider": { "@type": "EducationalOrganization", "name": "Pearson Edexcel" },
         "educationalCredentialAwarded": "BTEC Level 3 Diploma in Business",
         "coursePrerequisites": "Age 16+",
         "courseMode": "ONLINE",
-        "occupationalCredentialAwarded": "BTEC Level 3 Diploma (UCAS tariff equivalent to A-levels)"
+        "occupationalCredentialAwarded": "BTEC Level 3 Extended Diploma (UCAS tariff equivalent to 3 A-Levels)"
       },
       "address": { "@type": "PostalAddress", "addressCountry": "AE" },
       "aggregateRating": {
@@ -551,7 +551,21 @@
 
         /* ========== Sticky Mobile CTA ========== */
         .sticky-mobile-cta {
-            /* ========== Urgency Banner ========== */
+            display: none; position: fixed; bottom: 0; left: 0; right: 0;
+            background: var(--bg-white); padding: 0.8rem 1rem;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            z-index: 999;
+            justify-content: space-between; align-items: center;
+        }
+        .sticky-mobile-cta .price-label { font-size: 0.8rem; color: var(--text-muted); }
+        .sticky-mobile-cta .price-amount { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
+        .sticky-mobile-cta .cta-btn {
+            background: var(--gradient); color: white; border: none;
+            padding: 0.7rem 1.5rem; border-radius: var(--radius-sm);
+            font-weight: 600; text-decoration: none; font-size: 0.9rem;
+        }
+
+        /* ========== Urgency Banner ========== */
         .urgency-bar {
             background: linear-gradient(135deg, #f59e0b, #d97706);
             color: white; text-align: center; padding: 0.5rem 1rem;
@@ -631,7 +645,52 @@
             color: white; font-weight: 600; font-size: 0.95rem;
         }
 
-        .sticky-mobile-cta {
+        /* ========== Accreditation Strip ========== */
+        .accred-strip {
+            background: white; padding: 2rem 0;
+            border-bottom: 1px solid #e5e7eb; overflow: hidden;
+        }
+        .accred-inner {
+            max-width: var(--max-width); margin: 0 auto; padding: 0 2rem;
+            text-align: center;
+        }
+        .accred-inner p { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem; }
+        .accred-logos {
+            display: flex; justify-content: center; align-items: center;
+            gap: 2.5rem; flex-wrap: wrap;
+        }
+        .accred-logos img {
+            height: 32px; opacity: 0.5; transition: opacity 0.3s;
+            filter: grayscale(100%);
+        }
+        .accred-logos img:hover { opacity: 1; filter: grayscale(0%); }
+
+        /* ========== Community Personas ========== */
+        .community-tabs { display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+        .community-tab {
+            padding: 0.7rem 1.5rem; border: 2px solid #e5e7eb;
+            border-radius: 50px; background: white; font-weight: 600;
+            font-size: 0.85rem; cursor: pointer; transition: all 0.3s;
+            font-family: var(--font); color: var(--text-muted);
+        }
+        .community-tab.active { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+        .community-tab:hover:not(.active) { border-color: var(--primary); }
+        .community-content { display: none; }
+        .community-content.active { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; animation: fadeIn 0.4s ease; }
+        .community-content.active:has(.community-desc) { display: flex; }
+        .community-text h3 { font-size: 1.4rem; color: var(--text-dark); margin-bottom: 0.8rem; }
+        .community-text p { color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem; }
+        .community-text .cta-small {
+            display: inline-block; color: var(--primary); font-weight: 600;
+            text-decoration: none; transition: gap 0.3s;
+        }
+        .community-text .cta-small:hover { text-decoration: underline; }
+        .community-img img { width: 100%; border-radius: var(--radius-md); box-shadow: var(--shadow-md); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
             background: var(--bg-white); padding: 0.8rem 1rem;
             box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
             z-index: 999;
@@ -737,7 +796,7 @@
         <div class="hero-grid">
             <div class="hero-text">
                 <h1>UK&rsquo;s Top Online <span class="highlight">Pearson Edexcel</span> BTEC School</h1>
-                <p class="hero-sub">A UK online school offering the Pearson Edexcel BTEC Business qualification. Over two years you complete <strong>4-5 long written reports</strong> with <strong>95% of students achieving a Distinction</strong> &mdash; the highest grade, equivalent to A-level. If exams aren&rsquo;t your strength, this is your route to university.</p>
+                <p class="hero-sub">A UK online school offering the Pearson Edexcel BTEC Business qualification — a <strong>Level 3 Extended Diploma equivalent to 3 A-Levels</strong>. Over two years you complete <strong>4-5 long written reports</strong> with <strong>95% of students achieving a Distinction</strong> &mdash; the highest grade. If exams aren&rsquo;t your strength, this is your route to university.</p>
                 <a href="mailto:rhys.coombes@gmail.com?subject=Free%20Consultation%20-%20UK%20BTEC%20Online" class="cta-primary">
                     Start Your Free Consultation
                     <span class="arrow">→</span>
@@ -762,10 +821,24 @@
         </div>
     </div>
 
+    <!-- ========== ACCREDITATION STRIP ========== -->
+    <div class="accred-strip">
+        <div class="accred-inner">
+            <p>Our Qualifications &amp; Accreditations</p>
+            <div class="accred-logos">
+                <img src="images/EdexcelLogo.png" alt="Edexcel">
+                <img src="images/Edexcel.svg.webp" alt="Pearson Edexcel">
+                <img src="images/Cambridge_University_Crest_-_flat.png" alt="University of Cambridge" style="height: 36px;">
+                <span style="font-size:1.4rem;font-weight:700;color:#d1d5db;opacity:0.6;">Ofqual</span>
+                <span style="font-size:1.1rem;font-weight:600;color:#d1d5db;opacity:0.6;">UCAS</span>
+            </div>
+        </div>
+    </div>
+
     <!-- ========== WHY CHOOSE ========== -->
     <section class="section" id="why">
         <h2>Why Choose Our UK Online BTEC School?</h2>
-        <p class="section-intro">We are a UK-based online school offering the genuine Pearson Edexcel BTEC qualification &mdash; a respected alternative to A-levels accepted by universities worldwide. If you struggle with traditional exams, this written-report pathway is built for you.</p>
+        <p class="section-intro">We are a UK-based online school offering the genuine Pearson Edexcel BTEC qualification &mdash; a respected alternative to A-levels accepted by universities worldwide. The <strong>BTEC Level 3 Extended Diploma is equivalent to 3 A-Levels</strong> &mdash; your passport to university. If you struggle with traditional exams, this written-report pathway is built for you.</p>
         <div class="features-grid fade-in-stagger" id="featureGrid">
             <div class="feature-card">
                 <div class="feature-icon-wrap">
@@ -786,14 +859,14 @@
                     <svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 010-5C7 4 7 7 7 7"/><path d="M18 9h1.5a2.5 2.5 0 000-5C17 4 17 7 17 7"/><path d="M4 22h16"/><path d="M10 22V14h4v8"/><path d="M12 14l-2-4h4l-2 4z"/></svg>
                 </div>
                 <h3>95% Distinction Rate</h3>
-                <p>95% of our students achieve a Distinction &mdash; the highest grade, equivalent to an A* at A-level. Our structured support, detailed feedback, and UK-qualified teachers deliver real results that open university doors.</p>
+                <p>95% of our students achieve a Distinction &mdash; the highest grade. A Distinction in the BTEC Extended Diploma is worth the same UCAS tariff as <strong>3 A*s at A-level</strong>. Our structured support, detailed feedback, and UK-qualified teachers deliver real results that open university doors.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon-wrap">
                     <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                 </div>
-                <h3>A-level Equivalent</h3>
-                <p>Pearson Edexcel BTEC qualifications are equivalent to A-levels and accepted by universities worldwide including Russell Group institutions. A Distinction at Level 3 carries the same UCAS tariff as an A*.</p>
+                <h3>A-level Equivalent (3 A-Levels)</h3>
+                <p>Pearson Edexcel BTEC Level 3 Extended Diplomas are equivalent to <strong>3 A-Levels</strong> and accepted by universities worldwide including Russell Group institutions. A Distinction* D*D*D* carries the same UCAS tariff as A*A*A*.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon-wrap">
@@ -861,17 +934,80 @@
                 <h3>Your Path to a Distinction</h3>
                 <ul>
                     <li>Free consultation to check if this pathway is right for you</li>
-                    <li>You enrol on the Pearson Edexcel BTEC Business Level 3 qualification &mdash; equivalent to A-levels</li>
+                    <li>You enrol on the Pearson Edexcel BTEC Business Level 3 Extended Diploma &mdash; equivalent to 3 A-Levels</li>
                     <li>Over two years you complete 4-5 long written research reports &mdash; guided and reviewed by your UK-qualified teacher</li>
                     <li>Weekly live lessons with your teacher, always recorded for catch-up</li>
                     <li>Detailed assignment walkthroughs so you know exactly what each report needs</li>
                     <li>Structured feedback cycles &mdash; submit, get feedback, improve, resubmit</li>
-                    <li>95% of students achieve a Distinction &mdash; the highest grade, equivalent to A* at A-level</li>
+                    <li>95% of students achieve a Distinction &mdash; worth the same UCAS tariff as A*A*A*</li>
                     <li>Your Pearson Edexcel BTEC qualification is accepted by universities worldwide</li>
                 </ul>
             </div>
             <div class="two-col-img">
                 <img src="images/pexels-karola-g-5877661.jpg" alt="Student studying with UK BTEC Online" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== COMMUNITY PERSONAS ========== -->
+    <section class="section-full" id="community">
+        <div class="section">
+            <h2 style="text-align: center;">Who Is BTEC For?</h2>
+            <p class="section-intro" style="text-align: center; margin-left: auto; margin-right: auto;">Our community includes students from all backgrounds who share one thing: they want a recognised qualification without the exam hall stress.</p>
+
+            <div class="community-tabs">
+                <button class="community-tab active" data-comm="exams">Exam-Anxious Students</button>
+                <button class="community-tab" data-comm="intl">International Families</button>
+                <button class="community-tab" data-comm="entrepreneurs">Aspiring Entrepreneurs</button>
+                <button class="community-tab" data-comm="late">Late Starters</button>
+            </div>
+
+            <div class="community-content active" id="comm-exams">
+                <div class="community-text">
+                    <h3>If Exams Make You Freeze, This Is Your Answer</h3>
+                    <p>Some of the brightest students struggle with timed exam halls. You know the material — but under pressure, your mind goes blank. The BTEC written-report model changes everything. Over two years, you complete 4-5 long research reports with clear guidance and feedback from your teacher at every stage. No exam halls. No timed papers. Just structured, supported project work that builds your skills and confidence.</p>
+                    <p><strong>95% of our students achieve a Distinction</strong> — the highest grade. Not because they're better at exams, but because written reports reward deep understanding over speed.</p>
+                    <a href="book-consultation.html" class="cta-small">→ Talk to Rhys about your situation</a>
+                </div>
+                <div class="community-img">
+                    <img src="images/pexels-jonathanborba-17771084.jpg" alt="Student focused on written coursework" loading="lazy">
+                </div>
+            </div>
+
+            <div class="community-content" id="comm-intl">
+                <div class="community-text">
+                    <h3>A Genuine UK Qualification, From Anywhere in the World</h3>
+                    <p>Based in Dubai, Hong Kong, Singapore, Nairobi, or beyond? Our UK online school gives you a recognised Pearson Edexcel qualification taught by UK-qualified teachers — from the comfort of your home. You study live online, around your schedule, with recorded lessons for catch-up. Your BTEC qualification is accepted by universities worldwide, including Russell Group institutions in the UK, Group of Eight in Australia, and top universities across Canada, the UAE, and Europe.</p>
+                    <p><strong>Students from 15+ countries</strong> have achieved Distinctions with us. Wherever you are, this qualification travels with you.</p>
+                    <a href="visa.html" class="cta-small">→ See how BTEC supports visa applications</a>
+                </div>
+                <div class="community-img">
+                    <img src="images/pexels-karola-g-5877661.jpg" alt="International student studying online" loading="lazy">
+                </div>
+            </div>
+
+            <div class="community-content" id="comm-entrepreneurs">
+                <div class="community-text">
+                    <h3>Build a Business Mindset From Day One</h3>
+                    <p>The BTEC Business qualification isn't just about getting into university — it's about understanding how businesses actually work. Your written reports will cover real business scenarios, marketing campaigns, financial analysis, and management principles. You'll develop research, analytical, and communication skills that are exactly what employers and universities want to see.</p>
+                    <p>Many of our students go on to start their own ventures. The BTEC gives you the business foundation and the UCAS points to keep your options open.</p>
+                    <a href="curriculum.html" class="cta-small">→ Explore the BTEC Business curriculum</a>
+                </div>
+                <div class="community-img">
+                    <img src="images/pexels-mart-production-8472950.jpg" alt="Student working on business plan" loading="lazy">
+                </div>
+            </div>
+
+            <div class="community-content" id="comm-late">
+                <div class="community-text">
+                    <h3>A Fresh Start on Your University Journey</h3>
+                    <p>Didn't get the A-level results you wanted? Left school and want to go back? The BTEC is a flexible, accessible route to university that doesn't depend on exam results from years ago. You start fresh with clear milestones: 4-5 written reports over 2 years, guided every step by your UK-qualified teacher. A Distinction is worth the same UCAS tariff points as an A* at A-level — it's a genuine second chance at your university ambitions.</p>
+                    <p><strong>Age 16+ welcome.</strong> No prior qualifications needed. Just the motivation to succeed.</p>
+                    <a href="enrol.html" class="cta-small">→ See how to enrol</a>
+                </div>
+                <div class="community-img">
+                    <img src="images/pexels-divinetechygirl-1181545.jpg" alt="Adult learner studying online" loading="lazy">
+                </div>
             </div>
         </div>
     </section>
@@ -1001,9 +1137,9 @@
                     <p>of our students are accepted into their first-choice university, with our progression support team guiding every application.</p>
                 </div>
                 <div class="tab-stat">
-                    <div class="big-num">A*</div>
+                    <div class="big-num">3 A*</div>
                     <h4>UCAS Tariff Equivalent</h4>
-                    <p>A BTEC Distinction carries the same UCAS tariff points as an A* at A-level — your ticket to Russell Group universities.</p>
+                    <p>A BTEC Extended Diploma D*D*D* carries the same UCAS tariff points as A*A*A* — your ticket to Russell Group universities.</p>
                 </div>
                 <div class="tab-stat">
                     <div class="big-num">24</div>
@@ -1052,7 +1188,7 @@
     <section class="section-full" id="universities">
         <div class="section">
             <h2>Where Can a BTEC Distinction Take You?</h2>
-            <p class="section-intro">A Distinction in Pearson Edexcel BTEC Business Level 3 is equivalent to an A* at A-level and carries the same UCAS tariff points. Our students have progressed to leading universities around the world, including Russell Group universities in the UK.</p>
+            <p class="section-intro">The BTEC Level 3 Extended Diploma is equivalent to <strong>3 A-Levels</strong>. D*D*D* carries the same UCAS tariff as A*A*A*. Our students have progressed to leading universities around the world, including all 24 Russell Group universities in the UK.</p>
 
             <div style="text-align: center; margin-bottom: 2rem;">
                 <h3 style="font-size: 1.3rem; color: var(--text-dark);">Russell Group Universities That Accept BTEC Business</h3>
@@ -1153,9 +1289,9 @@
                 <p style="color: var(--text-muted); margin-top: 0.8rem; line-height: 1.7;">95% of our students are accepted into their first-choice university. Our structured progression support makes the difference.</p>
             </div>
             <div class="testi-card" style="margin: 0;">
-                <div class="testi-txt" style="font-size: 2rem; font-weight: 700; color: var(--primary); font-style: normal; margin-bottom: 0.5rem;">A*</div>
-                <div class="testi-auth" style="font-size: 1rem; font-weight: 600; color: var(--text-dark);">A-level Equivalent Grade</div>
-                <p style="color: var(--text-muted); margin-top: 0.8rem; line-height: 1.7;">A BTEC Distinction is globally recognised as equivalent to an A* at A-level — the highest school-level qualification in the UK.</p>
+                <div class="testi-txt" style="font-size: 2rem; font-weight: 700; color: var(--primary); font-style: normal; margin-bottom: 0.5rem;">3 A*</div>
+                <div class="testi-auth" style="font-size: 1rem; font-weight: 600; color: var(--text-dark);">3 A-Levels Equivalent</div>
+                <p style="color: var(--text-muted); margin-top: 0.8rem; line-height: 1.7;">A BTEC Extended Diploma is globally recognised as equivalent to <strong>3 A-Levels</strong>. D*D*D* is the highest grade, carrying the full UCAS tariff for university entry.</p>
             </div>
             <div class="testi-card" style="margin: 0;">
                 <div class="testi-txt" style="font-size: 2rem; font-weight: 700; color: var(--primary); font-style: normal; margin-bottom: 0.5rem;">🌍</div>
@@ -1252,7 +1388,7 @@
         <div class="faq">
             <div class="faq-item open">
                 <div class="faq-q">Is BTEC the same as A-levels? Can I get into university with it?<span class="icon">+</span></div>
-                <div class="faq-a">Yes. Pearson Edexcel BTEC Level 3 qualifications are equivalent to A-levels and accepted by universities worldwide &mdash; including UK universities through UCAS, Australian, Canadian, US, and European institutions. A Distinction at BTEC carries the same UCAS tariff points as an A* at A-level. It&rsquo;s a genuine route into higher education.</div>
+                <div class="faq-a">Yes. The BTEC Level 3 Extended Diploma is equivalent to <strong>3 A-Levels</strong> and accepted by universities worldwide &mdash; including UK universities through UCAS, Australian, Canadian, US, and European institutions. A Distinction* D*D*D* carries the same UCAS tariff as A*A*A* &mdash; the highest possible entry tariff. It&rsquo;s a genuine route into higher education.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-q">I struggle with exams. Is BTEC better for me?<span class="icon">+</span></div>
@@ -1298,7 +1434,7 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <h4>UK BTEC Online</h4>
-                <p>A UK-based online Pearson Edexcel BTEC school. No exams — written reports only. 95% Distinction rate. A-level equivalent. Russell Group university pathway.</p>
+                <p>A UK-based online Pearson Edexcel BTEC school. No exams — written reports only. 95% Distinction rate. Extended Diploma equivalent to 3 A-Levels. Russell Group university pathway.</p>
                 <div class="footer-logos">
                     <img src="images/EdexcelLogo.png" alt="Edexcel">
                     <img src="images/Edexcel.svg.webp" alt="Pearson Edexcel">
@@ -1468,6 +1604,18 @@
                 });
             });
         }
+
+        // Community Tabs
+        const commTabs = document.querySelectorAll('.community-tab');
+        commTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                commTabs.forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.community-content').forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                const target = document.getElementById('comm-' + tab.dataset.comm);
+                if (target) target.classList.add('active');
+            });
+        });
 
         // FAQ Accordion
         document.querySelectorAll('.faq-item').forEach(item => {
