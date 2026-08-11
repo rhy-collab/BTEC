@@ -1,0 +1,40 @@
+# Backup files
+*-backup.*
+*-backup-*
+*backup*
+
+# Temp files
+.hermes-tmp.*
+*.tmp
+*.temp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Hermes
+.hermes/
+
+# Secrets
+*.secret*
+*credential*
+*CREDENTIAL*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Project planning files (not website code)
+check_honcho.py
+ai-native-btec-online-school-super-prompt.md
+hermes-btec-ai-project-super-prompt.md
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Node
+node_modules/
