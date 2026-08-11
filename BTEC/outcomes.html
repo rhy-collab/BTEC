@@ -88,13 +88,14 @@
 
         /* ========== Header / Nav ========== */
         header {
-            background: var(--gradient);
-            color: white;
+            background: white;
+            color: #111827;
             height: var(--header-height);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            border-bottom: 1px solid #f3f4f6;
         }
         .header-content {
             max-width: var(--max-width);
@@ -105,28 +106,42 @@
             justify-content: space-between;
             align-items: center;
         }
-        .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; }
-        .logo a { color: white; text-decoration: none; }
-        .logo span { opacity: 0.85; font-weight: 400; }
-        nav { display: flex; align-items: center; gap: 0.25rem; }
-        nav a {
-            color: white; text-decoration: none; padding: 0.5rem 0.9rem;
-            font-size: 0.9rem; font-weight: 500; opacity: 0.88;
-            transition: opacity 0.3s; white-space: nowrap;
+        .logo {
+            font-size: 1.3rem; font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        nav a:hover { opacity: 1; }
-        nav a.active { opacity: 1; border-bottom: 2px solid white; padding-bottom: 3px; }
+        .logo a { text-decoration: none; -webkit-text-fill-color: transparent; }
+        .logo span { font-weight: 400; opacity: 0.7; }
+        nav { display: flex; align-items: center; gap: 0.1rem; }
+        nav a {
+            color: #6b7280; text-decoration: none; padding: 0.5rem 0.85rem;
+            font-size: 0.88rem; font-weight: 500;
+            transition: color 0.3s; white-space: nowrap;
+            border-radius: 8px;
+        }
+        nav a:hover { color: #667eea; background: rgba(102,126,234,0.1); }
+        nav a.active { color: #667eea; }
+        .nav-cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important; color: white !important;
+            border: none; border-radius: 50px !important;
+            padding: 0.5rem 1.3rem !important;
+            font-weight: 600 !important;
+            box-shadow: 0 4px 12px rgba(102,126,234,0.2);
+            transition: transform 0.3s, box-shadow 0.3s !important;
+        }
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(102,126,234,0.35) !important;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        }
 
         /* Hamburger */
-        .hamburger {
-            display: none; flex-direction: column; gap: 5px;
-            background: none; border: none; cursor: pointer; padding: 4px;
-        }
-        .hamburger span {
-            display: block; width: 24px; height: 2.5px;
-            background: white; border-radius: 2px;
-            transition: transform 0.3s, opacity 0.3s;
-        }
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+        .hamburger span { display: block; width: 24px; height: 2.5px; background: #374151; border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
         .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
@@ -467,11 +482,14 @@
             .stories-grid { grid-template-columns: 1fr; }
 
             nav { display: none; position: fixed; top: var(--header-height); left: 0; right: 0;
-                  background: var(--gradient); flex-direction: column; padding: 1rem;
-                  box-shadow: 0 10px 20px rgba(0,0,0,0.2); gap: 0; }
+                  background: white; flex-direction: column; padding: 1rem;
+                  box-shadow: 0 10px 30px rgba(0,0,0,0.1); gap: 0;
+                  border-bottom: 1px solid #e5e7eb; }
             nav.open { display: flex; }
-            nav a { padding: 0.8rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 1rem; }
+            nav a { padding: 0.8rem 0.5rem; border-bottom: 1px solid #f3f4f6; font-size: 1rem; color: #4b5563; }
+            nav a:hover { background: rgba(102,126,234,0.1); }
             nav a:last-child { border-bottom: none; }
+            .nav-cta { margin-top: 0.5rem; text-align: center; color: white !important; }
 
             .hamburger { display: flex; }
 
@@ -499,7 +517,7 @@
                 <a href="about.html">About</a>
                 <a href="curriculum.html">Curriculum</a>
                 <a href="visa.html">Visa Guide</a>
-                <a href="book-consultation.html">Book a Consultation</a>
+                <a href="book-consultation.html" class="nav-cta">Free Consultation</a>
             </nav>
         </div>
     </header>
@@ -815,7 +833,7 @@
         <div class="cta-sec fade-in">
             <h2>Start Your Own Success Story</h2>
             <p>Book a free consultation with Rhys to discuss whether the Pearson Edexcel BTEC written-report pathway is right for you or your child. No exams, no pressure — just a clear route to university.</p>
-            <a href="book-consultation.html" class="cta-primary">
+            <a href="https://calendly.com/ukbtec-info/30min" class="cta-primary">
                 Start Your Free Consultation
                 <span class="arrow">→</span>
             </a>
@@ -844,7 +862,7 @@
             </div>
             <div class="footer-col">
                 <h4>Support</h4>
-                <a href="book-consultation.html">Book a Consultation</a>
+                <a href="https://calendly.com/ukbtec-info/30min">Book a Consultation</a>
                 <a href="mailto:rhys.coombes@gmail.com">Contact Us</a>
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>

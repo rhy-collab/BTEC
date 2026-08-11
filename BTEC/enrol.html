@@ -79,13 +79,14 @@
 
         /* ========== Header / Nav ========== */
         header {
-            background: var(--gradient);
-            color: white;
+            background: white;
+            color: #111827;
             height: var(--header-height);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            border-bottom: 1px solid #f3f4f6;
         }
         .header-content {
             max-width: var(--max-width);
@@ -96,35 +97,42 @@
             justify-content: space-between;
             align-items: center;
         }
-        .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; }
-        .logo a { color: white; text-decoration: none; }
-        .logo span { opacity: 0.85; font-weight: 400; }
-        nav { display: flex; align-items: center; gap: 0.25rem; }
+        .logo {
+            font-size: 1.3rem; font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .logo a { text-decoration: none; -webkit-text-fill-color: transparent; }
+        .logo span { font-weight: 400; opacity: 0.7; }
+        nav { display: flex; align-items: center; gap: 0.1rem; }
         nav a {
-            color: white; text-decoration: none; padding: 0.5rem 0.9rem;
-            font-size: 0.9rem; font-weight: 500; opacity: 0.88;
-            transition: opacity 0.3s; white-space: nowrap;
+            color: #6b7280; text-decoration: none; padding: 0.5rem 0.85rem;
+            font-size: 0.88rem; font-weight: 500;
+            transition: color 0.3s; white-space: nowrap;
+            border-radius: 8px;
         }
-        nav a:hover { opacity: 1; }
-        nav a.active { opacity: 1; border-bottom: 2px solid white; padding-bottom: 3px; }
+        nav a:hover { color: #667eea; background: rgba(102,126,234,0.1); }
+        nav a.active { color: #667eea; }
         .nav-cta {
-            background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.5);
-            border-radius: var(--radius-sm); padding: 0.5rem 1.2rem !important;
-            font-weight: 600 !important; opacity: 1 !important;
-            transition: background 0.3s, transform 0.3s;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important; color: white !important;
+            border: none; border-radius: 50px !important;
+            padding: 0.5rem 1.3rem !important;
+            font-weight: 600 !important;
+            box-shadow: 0 4px 12px rgba(102,126,234,0.2);
+            transition: transform 0.3s, box-shadow 0.3s !important;
         }
-        .nav-cta:hover { background: rgba(255,255,255,0.3); transform: scale(1.02); }
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(102,126,234,0.35) !important;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        }
 
         /* Hamburger */
-        .hamburger {
-            display: none; flex-direction: column; gap: 5px;
-            background: none; border: none; cursor: pointer; padding: 4px;
-        }
-        .hamburger span {
-            display: block; width: 24px; height: 2.5px;
-            background: white; border-radius: 2px;
-            transition: transform 0.3s, opacity 0.3s;
-        }
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+        .hamburger span { display: block; width: 24px; height: 2.5px; background: #374151; border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
         .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
@@ -665,7 +673,7 @@
         <div class="cta-sec fade-in">
             <h2>Ready to Start?</h2>
             <p>Book your free consultation with Rhys today. No pressure, no obligation — just a friendly conversation about whether the BTEC pathway is right for you.</p>
-            <a href="book-consultation.html" class="cta-primary">
+            <a href="https://calendly.com/ukbtec-info/30min" class="cta-primary">
                 Book Your Free Consultation
                 <span class="arrow">→</span>
             </a>
