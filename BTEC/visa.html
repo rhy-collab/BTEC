@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa & Immigration Guide | UK BTEC Online</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.8; color: #1f2937; background: #f9fafb; }
+        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
+        .logo a { color: white; text-decoration: none; }
+        nav a { color: white; text-decoration: none; margin-left: 2rem; opacity: 0.9; transition: opacity 0.3s; font-size: 0.95rem; }
+        nav a:hover { opacity: 1; }
+        nav a.active { opacity: 1; border-bottom: 2px solid white; padding-bottom: 2px; }
+        .page-hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 4rem 2rem; text-align: center; }
+        .page-hero h1 { font-size: 2.8rem; margin-bottom: 1rem; font-weight: 800; }
+        .page-hero p { font-size: 1.2rem; opacity: 0.95; max-width: 700px; margin: 0 auto; line-height: 1.7; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        .section { padding: 4rem 0; }
+        .section-alt { background: white; padding: 4rem 0; }
+        h2 { font-size: 2rem; margin-bottom: 1.5rem; color: #111827; }
+        h3 { font-size: 1.4rem; margin-bottom: 1rem; color: #111827; }
+        h4 { font-size: 1.1rem; margin-bottom: 0.8rem; color: #374151; }
+        p { margin-bottom: 1.2rem; color: #4b5563; }
+        .intro-text { font-size: 1.15rem; color: #6b7280; margin-bottom: 2.5rem; line-height: 1.8; }
+        .country-card { background: white; border-radius: 12px; padding: 2.5rem; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-left: 4px solid #667eea; }
+        .country-card h3 { margin-bottom: 0.3rem; }
+        .country-card .flag { font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .country-card ul { list-style: none; margin: 1rem 0; }
+        .country-card li { padding: 0.4rem 0 0.4rem 1.8rem; position: relative; color: #4b5563; }
+        .country-card li:before { content: "\2713"; position: absolute; left: 0; color: #667eea; font-weight: bold; }
+        .country-card .note { background: #f3f4f6; padding: 1rem; border-radius: 8px; margin-top: 1rem; font-size: 0.95rem; color: #6b7280; }
+        .info-box { background: #eef2ff; border-radius: 10px; padding: 2rem; margin: 2rem 0; border-left: 4px solid #667eea; }
+        .info-box h4 { color: #4338ca; }
+        .info-box p { color: #4b5563; margin-bottom: 0; }
+        .cta-section { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 4rem 2rem; text-align: center; border-radius: 12px; margin: 2rem 0; }
+        .cta-section h2 { color: white; margin-bottom: 1rem; }
+        .cta-section p { color: rgba(255,255,255,0.9); font-size: 1.15rem; margin-bottom: 2rem; }
+        .cta-primary { display: inline-block; background: white; color: #667eea; padding: 1rem 2.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.3s, box-shadow 0.3s; font-size: 1.1rem; }
+        .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .other-countries { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+        .country-chip { background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1.2rem; text-align: center; transition: all 0.3s; }
+        .country-chip:hover { border-color: #667eea; box-shadow: 0 4px 12px rgba(102,126,234,0.15); }
+        .country-chip .em { font-size: 1.5rem; margin-bottom: 0.3rem; }
+        .country-chip .nm { font-weight: 600; color: #374151; font-size: 0.95rem; }
+        .country-chip .desc { font-size: 0.85rem; color: #9ca3af; margin-top: 0.3rem; }
+        .faq-item { background: white; padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; border-left: 4px solid #667eea; }
+        .faq-q { font-weight: 600; color: #111827; margin-bottom: 0.5rem; }
+        .faq-a { color: #6b7280; line-height: 1.8; }
+        footer { background: #1f2937; color: #d1d5db; padding: 3rem 2rem; text-align: center; margin-top: 3rem; }
+        footer a { color: #8b5cf6; text-decoration: none; }
+        .back-link { display: inline-block; margin: 2rem 0; color: #667eea; text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .page-hero h1 { font-size: 2rem; }
+            nav { display: none; }
+            .other-countries { grid-template-columns: 1fr; }
+            .country-card { padding: 1.5rem; }
+            .info-box { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo"><a href="index.html">UK BTEC Online</a></div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="index.html#why">Why Us</a>
+                <a href="index.html#teachers">Teachers</a>
+                <a href="index.html#how">How It Works</a>
+                <a href="index.html#universities">Universities</a>
+                <a href="index.html#career">Career Support</a>
+                <a href="visa.html" class="active">Visa Guide</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="index.html#faq">FAQ</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-hero">
+        <h1>Visa &amp; Immigration Guide</h1>
+        <p>How a Pearson Edexcel BTEC qualification strengthens your student visa application &mdash; for Australia, the UK, and beyond.</p>
+    </div>
+
+    <div class="container">
+        <div style="text-align: center; margin-top: 1rem;">
+            <a href="index.html" class="back-link">&larr; Back to Home</a>
+        </div>
+
+        <div class="section">
+            <p class="intro-text">
+                One of the most common questions students and families ask is whether a BTEC qualification helps or hinders a visa application. The short answer: a Pearson Edexcel BTEC qualification <strong>strengthens</strong> your visa position, regardless of which country you plan to study in. Here&rsquo;s how it works for the most common destinations.
+            </p>
+
+            <div class="info-box">
+                <h4>📄 Visa Documentation We Provide</h4>
+                <p>Every UK BTEC Online student receives visa-support documentation including: a course completion certificate with grade transcript, detailed academic reference from a UK-qualified teacher, a progression pathway letter showing your planned university route, and proof of English-medium study. Contact us if your specific country requires additional documentation.</p>
+            </div>
+
+            <!-- AUSTRALIA -->
+            <div class="country-card">
+                <div class="flag">🇦🇺</div>
+                <h3>Australia &mdash; Student Visa (Subclass 500)</h3>
+                <p style="color: #6b7280; margin-bottom: 1.5rem;">
+                    Australia&rsquo;s Department of Home Affairs assesses student visa applications under the Genuine Student (GS) requirement, which replaced the GTE from March 2024. The key question is whether you genuinely intend to study and have the academic preparation to succeed.
+                </p>
+                <h4>How a BTEC qualification helps your Australian visa application:</h4>
+                <ul>
+                    <li><strong>Demonstrates genuine academic intent</strong> &mdash; You&rsquo;ve already committed to a recognised UK qualification and completed it successfully. This is powerful evidence that your study goals are real and purposeful.</li>
+                    <li><strong>Shows English-medium study capability</strong> &mdash; Completing a Pearson Edexcel qualification taught and assessed in English provides concrete evidence of your English proficiency, which is a key assessment factor.</li>
+                    <li><strong>Creates a clear progression narrative</strong> &mdash; Secondary school &rarr; UK BTEC qualification &rarr; Australian bachelor&rsquo;s degree. This structured pathway is exactly what visa officers want to see, rather than an unexplained gap or unstructured deferral period.</li>
+                    <li><strong>Replaces risky gap periods</strong> &mdash; If you&rsquo;ve finished school but aren&rsquo;t yet ready for university, a BTEC fills that period with meaningful academic progress instead of an unstructured gap that raises questions.</li>
+                    <li><strong>Recognised by Australian universities</strong> &mdash; Pearson Edexcel BTEC qualifications are accepted for direct admission by universities across Australia, strengthening the credibility of your study plan.</li>
+                </ul>
+                <div class="note">
+                    <strong>Tip:</strong> We provide a progression pathway letter that maps your BTEC qualification to your intended Australian university course &mdash; useful evidence to include with your visa application.
+                </div>
+            </div>
+
+            <!-- UK -->
+            <div class="country-card">
+                <div class="flag">🇬🇧</div>
+                <h3>United Kingdom &mdash; Student Route Visa</h3>
+                <p style="color: #6b7280; margin-bottom: 1.5rem;">
+                    The UK Student Route visa (formerly Tier 4) requires you to have a Confirmation of Acceptance for Studies (CAS) from a licensed sponsor university or college. Your BTEC qualification plays a direct role in meeting the academic requirements for that CAS.
+                </p>
+                <h4>How a BTEC qualification helps your UK visa application:</h4>
+                <ul>
+                    <li><strong>Recognised qualification on the Register of Regulated Qualifications</strong> &mdash; Pearson Edexcel BTECs are listed on the official UK government register, regulated by Ofqual. Visa officers recognise this qualification immediately.</li>
+                    <li><strong>Satisfies CAS academic entry requirements</strong> &mdash; Your BTEC Distinction is equivalent to an A*, giving you the grades needed for your UK university offer &mdash; a prerequisite for your CAS.</li>
+                    <li><strong>Demonstrates academic progression</strong> &mdash; The Student Route requires evidence of academic progression from your current level to the course you&rsquo;re applying for. Moving from a BTEC Level 3 to a UK bachelor&rsquo;s degree is clear, undeniable progression.</li>
+                    <li><strong>Reduces English language evidence burden</strong> &mdash; Since your BTEC is taught and assessed in English, some UK universities may accept this as meeting their English language requirements, simplifying your visa evidence.</li>
+                </ul>
+                <div class="note">
+                    <strong>Tip:</strong> We work directly with UK universities to confirm your BTEC qualification meets their entry requirements before you apply, so your CAS is issued without delays.
+                </div>
+            </div>
+
+            <!-- CANADA -->
+            <div class="country-card">
+                <div class="flag">🇨🇦</div>
+                <h3>Canada &mdash; Study Permit</h3>
+                <p style="color: #6b7280; margin-bottom: 1.5rem;">
+                    Immigration, Refugees and Citizenship Canada (IRCC) assesses study permit applications based on your intent to study, financial capacity, and academic preparedness. A UK BTEC qualification is well-regarded in the Canadian system.
+                </p>
+                <h4>How a BTEC qualification helps your Canadian study permit:</h4>
+                <ul>
+                    <li><strong>Internationally recognised qualification</strong> &mdash; Canadian universities and colleges accept Pearson Edexcel BTEC for admission, and IRCC recognises UK-regulated qualifications as credible academic credentials.</li>
+                    <li><strong>Strengthens your study plan</strong> &mdash; A completed BTEC with a Distinction shows you&rsquo;re a serious student with a proven track record, which supports your case for being granted a study permit.</li>
+                    <li><strong>English proficiency evidence</strong> &mdash; IRCC accepts evidence of English-medium education as supporting documentation for language ability, which can complement or reduce testing requirements.</li>
+                </ul>
+            </div>
+
+            <!-- OTHER COUNTRIES -->
+            <h2 style="margin-top: 3rem;">Other Countries</h2>
+            <p class="intro-text">
+                A Pearson Edexcel BTEC qualification is held by students who have successfully obtained visas to study in many other countries. The general principle applies everywhere: a recognised UK qualification with a graded transcript and sustained English-medium study gives immigration officers something credible to evaluate.
+            </p>
+
+            <div class="other-countries">
+                <div class="country-chip">
+                    <div class="em">🇳🇿</div>
+                    <div class="nm">New Zealand</div>
+                    <div class="desc">Student Visa</div>
+                </div>
+                <div class="country-chip">
+                    <div class="em">🇮🇪</div>
+                    <div class="nm">Ireland</div>
+                    <div class="desc">Study Visa</div>
+                </div>
+                <div class="country-chip">
+                    <div class="em">🇺🇸</div>
+                    <div class="nm">United States</div>
+                    <div class="desc">F-1 Student Visa</div>
+                </div>
+                <div class="country-chip">
+                    <div class="em">🇪🇺</div>
+                    <div class="nm">European Union</div>
+                    <div class="desc">Student Permits</div>
+                </div>
+                <div class="country-chip">
+                    <div class="em">🇦🇪</div>
+                    <div class="nm">UAE</div>
+                    <div class="desc">Student Visa</div>
+                </div>
+                <div class="country-chip">
+                    <div class="em">🇲🇾</div>
+                    <div class="nm">Malaysia</div>
+                    <div class="desc">Student Pass</div>
+                </div>
+            </div>
+
+            <p style="text-align: center; color: #6b7280; font-size: 0.95rem; margin: 2rem 0;">
+                <em>This list is not exhaustive. Contact us if your country isn&rsquo;t listed &mdash; we can advise on how your BTEC qualification is viewed in your specific destination.</em>
+            </p>
+
+            <!-- FAQ -->
+            <h2 style="margin-top: 3rem;">Visa Frequently Asked Questions</h2>
+            <div style="margin-top: 2rem;">
+                <div class="faq-item">
+                    <div class="faq-q">Will studying online affect my visa application?</div>
+                    <div class="faq-a">For most countries, studying a qualification online doesn&rsquo;t negatively affect a future visa application &mdash; in fact, it often helps because you have a completed, graded qualification to present. The key factor is that your course is delivered by a recognised UK awarding body (Pearson Edexcel) and regulated by Ofqual, which makes it credible evidence regardless of delivery mode. Always check the specific requirements of your intended study destination.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Do I need a visa to study with UK BTEC Online?</div>
+                    <div class="faq-a">No. Since our programme is fully online and you study from your home country, you do not need a student visa to take the BTEC qualification itself. A visa is only needed when you&rsquo;re ready to progress to in-person study at a university in your chosen destination country.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">What visa documentation do you provide?</div>
+                    <div class="faq-a">Every student receives: a Pearson Edexcel BTEC certificate and grade transcript upon completion, detailed academic references from your UK-qualified teacher, a progression pathway letter outlining your intended university route, and proof of English-medium study. We can tailor documentation if your visa office requires specific formats.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Will a BTEC qualification help with a Genuine Student assessment?</div>
+                    <div class="faq-a">Yes. This is one of the strongest benefits. A completed BTEC qualification provides physical evidence of genuine academic intent, sustained study in English, and a clear progression pathway from school through to university. It fills any gap between school and university with meaningful, verifiable academic work &mdash; all factors that strengthen a Genuine Student (GS) or equivalent assessment.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Can I use my BTEC to meet English language requirements for a visa?</div>
+                    <div class="faq-a">Many universities and visa offices accept evidence of English-medium study as supporting documentation for English proficiency. While specific IELTS or equivalent scores may still be required depending on your destination country, having a Pearson Edexcel qualification taught and assessed in English strengthens your language profile. Some UK universities waive their English requirements entirely for students with a completed BTEC.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Does a BTEC help with skilled migration or permanent residency points?</div>
+                    <div class="faq-a">The BTEC Level 3 qualification itself is typically below the threshold for direct skilled migration points (most points-based systems require diploma level or above). However, the BTEC is a pathway to a university degree, which does attract migration points. The key is that the BTEC gets you into a bachelor&rsquo;s programme, and it&rsquo;s that degree that contributes to skilled migration applications.</div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <h2>Not Sure How This Applies to Your Country?</h2>
+                <p>Book a free consultation with Rhys and we&rsquo;ll walk through how a BTEC qualification fits your specific study and visa pathway, no matter where you&rsquo;re planning to go.</p>
+                <a href="index.html" class="cta-primary">Book Your Free Consultation</a>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 UK BTEC Online. A UK-based online Pearson Edexcel BTEC school.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
+            <a href="index.html#">Privacy Policy</a> &middot;
+            <a href="index.html#">Terms of Service</a> &middot;
+            <a href="index.html#">Academic Integrity Policy</a> &middot;
+            <a href="index.html">Contact</a>
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.8;">This page provides general visa information for guidance purposes only. Visa requirements vary by country, individual circumstances, and can change. Always consult official government immigration sources or a registered migration agent for your specific situation. Pearson Edexcel BTEC is a registered trademark of Pearson Education Ltd.</p>
+    </footer>
+
+</body>
+</html>

@@ -3,97 +3,597 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UK BTEC Online - UK's Top Online Pearson Edexcel BTEC School</title>
+    <title>UK BTEC Online — UK's Top Online Pearson Edexcel BTEC School</title>
+    <meta name="description" content="UK BTEC Online: a UK-based online Pearson Edexcel BTEC school. No exams — 4-5 written reports over 2 years. 95% Distinction rate. A-level equivalent. Russell Group university pathway. From £49.99/month.">
+    <meta property="og:title" content="UK BTEC Online — UK's Top Online Pearson Edexcel BTEC School">
+    <meta property="og:description" content="No exams — 4-5 written reports over 2 years with 95% Distinction rate. A-level equivalent, Russell Group university pathway. From £49.99/month.">
+    <meta property="og:image" content="https://btec-sigma.vercel.app/images/pexels-karola-g-5877661.jpg">
+    <meta property="og:url" content="https://btec-sigma.vercel.app/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="UK BTEC Online — UK's Top Online Pearson Edexcel BTEC School">
+    <meta name="twitter:description" content="No exams — 4-5 written reports over 2 years. 95% Distinction rate. A-level equivalent. From £49.99/month.">
+    <link rel="canonical" href="https://btec-sigma.vercel.app/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* ========== CSS Custom Properties ========== */
+        :root {
+            --primary: #667eea;
+            --primary-dark: #764ba2;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-reverse: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            --primary-light: rgba(102,126,234,0.1);
+            --primary-mid: rgba(102,126,234,0.5);
+            --text-dark: #111827;
+            --text-body: #4b5563;
+            --text-muted: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 10px 30px rgba(102,126,234,0.12);
+            --shadow-lg: 0 20px 40px rgba(102,126,234,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --max-width: 1200px;
+            --header-height: 72px;
+            --section-gap: 80px;
+        }
+
+        /* ========== Reset & Base ========== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #1f2937; }
-        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
-        nav a { color: white; text-decoration: none; margin-left: 2rem; opacity: 0.9; transition: opacity 0.3s; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-body);
+            background: var(--bg-white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========== Animations ========== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-in-stagger > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .fade-in-stagger.visible > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-in-stagger.visible > *:nth-child(1) { transition-delay: 0s; }
+        .fade-in-stagger.visible > *:nth-child(2) { transition-delay: 0.1s; }
+        .fade-in-stagger.visible > *:nth-child(3) { transition-delay: 0.2s; }
+        .fade-in-stagger.visible > *:nth-child(4) { transition-delay: 0.3s; }
+        .fade-in-stagger.visible > *:nth-child(5) { transition-delay: 0.4s; }
+        .fade-in-stagger.visible > *:nth-child(6) { transition-delay: 0.5s; }
+
+        /* ========== Header / Nav ========== */
+        header {
+            background: var(--gradient);
+            color: white;
+            height: var(--header-height);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+        .header-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; }
+        .logo span { opacity: 0.85; font-weight: 400; }
+        nav { display: flex; align-items: center; gap: 0.25rem; }
+        nav a {
+            color: white; text-decoration: none; padding: 0.5rem 0.9rem;
+            font-size: 0.9rem; font-weight: 500; opacity: 0.88;
+            transition: opacity 0.3s; white-space: nowrap;
+        }
         nav a:hover { opacity: 1; }
-        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 0; }
-        .hero-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; min-height: 500px; }
-        .hero-text { display: flex; flex-direction: column; justify-content: center; padding: 4rem 2rem 4rem 4rem; }
+        .nav-cta {
+            background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.5);
+            border-radius: var(--radius-sm); padding: 0.5rem 1.2rem !important;
+            font-weight: 600 !important; opacity: 1 !important;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .nav-cta:hover { background: rgba(255,255,255,0.3); transform: scale(1.02); }
+
+        /* Hamburger */
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            background: none; border: none; cursor: pointer; padding: 4px;
+        }
+        .hamburger span {
+            display: block; width: 24px; height: 2.5px;
+            background: white; border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* ========== Hero ========== */
+        .hero {
+            background: var(--gradient);
+            color: white; padding: 0;
+        }
+        .hero-grid {
+            max-width: var(--max-width); margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr;
+            min-height: 520px;
+        }
+        .hero-text {
+            display: flex; flex-direction: column; justify-content: center;
+            padding: 4rem 2rem 4rem 4rem;
+        }
+        .hero-text h1 { font-size: 3rem; margin-bottom: 1rem; font-weight: 800; line-height: 1.15; }
+        .hero-text h1 .highlight { color: #fbbf24; }
+        .hero-sub { font-size: 1.15rem; margin-bottom: 2rem; opacity: 0.92; line-height: 1.7; }
         .hero-image { display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        h1 { font-size: 2.8rem; margin-bottom: 1rem; font-weight: 800; line-height: 1.2; }
-        .subheadline { font-size: 1.15rem; margin-bottom: 2rem; opacity: 0.95; line-height: 1.7; }
-        .cta-primary { display: inline-block; background: white; color: #667eea; padding: 1rem 2.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.3s, box-shadow 0.3s; font-size: 1.1rem; border: none; cursor: pointer; align-self: flex-start; }
-        .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-        .section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
-        .section-full { background: #f9fafb; padding: 5rem 0; }
+        .cta-primary {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: white; color: var(--primary);
+            padding: 1rem 2.5rem; border-radius: var(--radius-sm);
+            text-decoration: none; font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1.05rem; border: none; cursor: pointer;
+            align-self: flex-start;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+        .cta-primary .arrow { transition: transform 0.3s; }
+        .cta-primary:hover .arrow { transform: translateX(4px); }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: var(--bg-white);
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1.5rem 2rem;
+        }
+        .trust-bar-inner {
+            max-width: var(--max-width); margin: 0 auto;
+            display: flex; justify-content: center; align-items: center;
+            gap: 2.5rem; flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.85rem; color: var(--text-muted);
+        }
+        .trust-item .num {
+            font-weight: 700; color: var(--primary); font-size: 1.1rem;
+        }
+        .trust-divider { width: 1px; height: 24px; background: #d1d5db; }
+
+        /* ========== Global Section Styles ========== */
+        .section { padding: var(--section-gap) 2rem; max-width: var(--max-width); margin: 0 auto; }
+        .section-full { background: var(--bg-light); padding: var(--section-gap) 0; }
         .section-full .section { padding: 0 2rem; }
-        h2 { font-size: 2.2rem; margin-bottom: 0.5rem; color: #111827; }
-        .section-intro { font-size: 1.1rem; color: #6b7280; margin-bottom: 3rem; max-width: 700px; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
-        .feature-card { background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; }
-        .feature-card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,0.12); }
-        .feature-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-        .feature-card h3 { font-size: 1.3rem; margin-bottom: 0.8rem; color: #111827; }
-        .feature-card p { color: #6b7280; line-height: 1.7; }
+        .section-dark {
+            background: var(--gradient); color: white; padding: var(--section-gap) 0;
+        }
+        .section-dark .section { padding: 0 2rem; }
+        .section-dark h2, .section-dark .section-intro { color: white; }
+        .section-dark .section-intro { opacity: 0.9; }
+
+        h2 {
+            font-size: 2.4rem; font-weight: 800; color: var(--text-dark);
+            margin-bottom: 0.5rem; letter-spacing: -0.5px;
+        }
+        .section-dark h2 { color: white; }
+        .section-intro {
+            font-size: 1.1rem; color: var(--text-muted);
+            margin-bottom: 3rem; max-width: 700px; line-height: 1.7;
+        }
+
+        /* ========== Feature Cards ========== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem; margin-bottom: 2rem;
+        }
+        .feature-card {
+            background: var(--bg-white);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.4s, box-shadow 0.4s;
+            border: 1px solid #f3f4f6;
+        }
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+        .feature-icon-wrap {
+            width: 64px; height: 64px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+        .feature-icon-wrap svg { width: 28px; height: 28px; fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .feature-card h3 { font-size: 1.25rem; margin-bottom: 0.8rem; color: var(--text-dark); font-weight: 700; }
+        .feature-card p { color: var(--text-muted); line-height: 1.7; font-size: 0.95rem; }
+
+        /* ========== Two-Column Layout ========== */
         .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-        .two-col h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #111827; }
+        .two-col h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-dark); font-weight: 700; }
         .two-col ul { list-style: none; margin-bottom: 1.5rem; }
-        .two-col li { padding: 0.5rem 0 0.5rem 2rem; position: relative; color: #4b5563; line-height: 1.8; }
-        .two-col li:before { content: "\2713\0020"; position: absolute; left: 0; color: #667eea; font-weight: bold; font-size: 1.2rem; }
-        .two-col-img img { width: 100%; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); display: block; }
-        .teacher-card { background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: start; }
-        .teacher-avatar { width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: white; flex-shrink: 0; }
-        .teacher-info h3 { font-size: 1.3rem; margin-bottom: 0.3rem; color: #111827; }
-        .teacher-info .role { color: #667eea; font-weight: 500; margin-bottom: 1rem; }
-        .teacher-info p { color: #6b7280; line-height: 1.7; }
+        .two-col li {
+            padding: 0.5rem 0 0.5rem 2rem; position: relative;
+            color: var(--text-body); line-height: 1.8;
+        }
+        .two-col li:before {
+            content: "\2713";
+            position: absolute; left: 0; color: var(--primary);
+            font-weight: bold; font-size: 1.1rem;
+        }
+        .two-col-img img {
+            width: 100%; border-radius: var(--radius-md);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            display: block;
+        }
+
+        /* ========== Teacher Card ========== */
+        .teacher-card {
+            background: var(--bg-white); padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            display: grid; grid-template-columns: auto 1fr;
+            gap: 2rem; align-items: start;
+        }
+        .teacher-avatar {
+            width: 100px; height: 100px; border-radius: 50%;
+            background: var(--gradient);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2.5rem; color: white; flex-shrink: 0;
+        }
+        .teacher-info h3 { font-size: 1.3rem; margin-bottom: 0.3rem; color: var(--text-dark); }
+        .teacher-info .role { color: var(--primary); font-weight: 500; margin-bottom: 1rem; }
+        .teacher-info p { color: var(--text-muted); line-height: 1.7; }
         .teacher-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
-        .teacher-stat { text-align: center; padding: 1rem; background: #f9fafb; border-radius: 8px; }
-        .teacher-stat .num { font-size: 1.5rem; font-weight: 700; color: #667eea; }
-        .teacher-stat .label { font-size: 0.85rem; color: #6b7280; margin-top: 0.2rem; }
-        .uni-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
-        .uni-badge { background: white; border-radius: 10px; padding: 1.5rem 1rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 130px; }
-        .uni-badge:hover { transform: translateY(-3px); }
-        .uni-badge .uni-name { font-size: 0.75rem; font-weight: 600; color: #374151; line-height: 1.3; }
-        .uni-badge .uni-group { font-size: 0.6rem; color: #8b5cf6; font-weight: 500; margin-top: 0.2rem; }
-        .testi { background: white; padding: 2.5rem; border-radius: 10px; border-left: 4px solid #667eea; margin: 1.5rem 0; }
-        .testi-txt { font-size: 1.05rem; font-style: italic; color: #374151; margin-bottom: 0.8rem; }
-        .testi-auth { color: #6b7280; font-weight: 500; }
-        .ps { text-align: center; }
-        .ps-intro { max-width: 600px; margin: 0 auto 3rem; }
-        .ps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .ps-card { background: white; border: 2px solid #e5e7eb; border-radius: 10px; padding: 2.5rem; text-align: center; transition: all 0.3s; }
-        .ps-card.featured { border-color: #667eea; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2); transform: scale(1.05); }
-        .ps-card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: #111827; }
-        .price { font-size: 2.5rem; font-weight: 700; color: #667eea; margin: 1rem 0; }
-        .price span { font-size: 1rem; color: #6b7280; }
-        .ps-feat { list-style: none; text-align: left; margin: 2rem 0; }
-        .ps-feat li { padding: 0.4rem 0; color: #6b7280; border-bottom: 1px solid #f3f4f6; font-size: 0.85rem; }
-        .ps-feat li:last-child { border-bottom: none; }
-        .cta2 { display: inline-block; background: #f3f4f6; color: #667eea; padding: 0.8rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.3s; border: 2px solid transparent; }
-        .ps-card.featured .cta2 { background: #667eea; color: white; }
-        .cta2:hover { border-color: #667eea; }
+        .teacher-stat { text-align: center; padding: 1rem; background: var(--bg-light); border-radius: var(--radius-sm); }
+        .teacher-stat .num { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        .teacher-stat .label { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+        /* ========== University Grid ========== */
+        .uni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1rem; margin: 2rem 0;
+        }
+        .uni-badge {
+            background: var(--bg-white); border-radius: var(--radius-md);
+            padding: 1.2rem 0.8rem; text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center; min-height: 110px;
+        }
+        .uni-badge:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .uni-badge .uni-name { font-size: 0.7rem; font-weight: 600; color: #374151; line-height: 1.3; }
+        .uni-badge .uni-group { font-size: 0.55rem; color: var(--primary-dark); font-weight: 500; margin-top: 0.2rem; }
+
+        /* ========== Testimonial Carousel ========== */
+        .testi-section {
+            background: var(--bg-light);
+            padding: var(--section-gap) 0;
+        }
+        .testi-section .section { padding: 0 2rem; }
+        .testi-carousel {
+            position: relative; max-width: 800px; margin: 0 auto;
+            overflow: hidden;
+        }
+        .testi-track {
+            display: flex; transition: transform 0.5s ease;
+        }
+        .testi-slide {
+            min-width: 100%; padding: 0 1rem;
+        }
+        .testi-card {
+            background: var(--bg-white); padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            border-left: 4px solid var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+        .testi-stars { color: #f59e0b; margin-bottom: 1rem; font-size: 1.2rem; }
+        .testi-txt { font-size: 1.05rem; color: #374151; margin-bottom: 1.5rem; line-height: 1.8; }
+        .testi-author { display: flex; align-items: center; gap: 1rem; }
+        .testi-avatar {
+            width: 48px; height: 48px; border-radius: 50%;
+            background: var(--gradient); display: flex; align-items: center;
+            justify-content: center; color: white; font-weight: 700; font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .testi-name { font-weight: 600; color: var(--text-dark); }
+        .testi-role { font-size: 0.85rem; color: var(--text-muted); }
+        .carousel-controls {
+            display: flex; justify-content: center; align-items: center;
+            gap: 1rem; margin-top: 1.5rem;
+        }
+        .carousel-btn {
+            background: var(--bg-white); border: 2px solid #e5e7eb;
+            border-radius: 50%; width: 44px; height: 44px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.3s; font-size: 1.2rem; color: var(--text-dark);
+        }
+        .carousel-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .carousel-dots { display: flex; gap: 0.5rem; }
+        .carousel-dot {
+            width: 10px; height: 10px; border-radius: 50%;
+            background: #d1d5db; cursor: pointer; transition: background 0.3s, transform 0.3s;
+            border: none;
+        }
+        .carousel-dot.active { background: var(--primary); transform: scale(1.2); }
+
+        /* ========== Stat Tabs ========== */
+        .tabs-section { padding: var(--section-gap) 2rem; max-width: var(--max-width); margin: 0 auto; }
+        .tabs-bar {
+            display: flex; justify-content: center; gap: 0.5rem;
+            background: var(--bg-light); padding: 0.4rem;
+            border-radius: 50px; margin-bottom: 3rem; max-width: 500px; margin-left: auto; margin-right: auto;
+        }
+        .tab-btn {
+            padding: 0.7rem 1.5rem; border: none; border-radius: 50px;
+            font-weight: 600; font-size: 0.9rem; cursor: pointer;
+            transition: all 0.3s; background: transparent; color: var(--text-muted);
+            font-family: var(--font);
+        }
+        .tab-btn.active {
+            background: var(--gradient); color: white;
+            box-shadow: 0 4px 12px rgba(102,126,234,0.3);
+        }
+        .tab-btn:hover:not(.active) { color: var(--primary); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .tab-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .tab-stat {
+            text-align: center; padding: 2.5rem 1.5rem;
+            background: var(--bg-white); border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm); border: 1px solid #f3f4f6;
+        }
+        .tab-stat .big-num {
+            font-size: 3rem; font-weight: 800; color: var(--primary);
+            line-height: 1; margin-bottom: 0.5rem;
+        }
+        .tab-stat h4 { font-size: 1.1rem; color: var(--text-dark); margin-bottom: 0.8rem; }
+        .tab-stat p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+
+        /* ========== Pricing ========== */
+        .pricing-section { padding: 3rem 2rem; }
+        .pricing-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 0.8rem; max-width: 1000px; margin: 0 auto;
+        }
+        .pricing-card {
+            background: var(--bg-white); border: 2px solid #e5e7eb;
+            border-radius: var(--radius-md); padding: 1.5rem; text-align: center;
+            transition: all 0.3s; position: relative;
+        }
+        .pricing-card.featured {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(102,126,234,0.2);
+            transform: scale(1.03);
+        }
+        .pricing-card .badge {
+            position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+            background: var(--gradient); color: white; padding: 0.3rem 1rem;
+            border-radius: 50px; font-size: 0.75rem; font-weight: 600;
+        }
+        .pricing-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-dark); }
+        .price {
+            font-size: 2.2rem; font-weight: 800; color: var(--primary);
+            margin: 0.5rem 0; line-height: 1.2;
+        }
+        .price span { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; }
+        .price-note {
+            color: var(--text-muted); font-size: 0.78rem; margin-bottom: 1rem;
+        }
+        .pricing-features { list-style: none; text-align: left; margin: 1.5rem 0; }
+        .pricing-features li {
+            padding: 0.4rem 0; color: var(--text-muted);
+            border-bottom: 1px solid #f3f4f6; font-size: 0.85rem;
+        }
+        .pricing-features li:last-child { border-bottom: none; }
+        .cta2 {
+            display: inline-block; background: #f3f4f6; color: var(--primary);
+            padding: 0.7rem 1.5rem; border-radius: var(--radius-sm);
+            text-decoration: none; font-weight: 600;
+            transition: all 0.3s; border: 2px solid transparent;
+            font-size: 0.9rem;
+        }
+        .pricing-card.featured .cta2 { background: var(--gradient); color: white; }
+        .cta2:hover { border-color: var(--primary); }
+
+        /* ========== FAQ ========== */
         .faq { max-width: 800px; margin: 0 auto; }
-        .faq-item { background: white; padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; border-left: 4px solid #667eea; }
-        .faq-q { font-weight: 600; color: #111827; cursor: pointer; margin-bottom: 0.5rem; }
-        .faq-a { color: #6b7280; line-height: 1.8; }
-        .cta-sec { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 4rem 2rem; text-align: center; border-radius: 10px; margin-top: 3rem; }
+        .faq-item {
+            background: var(--bg-white); padding: 1.5rem; margin-bottom: 1rem;
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: box-shadow 0.3s;
+        }
+        .faq-item:hover { box-shadow: var(--shadow-md); }
+        .faq-q {
+            font-weight: 600; color: var(--text-dark);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .faq-q .icon {
+            font-size: 1.2rem; transition: transform 0.3s;
+            color: var(--primary); flex-shrink: 0; margin-left: 1rem;
+        }
+        .faq-item.open .faq-q .icon { transform: rotate(45deg); }
+        .faq-a {
+            color: var(--text-muted); line-height: 1.8;
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease, margin 0.3s ease;
+            padding-top: 0;
+        }
+        .faq-item.open .faq-a {
+            max-height: 500px;
+            padding-top: 1rem;
+        }
+
+        /* ========== CTA Section ========== */
+        .cta-sec {
+            background: var(--gradient); color: white;
+            padding: 4rem 2rem; text-align: center;
+            border-radius: var(--radius-lg);
+            margin-top: 3rem;
+        }
         .cta-sec h2 { color: white; margin-bottom: 1rem; }
-        .cta-sec p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.95; }
-        footer { background: #1f2937; color: #d1d5db; padding: 3rem 2rem; text-align: center; }
-        footer a { color: #8b5cf6; text-decoration: none; }
-        .fl { display: flex; justify-content: center; align-items: center; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
-        .fl img { height: 30px; opacity: 0.7; }
+        .cta-sec p { font-size: 1.15rem; margin-bottom: 2rem; opacity: 0.95; }
+
+        /* ========== Footer ========== */
+        footer {
+            background: #111827; color: #9ca3af;
+            padding: 3rem 2rem 1.5rem;
+        }
+        .footer-grid {
+            max-width: var(--max-width); margin: 0 auto;
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem; margin-bottom: 2rem;
+        }
+        .footer-col h4 {
+            color: white; font-size: 0.9rem; font-weight: 600;
+            margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .footer-col p { font-size: 0.85rem; line-height: 1.7; margin-bottom: 1rem; }
+        .footer-col a {
+            display: block; color: #9ca3af; text-decoration: none;
+            font-size: 0.85rem; padding: 0.3rem 0;
+            transition: color 0.3s;
+        }
+        .footer-col a:hover { color: white; }
+        .footer-logos { display: flex; gap: 1rem; align-items: center; margin-top: 1rem; flex-wrap: wrap; }
+        .footer-logos img { height: 28px; opacity: 0.6; transition: opacity 0.3s; }
+        .footer-logos img:hover { opacity: 0.9; }
+        .social-links { display: flex; gap: 0.75rem; margin-top: 0.5rem; }
+        .social-links a {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: rgba(255,255,255,0.1); display: flex;
+            align-items: center; justify-content: center;
+            transition: background 0.3s; padding: 0;
+        }
+        .social-links a:hover { background: rgba(255,255,255,0.2); }
+        .social-links svg { width: 18px; height: 18px; fill: #9ca3af; }
+        .social-links a:hover svg { fill: white; }
+        .footer-bottom {
+            max-width: var(--max-width); margin: 0 auto;
+            border-top: 1px solid #1f2937; padding-top: 1.5rem;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 0.5rem;
+        }
+        .footer-bottom p { font-size: 0.8rem; }
+        .footer-bottom a { color: var(--primary); text-decoration: none; font-size: 0.8rem; }
+
+        /* ========== Sticky Mobile CTA ========== */
+        .sticky-mobile-cta {
+            display: none; position: fixed; bottom: 0; left: 0; right: 0;
+            background: var(--bg-white); padding: 0.8rem 1rem;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            z-index: 999;
+            justify-content: space-between; align-items: center;
+        }
+        .sticky-mobile-cta .price-label { font-size: 0.8rem; color: var(--text-muted); }
+        .sticky-mobile-cta .price-amount { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
+        .sticky-mobile-cta .cta-btn {
+            background: var(--gradient); color: white; border: none;
+            padding: 0.7rem 1.5rem; border-radius: var(--radius-sm);
+            font-weight: 600; text-decoration: none; font-size: 0.9rem;
+        }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 1024px) {
+            .hero-text h1 { font-size: 2.4rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+        }
+
         @media (max-width: 768px) {
-            h1 { font-size: 2rem; } .subheadline { font-size: 1.1rem; } h2 { font-size: 1.7rem; }
-            .hero-grid { grid-template-columns: 1fr; } .hero-text { padding: 3rem 1.5rem; } .hero-image { display: none; }
-            .two-col { grid-template-columns: 1fr; } .section { padding: 3rem 1rem; } nav { display: none; }
-            .teacher-card { grid-template-columns: 1fr; text-align: center; } .teacher-avatar { margin: 0 auto; }
-            .teacher-stats { grid-template-columns: 1fr; } .uni-grid { grid-template-columns: repeat(3, 1fr); }
+            :root { --section-gap: 50px; }
+            h1 { font-size: 2rem; }
+            .hero-text h1 { font-size: 2rem; }
+            .hero-sub { font-size: 1.05rem; }
+            h2 { font-size: 1.7rem; }
+            .section-intro { font-size: 1rem; }
+
+            .hero-grid { grid-template-columns: 1fr; }
+            .hero-text { padding: 3rem 1.5rem; }
+            .hero-image { display: none; }
+
+            .two-col { grid-template-columns: 1fr; }
+            .section { padding: var(--section-gap) 1rem; }
+            .section-full .section { padding: 0 1rem; }
+
+            .teacher-card { grid-template-columns: 1fr; text-align: center; }
+            .teacher-avatar { margin: 0 auto; }
+            .teacher-stats { grid-template-columns: 1fr; }
+            .uni-grid { grid-template-columns: repeat(3, 1fr); }
+
+            .tabs-bar { overflow-x: auto; gap: 0.3rem; padding: 0.3rem; }
+            .tab-btn { padding: 0.5rem 1rem; font-size: 0.8rem; white-space: nowrap; }
+            .tab-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+            nav { display: none; position: fixed; top: var(--header-height); left: 0; right: 0;
+                  background: var(--gradient); flex-direction: column; padding: 1rem;
+                  box-shadow: 0 10px 20px rgba(0,0,0,0.2); gap: 0; }
+            nav.open { display: flex; }
+            nav a { padding: 0.8rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 1rem; }
+            nav a:last-child { border-bottom: none; }
+            .nav-cta { margin-top: 0.5rem; text-align: center; }
+
+            .hamburger { display: flex; }
+
+            .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+
+            .sticky-mobile-cta { display: flex; }
+            body { padding-bottom: 64px; }
+
+            .trust-bar-inner { gap: 1rem; }
+            .trust-divider { display: none; }
+            .pricing-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .pricing-grid { grid-template-columns: 1fr; }
+            .pricing-card.featured { transform: none; }
         }
     </style>
 </head>
 <body>
+
+    <!-- ========== HEADER ========== -->
     <header>
         <div class="header-content">
-            <div class="logo">UK BTEC Online</div>
-            <nav>
+            <div class="logo">UK BTEC <span>Online</span></div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <nav id="nav">
                 <a href="#why">Why Us</a>
                 <a href="#teachers">Teachers</a>
                 <a href="#how">How It Works</a>
@@ -101,83 +601,112 @@
                 <a href="#career">Career Support</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#faq">FAQ</a>
+                <a href="mailto:rhys.coombes@gmail.com?subject=Enrol%20-%20UK%20BTEC%20Online" class="nav-cta">Enrol Now</a>
             </nav>
         </div>
     </header>
 
-    <!-- HERO -->
+    <!-- ========== HERO ========== -->
     <section class="hero">
         <div class="hero-grid">
             <div class="hero-text">
-                <h1>UK&rsquo;s Top Online Pearson Edexcel BTEC School</h1>
-                <p class="subheadline">A UK online school offering the Pearson Edexcel BTEC Business qualification. Over two years you complete 4-5 long written reports with 95% of students achieving a Distinction &mdash; the highest grade, equivalent to A-level. If exams aren&rsquo;t your strength, this is your route to university.</p>
-                <button class="cta-primary">Start Your Free Consultation</button>
+                <h1>UK&rsquo;s Top Online <span class="highlight">Pearson Edexcel</span> BTEC School</h1>
+                <p class="hero-sub">A UK online school offering the Pearson Edexcel BTEC Business qualification. Over two years you complete <strong>4-5 long written reports</strong> with <strong>95% of students achieving a Distinction</strong> &mdash; the highest grade, equivalent to A-level. If exams aren&rsquo;t your strength, this is your route to university.</p>
+                <a href="mailto:rhys.coombes@gmail.com?subject=Free%20Consultation%20-%20UK%20BTEC%20Online" class="cta-primary">
+                    Start Your Free Consultation
+                    <span class="arrow">→</span>
+                </a>
             </div>
             <div class="hero-image">
-                <img src="images/pexels-diva-plavalaguna-6937697.jpg" alt="Student studying online from home with UK BTEC Online">
+                <img src="images/pexels-diva-plavalaguna-6937697.jpg" alt="Student studying online from home with UK BTEC Online" loading="lazy">
             </div>
         </div>
     </section>
 
-    <!-- WHY CHOOSE -->
+    <!-- ========== TRUST BAR ========== -->
+    <div class="trust-bar">
+        <div class="trust-bar-inner">
+            <div class="trust-item"><span class="num">95%</span> Distinction Rate</div>
+            <div class="trust-divider"></div>
+            <div class="trust-item"><span class="num">500+</span> Students Taught</div>
+            <div class="trust-divider"></div>
+            <div class="trust-item"><span class="num">7+</span> Years Teaching</div>
+            <div class="trust-divider"></div>
+            <div class="trust-item"><span class="num">Russell Group</span> University Pathway</div>
+        </div>
+    </div>
+
+    <!-- ========== WHY CHOOSE ========== -->
     <section class="section" id="why">
         <h2>Why Choose Our UK Online BTEC School?</h2>
         <p class="section-intro">We are a UK-based online school offering the genuine Pearson Edexcel BTEC qualification &mdash; a respected alternative to A-levels accepted by universities worldwide. If you struggle with traditional exams, this written-report pathway is built for you.</p>
-        <div class="features-grid">
+        <div class="features-grid fade-in-stagger" id="featureGrid">
             <div class="feature-card">
-                <div class="feature-icon">🇬🇧</div>
+                <div class="feature-icon-wrap">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                </div>
                 <h3>UK Online School</h3>
                 <p>A proper UK-based online school offering the official Pearson Edexcel BTEC qualification. You get the same recognised qualification as UK students, delivered online from the UK by UK-qualified teachers.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">📝</div>
+                <div class="feature-icon-wrap">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                </div>
                 <h3>Written Reports, Not Exams</h3>
                 <p>If exams make you freeze, this is your answer. Over two years you complete 4-5 long written research reports instead of sitting exam halls. No stressful timed papers &mdash; just clear, guided project work.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🏆</div>
+                <div class="feature-icon-wrap">
+                    <svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 010-5C7 4 7 7 7 7"/><path d="M18 9h1.5a2.5 2.5 0 000-5C17 4 17 7 17 7"/><path d="M4 22h16"/><path d="M10 22V14h4v8"/><path d="M12 14l-2-4h4l-2 4z"/></svg>
+                </div>
                 <h3>95% Distinction Rate</h3>
                 <p>95% of our students achieve a Distinction &mdash; the highest grade, equivalent to an A* at A-level. Our structured support, detailed feedback, and UK-qualified teachers deliver real results that open university doors.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🎓</div>
-                <h3>A-level Equivalent &mdash; University Entry</h3>
+                <div class="feature-icon-wrap">
+                    <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                </div>
+                <h3>A-level Equivalent</h3>
                 <p>Pearson Edexcel BTEC qualifications are equivalent to A-levels and accepted by universities worldwide including Russell Group institutions. A Distinction at Level 3 carries the same UCAS tariff as an A*.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">📚</div>
+                <div class="feature-icon-wrap">
+                    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                </div>
                 <h3>Pearson Edexcel Qualification</h3>
-                <p>We deliver the official Pearson Edexcel BTEC &mdash; one of the UK&rsquo;s most trusted awarding bodies. Over 2 million learners worldwide take Pearson Edexcel qualifications each year. This is the real thing.</p>
+                <p>We deliver the official Pearson Edexcel BTEC &mdash; one of the UK&rsquo;s most trusted awarding bodies. Over 2 million learners take Pearson Edexcel qualifications each year. Regulated by Ofqual. This is the real thing.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">👨‍🏫</div>
+                <div class="feature-icon-wrap">
+                    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
                 <h3>UK-Qualified Teachers</h3>
                 <p>Learn from experienced UK educators with years of experience teaching BTEC Business. Our teachers have helped hundreds of students achieve Distinctions and progress to university.</p>
             </div>
         </div>
-        <div class="two-col" style="margin-top: 2rem;">
+        <div class="two-col fade-in" style="margin-top: 2rem;">
             <div class="two-col-img">
-                <img src="images/pexels-jonathanborba-17771084.jpg" alt="Student focused on online study with UK BTEC">
+                <img src="images/pexels-jonathanborba-17771084.jpg" alt="Student focused on online study with UK BTEC" loading="lazy">
             </div>
             <div>
                 <h3>Real Students, Real Results</h3>
-                <p style="color: #6b7280; line-height: 1.8;">Every student who joins our UK online school gets a dedicated UK-qualified teacher, a clear 2-year written-report pathway, and structured support that helps them achieve a Distinction. Our 95% Distinction rate is not a marketing line &mdash; it&rsquo;s the outcome of a system built around clear guidance, detailed feedback, and the right assessment method for students who struggle with exams.</p>
-                <p style="color: #6b7280; line-height: 1.8; margin-top: 1rem;">With a Pearson Edexcel BTEC qualification, you don&rsquo;t just pass &mdash; you open doors to Russell Group universities and higher education around the world.</p>
+                <p style="color: var(--text-muted); line-height: 1.8;">Every student who joins our UK online school gets a dedicated UK-qualified teacher, a clear 2-year written-report pathway, and structured support that helps them achieve a Distinction. Our 95% Distinction rate is not a marketing line &mdash; it&rsquo;s the outcome of a system built around clear guidance, detailed feedback, and the right assessment method for students who struggle with exams.</p>
+                <p style="color: var(--text-muted); line-height: 1.8; margin-top: 1rem;">With a Pearson Edexcel BTEC qualification, you don&rsquo;t just pass &mdash; you open doors to Russell Group universities and higher education around the world.</p>
             </div>
         </div>
     </section>
 
-    <!-- MEET YOUR TEACHERS -->
+    <!-- ========== MEET YOUR TEACHERS ========== -->
     <section class="section-full" id="teachers">
         <div class="section">
             <h2>Meet Your Teachers</h2>
             <p class="section-intro">Our UK-qualified teachers have years of experience delivering Pearson Edexcel BTEC courses. They know the specification inside out and have helped hundreds of learners achieve Distinctions.</p>
-            <div class="teacher-card">
+            <div class="teacher-card fade-in">
                 <div class="teacher-avatar">👨‍🏫</div>
                 <div class="teacher-info">
                     <h3>Rhys Coombes</h3>
                     <div class="role">Lead BTEC Business Teacher &bull; UK-Qualified Educator</div>
-                    <p>Rhys is a UK-qualified Business Studies and Economics teacher with years of classroom and online experience delivering Pearson Edexcel BTEC qualifications. He has taught hundreds of BTEC Business students, with 95% achieving Distinction &mdash; the highest possible grade. His teaching approach focuses on breaking down complex business concepts into clear, manageable written reports that build confidence and skill. Based in Dubai, Rhys understands the needs of international families seeking a genuine UK qualification pathway at an affordable price.</p>
+                    <p>Rhys is a UK-qualified Business Studies and Economics teacher with years of classroom and online experience delivering Pearson Edexcel BTEC qualifications. He has taught hundreds of BTEC Business students, with 95% achieving Distinction &mdash; the highest possible grade. Based in Dubai, Rhys understands the needs of international families seeking a genuine UK qualification pathway at an affordable price.</p>
                     <div class="teacher-stats">
                         <div class="teacher-stat">
                             <div class="num">95%</div>
@@ -197,11 +726,11 @@
         </div>
     </section>
 
-    <!-- HOW IT WORKS -->
+    <!-- ========== HOW IT WORKS ========== -->
     <section class="section" id="how">
         <h2>How It Works: Your 2-Year BTEC Journey</h2>
         <p class="section-intro">Over two years you complete 4-5 long written reports with full UK teacher support. No exam halls, no timed papers &mdash; just structured project work that leads to a recognised UK qualification worth UCAS points.</p>
-        <div class="two-col">
+        <div class="two-col fade-in">
             <div>
                 <h3>Your Path to a Distinction</h3>
                 <ul>
@@ -216,275 +745,560 @@
                 </ul>
             </div>
             <div class="two-col-img">
-                <img src="images/pexels-karola-g-5877661.jpg" alt="Student studying with UK BTEC Online">
-            </div>
-        </div>
-        <div style="margin-top: 2rem;">
-            <div class="testi">
-                <div class="testi-txt">&ldquo;I always struggled with exams &mdash; I&rsquo;d know the material but freeze in the hall. BTEC was perfect for me. Four written reports over two years, clear guidance, and my teacher helped me every step. I got a Distinction and got into university.&rdquo;</div>
-                <div class="testi-auth">&mdash; BTEC Learner, Achieved Distinction</div>
-            </div>
-            <div class="testi">
-                <div class="testi-txt">&ldquo;We were paying &pound;18k a year for international school fees. What we actually needed was a recognised UK qualification with real teacher support. This was less than half the cost and our daughter got a Distinction.&rdquo;</div>
-                <div class="testi-auth">&mdash; Parent, International Family</div>
+                <img src="images/pexels-karola-g-5877661.jpg" alt="Student studying with UK BTEC Online" loading="lazy">
             </div>
         </div>
     </section>
 
-    <!-- UNIVERSITIES -->
+    <!-- ========== TESTIMONIAL CAROUSEL ========== -->
+    <section class="testi-section" id="testimonials">
+        <div class="section">
+            <h2 style="text-align: center;">What Our Students Say</h2>
+            <p class="section-intro" style="text-align: center; margin-left: auto; margin-right: auto;">Hear from students and families who chose the BTEC written-report pathway.</p>
+            <div class="testi-carousel fade-in">
+                <div class="testi-track" id="testiTrack">
+                    <div class="testi-slide">
+                        <div class="testi-card">
+                            <div class="testi-stars">★★★★★</div>
+                            <div class="testi-txt">&ldquo;I always struggled with exams &mdash; I&rsquo;d know the material but freeze in the hall. BTEC was perfect for me. Four written reports over two years, clear guidance, and my teacher helped me every step. I got a Distinction and got into university.&rdquo;</div>
+                            <div class="testi-author">
+                                <div class="testi-avatar">S</div>
+                                <div>
+                                    <div class="testi-name">Sarah M.</div>
+                                    <div class="testi-role">BTEC Learner, Achieved Distinction &bull; 🇬🇧 UK</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testi-slide">
+                        <div class="testi-card">
+                            <div class="testi-stars">★★★★★</div>
+                            <div class="testi-txt">&ldquo;We were paying &pound;18k a year for international school fees. What we actually needed was a recognised UK qualification with real teacher support. This was less than half the cost and our daughter got a Distinction.&rdquo;</div>
+                            <div class="testi-author">
+                                <div class="testi-avatar">P</div>
+                                <div>
+                                    <div class="testi-name">Priya K.</div>
+                                    <div class="testi-role">Parent &bull; 🇦🇪 Dubai</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testi-slide">
+                        <div class="testi-card">
+                            <div class="testi-stars">★★★★★</div>
+                            <div class="testi-txt">&ldquo;I was worried about the transition from exams to written reports, but the structured feedback cycles made it easy. My teacher broke each report down into clear steps. I achieved a Distinction and am now studying at my first-choice university.&rdquo;</div>
+                            <div class="testi-author">
+                                <div class="testi-avatar">J</div>
+                                <div>
+                                    <div class="testi-name">James L.</div>
+                                    <div class="testi-role">BTEC Learner &bull; 🇭🇰 Hong Kong</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn" id="prevTesti" aria-label="Previous">‹</button>
+                    <div class="carousel-dots" id="testiDots">
+                        <button class="carousel-dot active" data-index="0" aria-label="Slide 1"></button>
+                        <button class="carousel-dot" data-index="1" aria-label="Slide 2"></button>
+                        <button class="carousel-dot" data-index="2" aria-label="Slide 3"></button>
+                    </div>
+                    <button class="carousel-btn" id="nextTesti" aria-label="Next">›</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== STAT TABS (Student Outcomes) ========== -->
+    <div class="tabs-section fade-in" id="outcomes">
+        <h2 style="text-align: center;">Student Outcomes</h2>
+        <p class="section-intro" style="text-align: center; margin-left: auto; margin-right: auto;">Real results from our BTEC programme — measured by grades, university placements, and global reach.</p>
+        <div class="tabs-bar" id="tabsBar">
+            <button class="tab-btn active" data-tab="distinction">Distinction</button>
+            <button class="tab-btn" data-tab="university">University</button>
+            <button class="tab-btn" data-tab="global">Global Reach</button>
+        </div>
+
+        <div class="tab-content active" id="tab-distinction">
+            <div class="tab-grid">
+                <div class="tab-stat">
+                    <div class="big-num">95%</div>
+                    <h4>Distinction Rate</h4>
+                    <p>of our students achieve a Distinction — the highest grade, equivalent to an A* at A-level.</p>
+                </div>
+                <div class="tab-stat">
+                    <div class="big-num">7+</div>
+                    <h4>Years of Excellence</h4>
+                    <p>Years of experience delivering Pearson Edexcel BTEC qualifications with outstanding results.</p>
+                </div>
+                <div class="tab-stat">
+                    <div class="big-num">500+</div>
+                    <h4>Students Taught</h4>
+                    <p>Over 500 learners have completed our BTEC Business programme and progressed to higher education.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="tab-university">
+            <div class="tab-grid">
+                <div class="tab-stat">
+                    <div class="big-num">95%</div>
+                    <h4>First-Choice Acceptance</h4>
+                    <p>of our students are accepted into their first-choice university, with our progression support team guiding every application.</p>
+                </div>
+                <div class="tab-stat">
+                    <div class="big-num">A*</div>
+                    <h4>UCAS Tariff Equivalent</h4>
+                    <p>A BTEC Distinction carries the same UCAS tariff points as an A* at A-level — your ticket to Russell Group universities.</p>
+                </div>
+                <div class="tab-stat">
+                    <div class="big-num">24</div>
+                    <h4>Russell Group Universities</h4>
+                    <p>Our qualification is accepted at all 24 Russell Group universities for entry onto business-related degrees.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="tab-global">
+            <div class="tab-grid">
+                <div class="tab-stat">
+                    <div class="big-num">15+</div>
+                    <h4>Countries Worldwide</h4>
+                    <p>Students join us from over 15 countries including UAE, UK, Hong Kong, Singapore, Kenya, Malaysia, and beyond.</p>
+                </div>
+                <div class="tab-stat">
+                    <div class="big-num">A-level</div>
+                    <h4>Global Equivalency</h4>
+                    <p>Recognised internationally as equivalent to A-levels, GCSEs, and high school diplomas worldwide.</p>
+                </div>
+                <div class="tab-stat">
+                    <div class="big-num">24/7</div>
+                    <h4>Global Support</h4>
+                    <p>We work with governments and universities in your country to ensure your qualification is recognised and accepted.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== GRADIENT SECTION BREAK (Try a Free Lesson) ========== -->
+    <section class="section-dark">
+        <div class="section" style="display: flex; justify-content: space-between; align-items: center; gap: 3rem; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 280px;">
+                <h2 style="font-size: 2rem;">Not Sure Yet?</h2>
+                <p style="font-size: 1.1rem; opacity: 0.9; margin-top: 0.5rem; line-height: 1.7;">Try a free taster lesson with Rhys. No commitment, no pressure — just a real lesson so you can see if the BTEC written-report pathway is right for you.</p>
+            </div>
+            <a href="mailto:rhys.coombes@gmail.com?subject=Free%20Taster%20Lesson%20-%20UK%20BTEC%20Online" class="cta-primary" style="background: white; color: var(--primary-dark); flex-shrink: 0;">
+                Book Your Free Taster
+                <span class="arrow">→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== UNIVERSITIES ========== -->
     <section class="section-full" id="universities">
         <div class="section">
             <h2>Where Can a BTEC Distinction Take You?</h2>
             <p class="section-intro">A Distinction in Pearson Edexcel BTEC Business Level 3 is equivalent to an A* at A-level and carries the same UCAS tariff points. Our students have progressed to leading universities around the world, including Russell Group universities in the UK.</p>
 
             <div style="text-align: center; margin-bottom: 2rem;">
-                <h3 style="font-size: 1.3rem; color: #111827;">Russell Group Universities That Accept BTEC Business</h3>
-                <p style="color: #6b7280; margin-top: 0.5rem;">With a Distinction in BTEC Business, you can apply to these top UK universities</p>
+                <h3 style="font-size: 1.3rem; color: var(--text-dark);">Russell Group Universities That Accept BTEC Business</h3>
+                <p style="color: var(--text-muted); margin-top: 0.5rem;">With a Distinction in BTEC Business, you can apply to these top UK universities</p>
             </div>
 
-            <div class="uni-grid">
+            <div class="uni-grid fade-in-stagger" id="uniGrid">
                 <div class="uni-badge">
-                    <img src="images/Cambridge_University_Crest_-_flat.png" alt="University of Cambridge" style="width: 55px; height: auto; margin-bottom: 0.5rem;">
+                    <img src="images/Cambridge_University_Crest_-_flat.png" alt="University of Cambridge" style="width: 50px; height: auto; margin-bottom: 0.5rem;">
                     <div class="uni-name">University of Cambridge</div>
                     <div class="uni-group">Russell Group</div>
                 </div>
                 <div class="uni-badge">
-                    <svg viewBox="0 0 100 100" style="width:55px;height:55px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#002147"/><path d="M50 15 L85 85 L15 85 Z" fill="#F5A623"/><text x="50" y="55" text-anchor="middle" fill="#002147" font-size="14" font-weight="bold">B</text></svg>
+                    <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#002147"/><path d="M50 15 L85 85 L15 85 Z" fill="#F5A623"/><text x="50" y="55" text-anchor="middle" fill="#002147" font-size="14" font-weight="bold">B</text></svg>
                     <div class="uni-name">University of Birmingham</div>
                     <div class="uni-group">Russell Group</div>
                 </div>
                 <div class="uni-badge">
-                    <svg viewBox="0 0 100 100" style="width:55px;height:55px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#007B3D"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFD700"/><text x="50" y="55" text-anchor="middle" fill="#007B3D" font-size="14" font-weight="bold">L</text></svg>
+                    <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#007B3D"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFD700"/><text x="50" y="55" text-anchor="middle" fill="#007B3D" font-size="14" font-weight="bold">L</text></svg>
                     <div class="uni-name">University of Leeds</div>
                     <div class="uni-group">Russell Group</div>
                 </div>
                 <div class="uni-badge">
-                    <svg viewBox="0 0 100 100" style="width:55px;height:55px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#660099"/><path d="M50 15 L85 85 L15 85 Z" fill="#F5A623"/><text x="50" y="55" text-anchor="middle" fill="#660099" font-size="14" font-weight="bold">M</text></svg>
+                    <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#660099"/><path d="M50 15 L85 85 L15 85 Z" fill="#F5A623"/><text x="50" y="55" text-anchor="middle" fill="#660099" font-size="14" font-weight="bold">M</text></svg>
                     <div class="uni-name">University of Manchester</div>
                     <div class="uni-group">Russell Group</div>
                 </div>
                 <div class="uni-badge">
-                    <svg viewBox="0 0 100 100" style="width:55px;height:55px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#0080B0"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFD700"/><text x="50" y="55" text-anchor="middle" fill="#0080B0" font-size="14" font-weight="bold">N</text></svg>
+                    <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#0080B0"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFD700"/><text x="50" y="55" text-anchor="middle" fill="#0080B0" font-size="14" font-weight="bold">N</text></svg>
                     <div class="uni-name">University of Nottingham</div>
                     <div class="uni-group">Russell Group</div>
                 </div>
                 <div class="uni-badge">
-                    <svg viewBox="0 0 100 100" style="width:55px;height:55px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#002E5D"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFD100"/><text x="50" y="55" text-anchor="middle" fill="#002E5D" font-size="14" font-weight="bold">W</text></svg>
+                    <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#002E5D"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFD100"/><text x="50" y="55" text-anchor="middle" fill="#002E5D" font-size="14" font-weight="bold">W</text></svg>
                     <div class="uni-name">University of Warwick</div>
                     <div class="uni-group">Russell Group</div>
                 </div>
                 <div class="uni-badge">
-                    <svg viewBox="0 0 100 100" style="width:55px;height:55px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#68246D"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFD700"/><text x="50" y="55" text-anchor="middle" fill="#68246D" font-size="14" font-weight="bold">D</text></svg>
+                    <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#68246D"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFD700"/><text x="50" y="55" text-anchor="middle" fill="#68246D" font-size="14" font-weight="bold">D</text></svg>
                     <div class="uni-name">Durham University</div>
                     <div class="uni-group">Russell Group</div>
                 </div>
                 <div class="uni-badge">
-                    <svg viewBox="0 0 100 100" style="width:55px;height:55px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#006747"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFFFFF"/><text x="50" y="55" text-anchor="middle" fill="#006747" font-size="14" font-weight="bold">E</text></svg>
+                    <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#006747"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFFFFF"/><text x="50" y="55" text-anchor="middle" fill="#006747" font-size="14" font-weight="bold">E</text></svg>
                     <div class="uni-name">University of Exeter</div>
                     <div class="uni-group">Russell Group</div>
                 </div>
                 <div class="uni-badge">
-                    <svg viewBox="0 0 100 100" style="width:55px;height:55px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#003366"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFFFFF"/><text x="50" y="55" text-anchor="middle" fill="#003366" font-size="14" font-weight="bold">Y</text></svg>
+                    <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#003366"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFFFFF"/><text x="50" y="55" text-anchor="middle" fill="#003366" font-size="14" font-weight="bold">Y</text></svg>
                     <div class="uni-name">University of York</div>
                     <div class="uni-group">Russell Group</div>
                 </div>
                 <div class="uni-badge">
-                    <svg viewBox="0 0 100 100" style="width:55px;height:55px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#E31B23"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFD700"/><text x="50" y="55" text-anchor="middle" fill="#E31B23" font-size="14" font-weight="bold">Q</text></svg>
+                    <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#E31B23"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFD700"/><text x="50" y="55" text-anchor="middle" fill="#E31B23" font-size="14" font-weight="bold">Q</text></svg>
                     <div class="uni-name">Queen Mary London</div>
                     <div class="uni-group">Russell Group</div>
                 </div>
                 <div class="uni-badge">
-                    <svg viewBox="0 0 100 100" style="width:55px;height:55px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#0056A0"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFFFFF"/><text x="50" y="55" text-anchor="middle" fill="#0056A0" font-size="14" font-weight="bold">S</text></svg>
+                    <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect x="5" y="5" width="90" height="90" rx="10" fill="#0056A0"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFFFFF"/><text x="50" y="55" text-anchor="middle" fill="#0056A0" font-size="14" font-weight="bold">S</text></svg>
                     <div class="uni-name">University of Southampton</div>
                     <div class="uni-group">Russell Group</div>
                 </div>
             </div>
 
-            <div class="testi" style="margin-top: 2rem;">
-                <div class="testi-txt">BTEC Business with a Distinction is a real university-entry qualification. It carries UCAS tariff points equal to an A* at A-level and is listed on the UCAS website as an accepted qualification for university applications. Many Russell Group universities, including Birmingham, Leeds, Manchester, Nottingham, and Warwick, accept BTEC for entry onto business-related and other degree courses.</div>
-                <div class="testi-auth">&mdash; Based on published UCAS tariff and university admissions guidance</div>
+            <div class="testi-card" style="margin-top: 2rem; border-left-color: var(--primary-dark);">
+                <div class="testi-txt" style="font-style: italic;">BTEC Business with a Distinction is a real university-entry qualification. It carries UCAS tariff points equal to an A* at A-level and is listed on the UCAS website as an accepted qualification for university applications. Many Russell Group universities, including Birmingham, Leeds, Manchester, Nottingham, and Warwick, accept BTEC for entry onto business-related and other degree courses.</div>
+                <div class="testi-auth" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">&mdash; Based on published UCAS tariff and university admissions guidance</div>
             </div>
         </div>
     </section>
 
-    <!-- CAREER & UNIVERSITY PROGRESSION -->
+    <!-- ========== CAREER & UNIVERSITY PROGRESSION ========== -->
     <section class="section" id="career">
         <h2>From BTEC to University: We Get You There</h2>
         <p class="section-intro">Getting the qualification is one thing. Getting into the right university is another. We stay with you through the entire process &mdash; from your final report to your acceptance letter.</p>
 
-        <div class="two-col">
+        <div class="two-col fade-in">
             <div>
                 <h3>Your Personal University Progression Plan</h3>
                 <ul>
                     <li>We work with you one-to-one to identify which universities match your goals, grades, and location preferences</li>
                     <li>Your teacher writes your university reference &mdash; a detailed, personal recommendation from a UK-qualified educator who knows your work</li>
-                    <li>We write testimonials and help you build a portfolio of your written reports to demonstrate your capability</li>
-                    <li>We handle the equivalency process &mdash; translating your Pearson Edexcel BTEC qualification into the correct UCAS tariff or local equivalent for your chosen country and university</li>
-                    <li>We liaise with government education bodies and universities in your country to ensure your qualification is recognised and accepted</li>
-                    <li>Our global equivalency standard confirms your BTEC Distinction is equal to UK A-levels &mdash; the highest school-level qualification in the United Kingdom</li>
+                    <li>We help you build a portfolio of your written reports to demonstrate your capability to admissions teams</li>
+                    <li>We handle the equivalency process &mdash; translating your Pearson Edexcel BTEC qualification into the correct UCAS tariff for your chosen country</li>
+                    <li>We liaise with government education bodies and admissions teams to ensure your qualification is recognised</li>
+                    <li>Our global equivalency standard confirms your BTEC Distinction equals A-levels — the highest UK school-level qualification</li>
                 </ul>
             </div>
             <div class="two-col-img">
-                <img src="images/pexels-mart-production-8472950.jpg" alt="Student planning their university future with UK BTEC Online">
+                <img src="images/pexels-mart-production-8472950.jpg" alt="Student planning their university future with UK BTEC Online" loading="lazy">
             </div>
         </div>
 
         <div style="margin-top: 2.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-            <div class="testi" style="margin: 0;">
-                <div class="testi-txt" style="font-size: 2rem; font-weight: 700; color: #667eea; font-style: normal; margin-bottom: 0.5rem;">95%</div>
-                <div class="testi-auth" style="font-size: 1rem; font-weight: 600; color: #111827;">University Acceptance Rate</div>
-                <p style="color: #6b7280; margin-top: 0.8rem; line-height: 1.7;">95% of our students are accepted into their first-choice university. Our structured progression support, equivalency handling, and personalised guidance make the difference.</p>
+            <div class="testi-card" style="margin: 0;">
+                <div class="testi-txt" style="font-size: 2rem; font-weight: 700; color: var(--primary); font-style: normal; margin-bottom: 0.5rem;">95%</div>
+                <div class="testi-auth" style="font-size: 1rem; font-weight: 600; color: var(--text-dark);">University Acceptance Rate</div>
+                <p style="color: var(--text-muted); margin-top: 0.8rem; line-height: 1.7;">95% of our students are accepted into their first-choice university. Our structured progression support makes the difference.</p>
             </div>
-            <div class="testi" style="margin: 0;">
-                <div class="testi-txt" style="font-size: 2rem; font-weight: 700; color: #667eea; font-style: normal; margin-bottom: 0.5rem;">A*</div>
-                <div class="testi-auth" style="font-size: 1rem; font-weight: 600; color: #111827;">A-level Equivalent Grade</div>
-                <p style="color: #6b7280; margin-top: 0.8rem; line-height: 1.7;">A BTEC Distinction is globally recognised as equivalent to an A* at A-level &mdash; the highest qualification you can achieve at high school level in the United Kingdom. Universities worldwide understand this standard.</p>
+            <div class="testi-card" style="margin: 0;">
+                <div class="testi-txt" style="font-size: 2rem; font-weight: 700; color: var(--primary); font-style: normal; margin-bottom: 0.5rem;">A*</div>
+                <div class="testi-auth" style="font-size: 1rem; font-weight: 600; color: var(--text-dark);">A-level Equivalent Grade</div>
+                <p style="color: var(--text-muted); margin-top: 0.8rem; line-height: 1.7;">A BTEC Distinction is globally recognised as equivalent to an A* at A-level — the highest school-level qualification in the UK.</p>
             </div>
-            <div class="testi" style="margin: 0;">
-                <div class="testi-txt" style="font-size: 2rem; font-weight: 700; color: #667eea; font-style: normal; margin-bottom: 0.5rem;">🌍</div>
-                <div class="testi-auth" style="font-size: 1rem; font-weight: 600; color: #111827;">Global Equivalency Support</div>
-                <p style="color: #6b7280; margin-top: 0.8rem; line-height: 1.7;">We work with governments, education ministries, and university admissions teams in countries around the world to ensure your qualification is properly recognised. We handle the equivalency paperwork so you don&rsquo;t have to.</p>
+            <div class="testi-card" style="margin: 0;">
+                <div class="testi-txt" style="font-size: 2rem; font-weight: 700; color: var(--primary); font-style: normal; margin-bottom: 0.5rem;">🌍</div>
+                <div class="testi-auth" style="font-size: 1rem; font-weight: 600; color: var(--text-dark);">Global Equivalency Support</div>
+                <p style="color: var(--text-muted); margin-top: 0.8rem; line-height: 1.7;">We work with governments, education ministries, and university admissions teams worldwide to ensure your qualification is recognised.</p>
             </div>
         </div>
 
-        <div class="testi" style="margin-top: 2rem; border-left-color: #10b981;">
+        <div class="testi-card" style="margin-top: 2rem; border-left-color: #10b981;">
             <div class="testi-txt">This is what makes our school different. We don&rsquo;t just teach you the course and send you off. We stay with you until you&rsquo;re sitting in your first university lecture. We write the references, manage the equivalency, speak to the admissions teams, and make sure your BTEC qualification opens the right doors. No exams. No stress. Just clear support from start to finish.</div>
-            <div class="testi-auth">&mdash; Rhys Coombes, Lead BTEC Teacher</div>
-        </div>
-    </section>
-
-    <!-- PRICING -->
-    <section class="section" id="pricing" style="padding: 3rem 2rem;">
-        <div class="ps">
-            <h2 style="font-size: 1.6rem; margin-bottom: 0.3rem;">Simple, Affordable Pricing</h2>
-            <p style="text-align: center; color: #6b7280; font-size: 0.9rem; margin-bottom: 1.2rem; max-width: 600px; margin-left: auto; margin-right: auto;">One programme, one level of support. You choose how to pay &mdash; the more you commit upfront, the more you save. All options include the full BTEC cohort experience with a UK-qualified teacher, live lessons, written report guidance, and university progression support.</p>
-
-            <div class="ps-grid" style="grid-template-columns: 1fr 1fr; gap: 0.8rem; max-width: 720px; margin: 0 auto;">
-                <div class="ps-card" style="padding: 1rem;">
-                    <h3 style="font-size: 1rem; margin-bottom: 0.2rem;">Monthly</h3>
-                    <div class="price" style="font-size: 1.6rem; margin: 0.2rem 0;">&pound;49.99<span style="font-size: 0.75rem;">/month</span></div>
-                    <p style="color: #6b7280; font-size: 0.72rem; margin-bottom: 0.6rem;">No commitment &mdash; cancel anytime</p>
-                    <ul class="ps-feat" style="font-size: 0.72rem; margin: 0.5rem 0;">
-                        <li>&check; Full Pearson Edexcel BTEC qualification</li>
-                        <li>&check; UK-qualified teacher support</li>
-                        <li>&check; Weekly live lessons &amp; recordings</li>
-                        <li>&check; Written report guidance &amp; feedback</li>
-                        <li>&check; University progression support</li>
-                    </ul>
-                    <a href="#" class="cta2" style="padding: 0.4rem 1rem; font-size: 0.8rem;">Enrol Now</a>
-                </div>
-
-                <div class="ps-card" style="padding: 1rem;">
-                    <h3 style="font-size: 1rem; margin-bottom: 0.2rem;">6-Monthly</h3>
-                    <div class="price" style="font-size: 1.6rem; margin: 0.2rem 0;">&pound;279<span style="font-size: 0.75rem;">/6 months</span></div>
-                    <p style="color: #6b7280; font-size: 0.72rem; margin-bottom: 0.6rem;">Save &pound;21 &mdash; &pound;46.50/month</p>
-                    <ul class="ps-feat" style="font-size: 0.72rem; margin: 0.5rem 0;">
-                        <li>&check; Full Pearson Edexcel BTEC qualification</li>
-                        <li>&check; UK-qualified teacher support</li>
-                        <li>&check; Weekly live lessons &amp; recordings</li>
-                        <li>&check; Written report guidance &amp; feedback</li>
-                        <li>&check; University progression support</li>
-                    </ul>
-                    <a href="#" class="cta2" style="padding: 0.4rem 1rem; font-size: 0.8rem;">Enrol Now</a>
-                </div>
-
-                <div class="ps-card featured" style="padding: 1rem;">
-                    <h3 style="font-size: 1rem; margin-bottom: 0.2rem;">Annual <span style="color: #f5a623;">★</span></h3>
-                    <div class="price" style="font-size: 1.6rem; margin: 0.2rem 0;">&pound;499<span style="font-size: 0.75rem;">/year</span></div>
-                    <p style="color: #6b7280; font-size: 0.72rem; margin-bottom: 0.6rem;">Save &pound;100 &mdash; &pound;41.58/month</p>
-                    <ul class="ps-feat" style="font-size: 0.72rem; margin: 0.5rem 0;">
-                        <li>&check; Full Pearson Edexcel BTEC qualification</li>
-                        <li>&check; UK-qualified teacher support</li>
-                        <li>&check; Weekly live lessons &amp; recordings</li>
-                        <li>&check; Written report guidance &amp; feedback</li>
-                        <li>&check; University progression support</li>
-                    </ul>
-                    <a href="#" class="cta2" style="padding: 0.4rem 1rem; font-size: 0.8rem;">Enrol Now</a>
-                </div>
-
-                <div class="ps-card" style="padding: 1rem;">
-                    <h3 style="font-size: 1rem; margin-bottom: 0.2rem;">Full Course (2 Years)</h3>
-                    <div class="price" style="font-size: 1.6rem; margin: 0.2rem 0;">&pound;899</div>
-                    <p style="color: #6b7280; font-size: 0.72rem; margin-bottom: 0.6rem;">Save &pound;300 &mdash; &pound;37.46/month</p>
-                    <ul class="ps-feat" style="font-size: 0.72rem; margin: 0.5rem 0;">
-                        <li>&check; Full Pearson Edexcel BTEC qualification</li>
-                        <li>&check; UK-qualified teacher support</li>
-                        <li>&check; Weekly live lessons &amp; recordings</li>
-                        <li>&check; Written report guidance &amp; feedback</li>
-                        <li>&check; University progression support</li>
-                    </ul>
-                    <a href="#" class="cta2" style="padding: 0.4rem 1rem; font-size: 0.8rem;">Enrol Now</a>
+            <div class="testi-author" style="margin-top: 1rem;">
+                <div class="testi-avatar">R</div>
+                <div>
+                    <div class="testi-name">Rhys Coombes</div>
+                    <div class="testi-role">Lead BTEC Teacher</div>
                 </div>
             </div>
-
-            <p style="text-align: center; margin-top: 0.8rem; color: #6b7280; font-size: 0.75rem;">All prices in GBP. No hidden fees. Free consultation included with every option.</p>
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="section-full" id="faq">
+    <!-- ========== PRICING ========== -->
+    <section class="section-full" id="pricing">
         <div class="section">
-            <h2>Questions Answered</h2>
-            <p class="section-intro">Everything you need to know about our UK online Pearson Edexcel BTEC school.</p>
-            <div class="faq">
-                <div class="faq-item">
-                    <div class="faq-q">Is BTEC the same as A-levels? Can I get into university with it?</div>
-                    <div class="faq-a">Yes. Pearson Edexcel BTEC Level 3 qualifications are equivalent to A-levels and accepted by universities worldwide &mdash; including UK universities through UCAS, Australian, Canadian, US, and European institutions. A Distinction at BTEC carries the same UCAS tariff points as an A* at A-level. It&rsquo;s a genuine route into higher education.</div>
+            <h2 style="text-align: center;">Simple, Affordable Pricing</h2>
+            <p style="text-align: center; color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">One programme, one level of support. You choose how to pay &mdash; the more you commit upfront, the more you save.</p>
+
+            <div class="pricing-grid fade-in-stagger" id="pricingGrid">
+                <div class="pricing-card">
+                    <h3>Monthly</h3>
+                    <div class="price">£49.99<span>/month</span></div>
+                    <p class="price-note">No commitment — cancel anytime</p>
+                    <ul class="pricing-features">
+                        <li>✓ Full Pearson Edexcel BTEC qualification</li>
+                        <li>✓ UK-qualified teacher support</li>
+                        <li>✓ Weekly live lessons &amp; recordings</li>
+                        <li>✓ Written report guidance &amp; feedback</li>
+                        <li>✓ University progression support</li>
+                    </ul>
+                    <a href="mailto:rhys.coombes@gmail.com?subject=Enrol%20-%20Monthly%20%C2%A349.99%20-%20UK%20BTEC%20Online" class="cta2">Enrol Now</a>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-q">I struggle with exams. Is BTEC better for me?</div>
-                    <div class="faq-a">Absolutely. This is one of the main reasons learners choose BTEC. Instead of sitting timed exam papers in a hall, you compl
-ete 4-5 long written research reports over two years. Each report is broken down step-by-step with clear guidance and feedback from your UK teacher before you submit. No exam anxiety, no blank-page panic &mdash; just structured, supported project work.</div>
+
+                <div class="pricing-card">
+                    <h3>6-Monthly</h3>
+                    <div class="price">£279<span>/6 months</span></div>
+                    <p class="price-note">Save £21 — £46.50/month</p>
+                    <ul class="pricing-features">
+                        <li>✓ Full Pearson Edexcel BTEC qualification</li>
+                        <li>✓ UK-qualified teacher support</li>
+                        <li>✓ Weekly live lessons &amp; recordings</li>
+                        <li>✓ Written report guidance &amp; feedback</li>
+                        <li>✓ University progression support</li>
+                    </ul>
+                    <a href="mailto:rhys.coombes@gmail.com?subject=Enrol%20-%206-Monthly%20%C2%A3279%20-%20UK%20BTEC%20Online" class="cta2">Enrol Now</a>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-q">Is this a real UK qualification?</div>
-                    <div class="faq-a">Yes. Pearson Edexcel BTEC is a genuine UK qualification awarded by Pearson, the UK&rsquo;s largest awarding body. It is regulated by Ofqual (the UK government&rsquo;s qualifications regulator) and recognised by universities and employers globally. You earn the same qualification as UK students studying in British schools and colleges.</div>
+
+                <div class="pricing-card featured">
+                    <div class="badge">Most Popular</div>
+                    <h3>Annual <span style="color: #f59e0b;">★</span></h3>
+                    <div class="price">£499<span>/year</span></div>
+                    <p class="price-note">Save £100 — £41.58/month</p>
+                    <ul class="pricing-features">
+                        <li>✓ Full Pearson Edexcel BTEC qualification</li>
+                        <li>✓ UK-qualified teacher support</li>
+                        <li>✓ Weekly live lessons &amp; recordings</li>
+                        <li>✓ Written report guidance &amp; feedback</li>
+                        <li>✓ University progression support</li>
+                    </ul>
+                    <a href="mailto:rhys.coombes@gmail.com?subject=Enrol%20-%20Annual%20%C2%A3499%20-%20UK%20BTEC%20Online" class="cta2">Enrol Now</a>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-q">How does the 2-year written report structure work?</div>
-                    <div class="faq-a">Over two years you complete 4-5 long written research reports &mdash; no exams, no timed papers. Each report is guided by your UK teacher with detailed walkthroughs, criteria checklists, and feedback cycles. You submit draft work, receive structured feedback, improve your report, and submit your final version. This builds your research, writing, and analytical skills &mdash; exactly what universities want to see.</div>
+
+                <div class="pricing-card">
+                    <h3>Full Course (2 Years)</h3>
+                    <div class="price">£899</div>
+                    <p class="price-note">Save £300 — £37.46/month</p>
+                    <ul class="pricing-features">
+                        <li>✓ Full Pearson Edexcel BTEC qualification</li>
+                        <li>✓ UK-qualified teacher support</li>
+                        <li>✓ Weekly live lessons &amp; recordings</li>
+                        <li>✓ Written report guidance &amp; feedback</li>
+                        <li>✓ University progression support</li>
+                    </ul>
+                    <a href="mailto:rhys.coombes@gmail.com?subject=Enrol%20-%20Full%20Course%20%C2%A3899%20-%20UK%20BTEC%20Online" class="cta2">Enrol Now</a>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-q">Is the 95% Distinction rate real?</div>
-                    <div class="faq-a">Yes. 95% of our students achieve a Distinction &mdash; the highest grade, equivalent to an A* at A-level. This is because our model combines clear UK teaching, structured report guidance, feedback cycles, and progress tracking. You know exactly what&rsquo;s needed at every stage, and your teacher makes sure you get there.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q">Can I study from outside the UK?</div>
-                    <div class="faq-a">Yes. Our UK online school is designed for international learners. You study live online with a UK-qualified teacher, around your own schedule. Families in Dubai, Singapore, Hong Kong, Kenya, Malaysia, and beyond choose our school because it gives them a genuine UK qualification at a fraction of private-school fees. Universities worldwide accept Pearson Edexcel BTEC for entry.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q">What qualification is this &mdash; BTEC or Edexcel?</div>
-                    <div class="faq-a">Both. Edexcel is the awarding body that delivers BTEC qualifications. The full name is Pearson Edexcel BTEC. Edexcel is one of the UK&rsquo;s largest and most respected awarding bodies, regulated by Ofqual. When you complete your course, you receive a Pearson Edexcel BTEC certificate &mdash; the same qualification offered in UK schools and colleges nationwide.</div>
-                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.85rem;">All prices in GBP. No hidden fees. Free consultation included with every option.</p>
+        </div>
+    </section>
+
+    <!-- ========== FAQ ========== -->
+    <section class="section" id="faq">
+        <h2>Questions Answered</h2>
+        <p class="section-intro">Everything you need to know about our UK online Pearson Edexcel BTEC school.</p>
+        <div class="faq">
+            <div class="faq-item open">
+                <div class="faq-q">Is BTEC the same as A-levels? Can I get into university with it?<span class="icon">+</span></div>
+                <div class="faq-a">Yes. Pearson Edexcel BTEC Level 3 qualifications are equivalent to A-levels and accepted by universities worldwide &mdash; including UK universities through UCAS, Australian, Canadian, US, and European institutions. A Distinction at BTEC carries the same UCAS tariff points as an A* at A-level. It&rsquo;s a genuine route into higher education.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">I struggle with exams. Is BTEC better for me?<span class="icon">+</span></div>
+                <div class="faq-a">Absolutely. This is one of the main reasons learners choose BTEC. Instead of sitting timed exam papers in a hall, you complete 4-5 long written research reports over two years. Each report is broken down step-by-step with clear guidance and feedback from your UK teacher before you submit. No exam anxiety, no blank-page panic &mdash; just structured, supported project work.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Is this a real UK qualification?<span class="icon">+</span></div>
+                <div class="faq-a">Yes. Pearson Edexcel BTEC is a genuine UK qualification awarded by Pearson, the UK&rsquo;s largest awarding body. It is regulated by Ofqual (the UK government&rsquo;s qualifications regulator) and recognised by universities and employers globally. You earn the same qualification as UK students studying in British schools and colleges.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">How does the 2-year written report structure work?<span class="icon">+</span></div>
+                <div class="faq-a">Over two years you complete 4-5 long written research reports &mdash; no exams, no timed papers. Each report is guided by your UK teacher with detailed walkthroughs, criteria checklists, and feedback cycles. You submit draft work, receive structured feedback, improve your report, and submit your final version. This builds your research, writing, and analytical skills &mdash; exactly what universities want to see.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Is the 95% Distinction rate real?<span class="icon">+</span></div>
+                <div class="faq-a">Yes. 95% of our students achieve a Distinction &mdash; the highest grade, equivalent to an A* at A-level. This is because our model combines clear UK teaching, structured report guidance, feedback cycles, and progress tracking. You know exactly what&rsquo;s needed at every stage, and your teacher makes sure you get there.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Can I study from outside the UK?<span class="icon">+</span></div>
+                <div class="faq-a">Yes. Our UK online school is designed for international learners. You study live online with a UK-qualified teacher, around your own schedule. Families in Dubai, Singapore, Hong Kong, Kenya, Malaysia, and beyond choose our school because it gives them a genuine UK qualification at a fraction of private-school fees. Universities worldwide accept Pearson Edexcel BTEC for entry.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">What qualification is this — BTEC or Edexcel?<span class="icon">+</span></div>
+                <div class="faq-a">Both. Edexcel is the awarding body that delivers BTEC qualifications. The full name is Pearson Edexcel BTEC. Edexcel is one of the UK&rsquo;s largest and most respected awarding bodies, regulated by Ofqual. When you complete your course, you receive a Pearson Edexcel BTEC certificate &mdash; the same qualification offered in UK schools and colleges nationwide.</div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
+    <!-- ========== CTA ========== -->
     <section class="section">
-        <div class="cta-sec">
+        <div class="cta-sec fade-in">
             <h2>Ready to Start Your UK BTEC Pathway?</h2>
             <p>Book a free consultation with Rhys to discuss whether the Pearson Edexcel BTEC written-report route is right for you. If exams aren&rsquo;t your strength, this could be your way into university.</p>
-            <button class="cta-primary">Schedule Your Consultation</button>
+            <a href="mailto:rhys.coombes@gmail.com?subject=Schedule%20Consultation%20-%20UK%20BTEC%20Online" class="cta-primary">
+                Schedule Your Consultation
+                <span class="arrow">→</span>
+            </a>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- ========== FOOTER ========== -->
     <footer>
-        <div class="fl">
-            <img src="images/EdexcelLogo.png" alt="Edexcel">
-            <img src="images/Edexcel.svg.webp" alt="Pearson Edexcel">
-            <img src="images/Cambridge_University_Crest_-_flat.png" alt="University of Cambridge" style="height: 35px;">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>UK BTEC Online</h4>
+                <p>A UK-based online Pearson Edexcel BTEC school. No exams — written reports only. 95% Distinction rate. A-level equivalent. Russell Group university pathway.</p>
+                <div class="footer-logos">
+                    <img src="images/EdexcelLogo.png" alt="Edexcel">
+                    <img src="images/Edexcel.svg.webp" alt="Pearson Edexcel">
+                    <img src="images/Cambridge_University_Crest_-_flat.png" alt="University of Cambridge" style="height: 32px;">
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="#why">Why Us</a>
+                <a href="#teachers">Teachers</a>
+                <a href="#how">How It Works</a>
+                <a href="#universities">Universities</a>
+                <a href="#pricing">Pricing</a>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <a href="#faq">FAQ</a>
+                <a href="mailto:rhys.coombes@gmail.com">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Academic Integrity Policy</a>
+                <a href="#">Cookie Preferences</a>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook" title="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                    </a>
+                    <a href="#" aria-label="YouTube" title="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29.22 29.22 0 001 11.75a29.22 29.22 0 00.46 5.33 2.78 2.78 0 001.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29.22 29.22 0 00.46-5.33 29.22 29.22 0 00-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram" title="Instagram">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn" title="LinkedIn">
+                        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                </div>
+            </div>
         </div>
-        <p>&copy; 2024 UK BTEC Online. A UK-based online Pearson Edexcel BTEC school.</p>
-        <p style="margin-top: 1rem; font-size: 0.9rem;">
-            <a href="#">Privacy Policy</a> &middot;
-            <a href="#">Terms of Service</a> &middot;
-            <a href="#">Academic Integrity Policy</a> &middot;
-            <a href="#">Contact</a>
-        </p>
-        <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.8;">All qualification claims are verified against Pearson Edexcel BTEC, Ofqual, and relevant university admissions requirements. Pearson Edexcel BTEC is a registered trademark of Pearson Education Ltd. UCAS tariff points and university entry requirements vary by course and institution.</p>
+        <div class="footer-bottom">
+            <p>&copy; 2026 UK BTEC Online. A UK-based online Pearson Edexcel BTEC school.</p>
+            <p>All qualification claims verified against Pearson Edexcel BTEC, Ofqual, and relevant university admissions requirements.</p>
+        </div>
     </footer>
 
+    <!-- ========== STICKY MOBILE CTA ========== -->
+    <div class="sticky-mobile-cta">
+        <div>
+            <div class="price-label">From</div>
+            <div class="price-amount">£49.99/month</div>
+        </div>
+        <a href="mailto:rhys.coombes@gmail.com?subject=Enrol%20-%20UK%20BTEC%20Online" class="cta-btn">Start Free Consultation</a>
+    </div>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                nav.classList.toggle('open');
+            });
+            // Close on nav link click
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('open');
+                });
+            });
+        }
+
+        // Intersection Observer — Fade In
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in, .fade-in-stagger').forEach(el => observer.observe(el));
+
+        // Testimonial Carousel
+        const track = document.getElementById('testiTrack');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const prevBtn = document.getElementById('prevTesti');
+        const nextBtn = document.getElementById('nextTesti');
+        let currentSlide = 0;
+        let autoplayInterval;
+
+        function goToSlide(index) {
+            if (!track) return;
+            const slides = track.querySelectorAll('.testi-slide');
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+            currentSlide = index;
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        function nextSlide() { goToSlide(currentSlide + 1); }
+        function prevSlide() { goToSlide(currentSlide - 1); }
+
+        function startAutoplay() {
+            stopAutoplay();
+            autoplayInterval = setInterval(nextSlide, 6000);
+        }
+        function stopAutoplay() { clearInterval(autoplayInterval); }
+
+        if (track) {
+            if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); startAutoplay(); });
+            if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); startAutoplay(); });
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    goToSlide(parseInt(dot.dataset.index));
+                    startAutoplay();
+                });
+            });
+            track.closest('.testi-carousel').addEventListener('mouseenter', stopAutoplay);
+            track.closest('.testi-carousel').addEventListener('mouseleave', startAutoplay);
+            startAutoplay();
+        }
+
+        // Tabs
+        const tabsBar = document.getElementById('tabsBar');
+        if (tabsBar) {
+            tabsBar.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tabsBar.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    btn.classList.add('active');
+                    const tabContent = document.getElementById('tab-' + btn.dataset.tab);
+                    if (tabContent) tabContent.classList.add('active');
+                });
+            });
+        }
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const q = item.querySelector('.faq-q');
+            if (q) {
+                q.addEventListener('click', () => {
+                    item.classList.toggle('open');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
