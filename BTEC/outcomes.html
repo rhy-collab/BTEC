@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Outcomes | UK BTEC Online</title>
+    <meta name="description" content="Our students consistently achieve exceptional results — 95% Distinction rate, 95% first-choice university acceptance, and progression to top universities worldwide.">
+    <meta property="og:title" content="Student Outcomes | UK BTEC Online">
+    <meta property="og:description" content="95% Distinction rate. 95% first-choice university acceptance. See how our students progress from BTEC to university.">
+    <meta property="og:url" content="https://www.ukbtec.online/outcomes.html">
+    <link rel="canonical" href="https://www.ukbtec.online/outcomes.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ========== CSS Custom Properties ========== */
+        :root {
+            --primary: #667eea;
+            --primary-dark: #764ba2;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-reverse: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            --primary-light: rgba(102,126,234,0.1);
+            --primary-mid: rgba(102,126,234,0.5);
+            --text-dark: #111827;
+            --text-body: #4b5563;
+            --text-muted: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 10px 30px rgba(102,126,234,0.12);
+            --shadow-lg: 0 20px 40px rgba(102,126,234,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --max-width: 1200px;
+            --header-height: 72px;
+            --section-gap: 80px;
+        }
+
+        /* ========== Reset & Base ========== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-body);
+            background: var(--bg-white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========== Animations ========== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-in-stagger > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .fade-in-stagger.visible > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-in-stagger.visible > *:nth-child(1) { transition-delay: 0s; }
+        .fade-in-stagger.visible > *:nth-child(2) { transition-delay: 0.1s; }
+        .fade-in-stagger.visible > *:nth-child(3) { transition-delay: 0.2s; }
+        .fade-in-stagger.visible > *:nth-child(4) { transition-delay: 0.3s; }
+        .fade-in-stagger.visible > *:nth-child(5) { transition-delay: 0.4s; }
+        .fade-in-stagger.visible > *:nth-child(6) { transition-delay: 0.5s; }
+        .fade-in-stagger.visible > *:nth-child(7) { transition-delay: 0.6s; }
+        .fade-in-stagger.visible > *:nth-child(8) { transition-delay: 0.7s; }
+        .fade-in-stagger.visible > *:nth-child(9) { transition-delay: 0.8s; }
+        .fade-in-stagger.visible > *:nth-child(10) { transition-delay: 0.9s; }
+
+        /* ========== Counter Animation ========== */
+        .counter-wrap {
+            display: inline-block;
+        }
+
+        /* ========== Header / Nav ========== */
+        header {
+            background: var(--gradient);
+            color: white;
+            height: var(--header-height);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+        .header-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; }
+        .logo a { color: white; text-decoration: none; }
+        .logo span { opacity: 0.85; font-weight: 400; }
+        nav { display: flex; align-items: center; gap: 0.25rem; }
+        nav a {
+            color: white; text-decoration: none; padding: 0.5rem 0.9rem;
+            font-size: 0.9rem; font-weight: 500; opacity: 0.88;
+            transition: opacity 0.3s; white-space: nowrap;
+        }
+        nav a:hover { opacity: 1; }
+        nav a.active { opacity: 1; border-bottom: 2px solid white; padding-bottom: 3px; }
+
+        /* Hamburger */
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            background: none; border: none; cursor: pointer; padding: 4px;
+        }
+        .hamburger span {
+            display: block; width: 24px; height: 2.5px;
+            background: white; border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* ========== Page Hero ========== */
+        .page-hero {
+            background: var(--gradient);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+        .page-hero p {
+            font-size: 1.2rem;
+            opacity: 0.92;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ========== Global Section Styles ========== */
+        .section { padding: var(--section-gap) 2rem; max-width: var(--max-width); margin: 0 auto; }
+        .section-full { background: var(--bg-light); padding: var(--section-gap) 0; }
+        .section-full .section { padding: 0 2rem; }
+        .section-dark {
+            background: var(--gradient); color: white; padding: var(--section-gap) 0;
+        }
+        .section-dark .section { padding: 0 2rem; }
+        .section-dark h2, .section-dark .section-intro { color: white; }
+        .section-dark .section-intro { opacity: 0.9; }
+
+        h2 {
+            font-size: 2.4rem; font-weight: 800; color: var(--text-dark);
+            margin-bottom: 0.5rem; letter-spacing: -0.5px;
+        }
+        .section-dark h2 { color: white; }
+        .section-intro {
+            font-size: 1.1rem; color: var(--text-muted);
+            margin-bottom: 3rem; max-width: 700px; line-height: 1.7;
+        }
+
+        /* ========== Stat Cards / Key Stats ========== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .stat-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #f3f4f6;
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+        .stat-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 0.75rem;
+        }
+        .stat-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        .stat-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        /* ========== Testimonial Carousel ========== */
+        .testi-section {
+            background: var(--bg-light);
+            padding: var(--section-gap) 0;
+        }
+        .testi-section .section { padding: 0 2rem; }
+        .testi-carousel {
+            position: relative; max-width: 800px; margin: 0 auto;
+            overflow: hidden;
+        }
+        .testi-track {
+            display: flex; transition: transform 0.5s ease;
+        }
+        .testi-slide {
+            min-width: 100%; padding: 0 1rem;
+        }
+        .testi-card {
+            background: var(--bg-white); padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            border-left: 4px solid var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+        .testi-stars { color: #f59e0b; margin-bottom: 1rem; font-size: 1.2rem; letter-spacing: 2px; }
+        .testi-txt { font-size: 1.05rem; color: #374151; margin-bottom: 1.5rem; line-height: 1.8; font-style: italic; }
+        .testi-author { display: flex; align-items: center; gap: 1rem; }
+        .testi-avatar {
+            width: 48px; height: 48px; border-radius: 50%;
+            background: var(--gradient); display: flex; align-items: center;
+            justify-content: center; color: white; font-weight: 700; font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .testi-name { font-weight: 600; color: var(--text-dark); }
+        .testi-role { font-size: 0.85rem; color: var(--text-muted); }
+        .carousel-controls {
+            display: flex; justify-content: center; align-items: center;
+            gap: 1rem; margin-top: 1.5rem;
+        }
+        .carousel-btn {
+            background: var(--bg-white); border: 2px solid #e5e7eb;
+            border-radius: 50%; width: 44px; height: 44px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.3s; font-size: 1.2rem; color: var(--text-dark);
+        }
+        .carousel-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .carousel-dots { display: flex; gap: 0.5rem; }
+        .carousel-dot {
+            width: 10px; height: 10px; border-radius: 50%;
+            background: #d1d5db; cursor: pointer; transition: background 0.3s, transform 0.3s;
+            border: none;
+        }
+        .carousel-dot.active { background: var(--primary); transform: scale(1.2); }
+
+        /* ========== University Grid ========== */
+        .uni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1rem; margin: 2rem 0;
+        }
+        .uni-badge {
+            background: var(--bg-white); border-radius: var(--radius-md);
+            padding: 1.2rem 0.8rem; text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center; min-height: 110px;
+        }
+        .uni-badge:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .uni-badge .uni-name { font-size: 0.7rem; font-weight: 600; color: #374151; line-height: 1.3; }
+        .uni-badge .uni-group { font-size: 0.55rem; color: var(--primary-dark); font-weight: 500; margin-top: 0.2rem; }
+
+        .region-label {
+            font-size: 1.1rem; font-weight: 700; color: var(--text-dark);
+            margin-top: 2.5rem; margin-bottom: 1rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .region-label:first-of-type { margin-top: 0; }
+
+        /* ========== Success Story Cards ========== */
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .story-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #f3f4f6;
+            transition: transform 0.4s, box-shadow 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .story-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+        .story-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+        .story-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .story-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        .story-pathway {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            flex-wrap: wrap;
+        }
+        .story-pathway .step {
+            background: var(--primary-light);
+            padding: 0.35rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--primary);
+        }
+        .story-pathway .arrow-path {
+            color: var(--primary-mid);
+            font-size: 1rem;
+        }
+        .story-card .story-result {
+            background: #f0fdf4;
+            border-radius: var(--radius-sm);
+            padding: 0.8rem 1rem;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #166534;
+            text-align: center;
+            font-weight: 500;
+        }
+        .story-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* ========== CTA Section ========== */
+        .cta-sec {
+            background: var(--gradient); color: white;
+            padding: 4rem 2rem; text-align: center;
+            border-radius: var(--radius-lg);
+            margin-top: 3rem;
+        }
+        .cta-sec h2 { color: white; margin-bottom: 1rem; }
+        .cta-sec p { font-size: 1.15rem; margin-bottom: 2rem; opacity: 0.95; }
+        .cta-primary {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: white; color: var(--primary);
+            padding: 1rem 2.5rem; border-radius: var(--radius-sm);
+            text-decoration: none; font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1.05rem; border: none; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+        .cta-primary .arrow { transition: transform 0.3s; }
+        .cta-primary:hover .arrow { transform: translateX(4px); }
+
+        /* ========== Footer ========== */
+        footer {
+            background: #111827; color: #9ca3af;
+            padding: 3rem 2rem 1.5rem;
+        }
+        .footer-grid {
+            max-width: var(--max-width); margin: 0 auto;
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem; margin-bottom: 2rem;
+        }
+        .footer-col h4 {
+            color: white; font-size: 0.9rem; font-weight: 600;
+            margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .footer-col p { font-size: 0.85rem; line-height: 1.7; margin-bottom: 1rem; }
+        .footer-col a {
+            display: block; color: #9ca3af; text-decoration: none;
+            font-size: 0.85rem; padding: 0.3rem 0;
+            transition: color 0.3s;
+        }
+        .footer-col a:hover { color: white; }
+        .footer-logos { display: flex; gap: 1rem; align-items: center; margin-top: 1rem; flex-wrap: wrap; }
+        .footer-logos img { height: 28px; opacity: 0.6; transition: opacity 0.3s; }
+        .footer-logos img:hover { opacity: 0.9; }
+        .social-links { display: flex; gap: 0.75rem; margin-top: 0.5rem; }
+        .social-links a {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: rgba(255,255,255,0.1); display: flex;
+            align-items: center; justify-content: center;
+            transition: background 0.3s; padding: 0;
+        }
+        .social-links a:hover { background: rgba(255,255,255,0.2); }
+        .social-links svg { width: 18px; height: 18px; fill: #9ca3af; }
+        .social-links a:hover svg { fill: white; }
+        .footer-bottom {
+            max-width: var(--max-width); margin: 0 auto;
+            border-top: 1px solid #1f2937; padding-top: 1.5rem;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 0.5rem;
+        }
+        .footer-bottom p { font-size: 0.8rem; }
+        .footer-bottom a { color: var(--primary); text-decoration: none; font-size: 0.8rem; }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 1024px) {
+            .page-hero h1 { font-size: 2.4rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stories-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            :root { --section-gap: 50px; }
+            h1 { font-size: 2rem; }
+            .page-hero { padding: 3rem 1.5rem; }
+            .page-hero h1 { font-size: 2rem; }
+            .page-hero p { font-size: 1.05rem; }
+            h2 { font-size: 1.7rem; }
+            .section-intro { font-size: 1rem; }
+
+            .section { padding: var(--section-gap) 1rem; }
+            .section-full .section { padding: 0 1rem; }
+
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            .stat-number { font-size: 2.4rem; }
+            .stat-card { padding: 1.8rem 1rem; }
+
+            .uni-grid { grid-template-columns: repeat(3, 1fr); }
+
+            .stories-grid { grid-template-columns: 1fr; }
+
+            nav { display: none; position: fixed; top: var(--header-height); left: 0; right: 0;
+                  background: var(--gradient); flex-direction: column; padding: 1rem;
+                  box-shadow: 0 10px 20px rgba(0,0,0,0.2); gap: 0; }
+            nav.open { display: flex; }
+            nav a { padding: 0.8rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 1rem; }
+            nav a:last-child { border-bottom: none; }
+
+            .hamburger { display: flex; }
+
+            .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .uni-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header>
+        <div class="header-content">
+            <div class="logo"><a href="index.html">UK BTEC <span>Online</span></a></div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <nav id="nav">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="visa.html">Visa Guide</a>
+                <a href="book-consultation.html">Book a Consultation</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========== PAGE HERO ========== -->
+    <section class="page-hero">
+        <h1>Student Outcomes</h1>
+        <p>Our students consistently achieve exceptional results — 95% Distinction rate and 95% first-choice university acceptance.</p>
+    </section>
+
+    <!-- ========== KEY STATS ========== -->
+    <section class="section" id="stats">
+        <h2 style="text-align: center;">Key Stats</h2>
+        <p class="section-intro" style="text-align: center; margin-left: auto; margin-right: auto;">Our track record speaks for itself. Here&rsquo;s what our students have achieved.</p>
+        <div class="stats-grid fade-in-stagger" id="statsGrid">
+            <div class="stat-card">
+                <span class="stat-icon">🎓</span>
+                <div class="stat-number"><span class="counter-wrap" data-target="95" data-suffix="%">95%</span></div>
+                <h3>Distinction Rate</h3>
+                <p>of our students achieve the highest grade — equivalent to an A* at A-level</p>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">🏛️</span>
+                <div class="stat-number"><span class="counter-wrap" data-target="95" data-suffix="%">95%</span></div>
+                <h3>University Acceptance</h3>
+                <p>accepted into their first-choice university with our progression support</p>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">👨‍🎓</span>
+                <div class="stat-number"><span class="counter-wrap" data-target="500" data-suffix="+">500+</span></div>
+                <h3>Students Taught</h3>
+                <p>over 500 learners have completed our BTEC Business programme</p>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">🌍</span>
+                <div class="stat-number"><span class="counter-wrap" data-target="15" data-suffix="+">15+</span></div>
+                <h3>Countries</h3>
+                <p>students join us from over 15 countries across the globe</p>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">📅</span>
+                <div class="stat-number"><span class="counter-wrap" data-target="7" data-suffix="+ Years">7+ Years</span></div>
+                <h3>Teaching Excellence</h3>
+                <p>years of experience delivering Pearson Edexcel BTEC qualifications</p>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">🏆</span>
+                <div class="stat-number">Russell Group</div>
+                <h3>University Pathway</h3>
+                <p>accepted at all 24 Russell Group universities for business degrees</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIAL CAROUSEL ========== -->
+    <section class="testi-section" id="testimonials">
+        <div class="section">
+            <h2 style="text-align: center;">What Our Students Say</h2>
+            <p class="section-intro" style="text-align: center; margin-left: auto; margin-right: auto;">Real stories from real students and families who chose the BTEC written-report pathway.</p>
+            <div class="testi-carousel fade-in">
+                <div class="testi-track" id="testiTrack">
+                    <!-- Sarah M. -->
+                    <div class="testi-slide">
+                        <div class="testi-card">
+                            <div class="testi-stars">★★★★★</div>
+                            <div class="testi-txt">&ldquo;I always struggled with exams — I&rsquo;d know the material but freeze in the hall. BTEC was perfect for me. Four written reports over two years, clear guidance, and my teacher helped me every step. I got a Distinction and got into my first-choice university.&rdquo;</div>
+                            <div class="testi-author">
+                                <div class="testi-avatar">S</div>
+                                <div>
+                                    <div class="testi-name">Sarah M.</div>
+                                    <div class="testi-role">🇬🇧 UK — BTEC Learner, Achieved Distinction</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Priya K. -->
+                    <div class="testi-slide">
+                        <div class="testi-card">
+                            <div class="testi-stars">★★★★★</div>
+                            <div class="testi-txt">&ldquo;We were paying &pound;18k a year for international school fees. What we actually needed was a recognised UK qualification with real teacher support. This was less than half the cost and our daughter got a Distinction. The best decision we made for her education.&rdquo;</div>
+                            <div class="testi-author">
+                                <div class="testi-avatar">P</div>
+                                <div>
+                                    <div class="testi-name">Priya K.</div>
+                                    <div class="testi-role">🇦🇪 Dubai — Parent</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- James L. -->
+                    <div class="testi-slide">
+                        <div class="testi-card">
+                            <div class="testi-stars">★★★★★</div>
+                            <div class="testi-txt">&ldquo;The structured feedback cycles made it easy to improve. Each report was broken down into clear steps with detailed guidance from my teacher. I could submit drafts, get feedback, and refine before final submission. I finished with a Distinction and now study at my dream university.&rdquo;</div>
+                            <div class="testi-author">
+                                <div class="testi-avatar">J</div>
+                                <div>
+                                    <div class="testi-name">James L.</div>
+                                    <div class="testi-role">🇭🇰 Hong Kong — BTEC Learner, Achieved Distinction</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Amara O. -->
+                    <div class="testi-slide">
+                        <div class="testi-card">
+                            <div class="testi-stars">★★★★★</div>
+                            <div class="testi-txt">&ldquo;I never thought I&rsquo;d get into a UK university from Nigeria. My parents were worried about whether a BTEC would be accepted. But my teacher helped us through the whole equivalency process and wrote a strong reference. I got my acceptance letter from a Russell Group university — I couldn&rsquo;t believe it.&rdquo;</div>
+                            <div class="testi-author">
+                                <div class="testi-avatar">A</div>
+                                <div>
+                                    <div class="testi-name">Amara O.</div>
+                                    <div class="testi-role">🇳🇬 Nigeria — BTEC Learner, Russell Group Offer Holder</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Chen W. -->
+                    <div class="testi-slide">
+                        <div class="testi-card">
+                            <div class="testi-stars">★★★★★</div>
+                            <div class="testi-txt">&ldquo;My parents were worried about exam stress and the intense pressure of the A-level system in Singapore. The BTEC written-report route was a completely different experience — calm, structured, and supportive. I achieved a Distinction and am now studying Business at a top UK university.&rdquo;</div>
+                            <div class="testi-author">
+                                <div class="testi-avatar">C</div>
+                                <div>
+                                    <div class="testi-name">Chen W.</div>
+                                    <div class="testi-role">🇸🇬 Singapore — BTEC Learner, Achieved Distinction</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn" id="prevTesti" aria-label="Previous">‹</button>
+                    <div class="carousel-dots" id="testiDots">
+                        <button class="carousel-dot active" data-index="0" aria-label="Slide 1"></button>
+                        <button class="carousel-dot" data-index="1" aria-label="Slide 2"></button>
+                        <button class="carousel-dot" data-index="2" aria-label="Slide 3"></button>
+                        <button class="carousel-dot" data-index="3" aria-label="Slide 4"></button>
+                        <button class="carousel-dot" data-index="4" aria-label="Slide 5"></button>
+                    </div>
+                    <button class="carousel-btn" id="nextTesti" aria-label="Next">›</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== UNIVERSITY DESTINATIONS ========== -->
+    <section class="section" id="destinations">
+        <h2 style="text-align: center;">University Destinations</h2>
+        <p class="section-intro" style="text-align: center; margin-left: auto; margin-right: auto;">Our students have progressed to leading universities around the world. A BTEC Distinction opens doors at top institutions globally.</p>
+
+        <!-- UK Russell Group -->
+        <div class="region-label">🇬🇧 United Kingdom — Russell Group Universities</div>
+        <div class="uni-grid fade-in-stagger" id="uniGrid">
+            <div class="uni-badge">
+                <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect fill="#002147" height="90" rx="10" width="90" x="5" y="5"/><path d="M50 15 L85 85 L15 85 Z" fill="#F5A623"/><text fill="#002147" font-size="14" font-weight="bold" text-anchor="middle" x="50" y="55">B</text></svg>
+                <div class="uni-name">University of Birmingham</div>
+                <div class="uni-group">Russell Group</div>
+            </div>
+            <div class="uni-badge">
+                <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect fill="#007B3D" height="90" rx="10" width="90" x="5" y="5"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFD700"/><text fill="#007B3D" font-size="14" font-weight="bold" text-anchor="middle" x="50" y="55">L</text></svg>
+                <div class="uni-name">University of Leeds</div>
+                <div class="uni-group">Russell Group</div>
+            </div>
+            <div class="uni-badge">
+                <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect fill="#660099" height="90" rx="10" width="90" x="5" y="5"/><path d="M50 15 L85 85 L15 85 Z" fill="#F5A623"/><text fill="#660099" font-size="14" font-weight="bold" text-anchor="middle" x="50" y="55">M</text></svg>
+                <div class="uni-name">University of Manchester</div>
+                <div class="uni-group">Russell Group</div>
+            </div>
+            <div class="uni-badge">
+                <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect fill="#0080B0" height="90" rx="10" width="90" x="5" y="5"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFD700"/><text fill="#0080B0" font-size="14" font-weight="bold" text-anchor="middle" x="50" y="55">N</text></svg>
+                <div class="uni-name">University of Nottingham</div>
+                <div class="uni-group">Russell Group</div>
+            </div>
+            <div class="uni-badge">
+                <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect fill="#002E5D" height="90" rx="10" width="90" x="5" y="5"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFD100"/><text fill="#002E5D" font-size="14" font-weight="bold" text-anchor="middle" x="50" y="55">W</text></svg>
+                <div class="uni-name">University of Warwick</div>
+                <div class="uni-group">Russell Group</div>
+            </div>
+            <div class="uni-badge">
+                <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect fill="#68246D" height="90" rx="10" width="90" x="5" y="5"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFD700"/><text fill="#68246D" font-size="14" font-weight="bold" text-anchor="middle" x="50" y="55">D</text></svg>
+                <div class="uni-name">Durham University</div>
+                <div class="uni-group">Russell Group</div>
+            </div>
+            <div class="uni-badge">
+                <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect fill="#006747" height="90" rx="10" width="90" x="5" y="5"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFFFFF"/><text fill="#006747" font-size="14" font-weight="bold" text-anchor="middle" x="50" y="55">E</text></svg>
+                <div class="uni-name">University of Exeter</div>
+                <div class="uni-group">Russell Group</div>
+            </div>
+            <div class="uni-badge">
+                <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect fill="#003366" height="90" rx="10" width="90" x="5" y="5"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFFFFF"/><text fill="#003366" font-size="14" font-weight="bold" text-anchor="middle" x="50" y="55">Y</text></svg>
+                <div class="uni-name">University of York</div>
+                <div class="uni-group">Russell Group</div>
+            </div>
+            <div class="uni-badge">
+                <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect fill="#E31B23" height="90" rx="10" width="90" x="5" y="5"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFD700"/><text fill="#E31B23" font-size="14" font-weight="bold" text-anchor="middle" x="50" y="55">Q</text></svg>
+                <div class="uni-name">Queen Mary London</div>
+                <div class="uni-group">Russell Group</div>
+            </div>
+            <div class="uni-badge">
+                <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect fill="#0056A0" height="90" rx="10" width="90" x="5" y="5"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFFFFF"/><text fill="#0056A0" font-size="14" font-weight="bold" text-anchor="middle" x="50" y="55">S</text></svg>
+                <div class="uni-name">University of Southampton</div>
+                <div class="uni-group">Russell Group</div>
+            </div>
+            <div class="uni-badge">
+                <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect fill="#002147" height="90" rx="10" width="90" x="5" y="5"/><path d="M50 15 L85 85 L15 85 Z" fill="#F5A623"/><text fill="#002147" font-size="13" font-weight="bold" text-anchor="middle" x="50" y="55">Cam</text></svg>
+                <div class="uni-name">University of Cambridge</div>
+                <div class="uni-group">Russell Group</div>
+            </div>
+        </div>
+
+        <!-- Australia -->
+        <div class="region-label">🇦🇺 Australia</div>
+        <div class="uni-grid fade-in-stagger">
+            <div class="uni-badge">
+                <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect fill="#002855" height="90" rx="10" width="90" x="5" y="5"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFCD00"/><text fill="#002855" font-size="12" font-weight="bold" text-anchor="middle" x="50" y="55">M</text></svg>
+                <div class="uni-name">University of Melbourne</div>
+                <div class="uni-group">Group of Eight</div>
+            </div>
+            <div class="uni-badge">
+                <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect fill="#FFD100" height="90" rx="10" width="90" x="5" y="5"/><path d="M50 15 L85 85 L15 85 Z" fill="#002147"/><text fill="#FFD100" font-size="12" font-weight="bold" text-anchor="middle" x="50" y="55">S</text></svg>
+                <div class="uni-name">University of Sydney</div>
+                <div class="uni-group">Group of Eight</div>
+            </div>
+            <div class="uni-badge">
+                <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect fill="#FDDC00" height="90" rx="10" width="90" x="5" y="5"/><path d="M50 15 L85 85 L15 85 Z" fill="#1C1C1C"/><text fill="#FDDC00" font-size="11" font-weight="bold" text-anchor="middle" x="50" y="55">UNSW</text></svg>
+                <div class="uni-name">UNSW Sydney</div>
+                <div class="uni-group">Group of Eight</div>
+            </div>
+        </div>
+
+        <!-- Canada -->
+        <div class="region-label">🇨🇦 Canada</div>
+        <div class="uni-grid fade-in-stagger">
+            <div class="uni-badge">
+                <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect fill="#002A5C" height="90" rx="10" width="90" x="5" y="5"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFFFFF"/><text fill="#002A5C" font-size="12" font-weight="bold" text-anchor="middle" x="50" y="55">T</text></svg>
+                <div class="uni-name">University of Toronto</div>
+                <div class="uni-group">U15</div>
+            </div>
+            <div class="uni-badge">
+                <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect fill="#002145" height="90" rx="10" width="90" x="5" y="5"/><path d="M50 15 L85 85 L15 85 Z" fill="#00A7E1"/><text fill="#002145" font-size="11" font-weight="bold" text-anchor="middle" x="50" y="55">UBC</text></svg>
+                <div class="uni-name">University of British Columbia</div>
+                <div class="uni-group">U15</div>
+            </div>
+        </div>
+
+        <!-- UAE -->
+        <div class="region-label">🇦🇪 United Arab Emirates</div>
+        <div class="uni-grid fade-in-stagger" style="grid-template-columns: repeat(auto-fit, minmax(150px, 200px));">
+            <div class="uni-badge">
+                <svg viewBox="0 0 100 100" style="width:50px;height:50px;margin-bottom:0.5rem;"><rect fill="#57068B" height="90" rx="10" width="90" x="5" y="5"/><path d="M50 15 L85 85 L15 85 Z" fill="#FFFFFF"/><text fill="#57068B" font-size="10" font-weight="bold" text-anchor="middle" x="50" y="55">NYU</text></svg>
+                <div class="uni-name">New York University Abu Dhabi</div>
+                <div class="uni-group">Global Network University</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SUCCESS STORIES ========== -->
+    <section class="section-full" id="stories">
+        <div class="section">
+            <h2 style="text-align: center;">Success Stories</h2>
+            <p class="section-intro" style="text-align: center; margin-left: auto; margin-right: auto;">Every student has a unique journey. Here are three pathways from school through BTEC to university.</p>
+            <div class="stories-grid fade-in-stagger" id="storiesGrid">
+                <!-- Story 1 -->
+                <div class="story-card">
+                    <span class="story-emoji">🌏</span>
+                    <h3>From Dubai to Manchester</h3>
+                    <div class="story-pathway">
+                        <span class="step">International School</span>
+                        <span class="arrow-path">→</span>
+                        <span class="step">BTEC Distinction</span>
+                        <span class="arrow-path">→</span>
+                        <span class="step">Uni of Manchester</span>
+                    </div>
+                    <p>An international school student in Dubai switched from A-levels to BTEC after struggling with exam pressure. With structured written reports and weekly teacher guidance, she earned a Distinction and gained admission to the University of Manchester to study Business Management.</p>
+                    <div class="story-result">✓ Distinction Achieved — University of Manchester Offer</div>
+                </div>
+                <!-- Story 2 -->
+                <div class="story-card">
+                    <span class="story-emoji">🌍</span>
+                    <h3>From Kenya to Russell Group</h3>
+                    <div class="story-pathway">
+                        <span class="step">KS5 / A-levels</span>
+                        <span class="arrow-path">→</span>
+                        <span class="step">BTEC Distinction</span>
+                        <span class="arrow-path">→</span>
+                        <span class="step">Russell Group Uni</span>
+                    </div>
+                    <p>A student from Kenya who had been studying A-levels found the exam model wasn't working. Transitioning to BTEC allowed him to focus on research and writing rather than memorisation. He achieved a Distinction and received offers from two Russell Group universities for Business and Economics.</p>
+                    <div class="story-result">✓ Distinction Achieved — Multiple Russell Group Offers</div>
+                </div>
+                <!-- Story 3 -->
+                <div class="story-card">
+                    <span class="story-emoji">🌏</span>
+                    <h3>From Hong Kong to Australia</h3>
+                    <div class="story-pathway">
+                        <span class="step">HKDSE</span>
+                        <span class="arrow-path">→</span>
+                        <span class="step">BTEC Distinction</span>
+                        <span class="arrow-path">→</span>
+                        <span class="step">Uni of Sydney</span>
+                    </div>
+                    <p>A Hong Kong student completed the HKDSE but wanted a UK qualification to strengthen her university application. The BTEC's structured feedback and clear criteria helped her achieve top marks. She is now studying at the University of Sydney, with her BTEC qualification recognised for direct entry.</p>
+                    <div class="story-result">✓ Distinction Achieved — University of Sydney Offer</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA SECTION ========== -->
+    <section class="section">
+        <div class="cta-sec fade-in">
+            <h2>Start Your Own Success Story</h2>
+            <p>Book a free consultation with Rhys to discuss whether the Pearson Edexcel BTEC written-report pathway is right for you or your child. No exams, no pressure — just a clear route to university.</p>
+            <a href="book-consultation.html" class="cta-primary">
+                Start Your Free Consultation
+                <span class="arrow">→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>UK BTEC Online</h4>
+                <p>A UK-based online Pearson Edexcel BTEC school. No exams — written reports only. 95% Distinction rate. A-level equivalent. Russell Group university pathway.</p>
+                <div class="footer-logos">
+                    <img src="images/EdexcelLogo.png" alt="Edexcel" loading="lazy">
+                    <img src="images/Edexcel.svg.webp" alt="Pearson Edexcel" loading="lazy">
+                    <img src="images/Cambridge_University_Crest_-_flat.png" alt="University of Cambridge" style="height: 32px;" loading="lazy">
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="outcomes.html">Student Outcomes</a>
+                <a href="visa.html">Visa Guide</a>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <a href="book-consultation.html">Book a Consultation</a>
+                <a href="mailto:rhys.coombes@gmail.com">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Academic Integrity Policy</a>
+                <a href="#">Cookie Preferences</a>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook" title="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                    </a>
+                    <a href="#" aria-label="YouTube" title="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29.22 29.22 0 001 11.75a29.22 29.22 0 00.46 5.33 2.78 2.78 0 001.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29.22 29.22 0 00.46-5.33 29.22 29.22 0 00-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram" title="Instagram">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn" title="LinkedIn">
+                        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 UK BTEC Online. A UK-based online Pearson Edexcel BTEC school.</p>
+            <p>All qualification claims verified against Pearson Edexcel BTEC, Ofqual, and relevant university admissions requirements.</p>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                nav.classList.toggle('open');
+            });
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('open');
+                });
+            });
+        }
+
+        // Intersection Observer — Fade In
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in, .fade-in-stagger').forEach(el => observer.observe(el));
+
+        // Counter Animation
+        function animateCounters() {
+            document.querySelectorAll('.counter-wrap').forEach(counter => {
+                const el = counter;
+                const target = parseFloat(el.dataset.target);
+                const suffix = el.dataset.suffix || '';
+                const isSmall = target < 100;
+                const duration = 2000;
+                const startTime = performance.now();
+
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    // Ease out cubic
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.round(eased * target);
+                    el.textContent = current + suffix;
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    }
+                }
+                requestAnimationFrame(update);
+            });
+        }
+
+        // Trigger counter animation when stats section comes into view
+        const statsSection = document.getElementById('statsGrid');
+        if (statsSection) {
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            counterObserver.observe(statsSection);
+        }
+
+        // If counters already have their final values in HTML, reset for animation
+        document.querySelectorAll('.counter-wrap').forEach(el => {
+            const target = parseFloat(el.dataset.target);
+            if (target <= 10) {
+                el.textContent = '0' + (el.dataset.suffix || '');
+            } else {
+                el.textContent = '0' + (el.dataset.suffix || '');
+            }
+        });
+        // But re-observe will trigger the animation
+
+        // Testimonial Carousel
+        const track = document.getElementById('testiTrack');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const prevBtn = document.getElementById('prevTesti');
+        const nextBtn = document.getElementById('nextTesti');
+        let currentSlide = 0;
+        let autoplayInterval;
+
+        function goToSlide(index) {
+            if (!track) return;
+            const slides = track.querySelectorAll('.testi-slide');
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+            currentSlide = index;
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        function nextSlide() { goToSlide(currentSlide + 1); }
+        function prevSlide() { goToSlide(currentSlide - 1); }
+
+        function startAutoplay() {
+            stopAutoplay();
+            autoplayInterval = setInterval(nextSlide, 6000);
+        }
+        function stopAutoplay() { clearInterval(autoplayInterval); }
+
+        if (track) {
+            if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); startAutoplay(); });
+            if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); startAutoplay(); });
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    goToSlide(parseInt(dot.dataset.index));
+                    startAutoplay();
+                });
+            });
+            track.closest('.testi-carousel').addEventListener('mouseenter', stopAutoplay);
+            track.closest('.testi-carousel').addEventListener('mouseleave', startAutoplay);
+            startAutoplay();
+        }
+    </script>
+</body>
+</html>

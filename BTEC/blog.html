@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources & Guides | UK BTEC Online</title>
+    <meta name="description" content="Everything you need to know about the BTEC pathway to university — guides, articles, visa information, and student stories from UK BTEC Online.">
+    <meta property="og:title" content="Resources & Guides | UK BTEC Online">
+    <meta property="og:description" content="Everything you need to know about the BTEC pathway to university — guides, articles, visa information, and student stories.">
+    <meta property="og:url" content="https://www.ukbtec.online/blog.html">
+    <link rel="canonical" href="https://www.ukbtec.online/blog.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ========== CSS Custom Properties ========== */
+        :root {
+            --primary: #667eea;
+            --primary-dark: #764ba2;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-reverse: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            --primary-light: rgba(102,126,234,0.1);
+            --primary-mid: rgba(102,126,234,0.5);
+            --text-dark: #111827;
+            --text-body: #4b5563;
+            --text-muted: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 10px 30px rgba(102,126,234,0.12);
+            --shadow-lg: 0 20px 40px rgba(102,126,234,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --max-width: 1200px;
+            --header-height: 72px;
+            --section-gap: 80px;
+        }
+
+        /* ========== Reset & Base ========== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-body);
+            background: var(--bg-white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========== Animations ========== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-in-stagger > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .fade-in-stagger.visible > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-in-stagger.visible > *:nth-child(1) { transition-delay: 0s; }
+        .fade-in-stagger.visible > *:nth-child(2) { transition-delay: 0.1s; }
+        .fade-in-stagger.visible > *:nth-child(3) { transition-delay: 0.2s; }
+        .fade-in-stagger.visible > *:nth-child(4) { transition-delay: 0.3s; }
+        .fade-in-stagger.visible > *:nth-child(5) { transition-delay: 0.4s; }
+        .fade-in-stagger.visible > *:nth-child(6) { transition-delay: 0.5s; }
+        .fade-in-stagger.visible > *:nth-child(7) { transition-delay: 0.6s; }
+        .fade-in-stagger.visible > *:nth-child(8) { transition-delay: 0.7s; }
+
+        /* ========== Header / Nav ========== */
+        header {
+            background: var(--gradient);
+            color: white;
+            height: var(--header-height);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+        .header-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; }
+        .logo a { color: white; text-decoration: none; }
+        .logo span { opacity: 0.85; font-weight: 400; }
+        nav { display: flex; align-items: center; gap: 0.25rem; }
+        nav a {
+            color: white; text-decoration: none; padding: 0.5rem 0.9rem;
+            font-size: 0.9rem; font-weight: 500; opacity: 0.88;
+            transition: opacity 0.3s; white-space: nowrap;
+        }
+        nav a:hover, nav a.active { opacity: 1; }
+        nav a.active { border-bottom: 2px solid white; padding-bottom: 3px; }
+        .nav-cta {
+            background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.5);
+            border-radius: var(--radius-sm); padding: 0.5rem 1.2rem !important;
+            font-weight: 600 !important; opacity: 1 !important;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .nav-cta:hover { background: rgba(255,255,255,0.3); transform: scale(1.02); }
+
+        /* Hamburger */
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            background: none; border: none; cursor: pointer; padding: 4px;
+        }
+        .hamburger span {
+            display: block; width: 24px; height: 2.5px;
+            background: white; border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* ========== Page Hero ========== */
+        .page-hero {
+            background: var(--gradient);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        .page-hero p {
+            font-size: 1.15rem;
+            opacity: 0.92;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ========== Filter Bar ========== */
+        .filter-section {
+            background: var(--bg-light);
+            padding: 2rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .filter-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 0.6rem 1.4rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 50px;
+            background: var(--bg-white);
+            color: var(--text-muted);
+            font-family: var(--font);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .filter-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .filter-btn.active {
+            background: var(--gradient);
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 4px 12px rgba(102,126,234,0.3);
+        }
+
+        /* ========== Blog Grid ========== */
+        .blog-section {
+            padding: 4rem 2rem;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+        .blog-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #f3f4f6;
+            overflow: hidden;
+            transition: transform 0.4s, box-shadow 0.4s;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+        .blog-card-body {
+            padding: 2rem 1.5rem 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-category {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            padding: 0.25rem 0.8rem;
+            border-radius: 50px;
+            margin-bottom: 0.8rem;
+            align-self: flex-start;
+        }
+        .blog-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.6rem;
+            line-height: 1.4;
+        }
+        .blog-excerpt {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+            flex: 1;
+        }
+        .blog-read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-decoration: none;
+            transition: gap 0.3s;
+            align-self: flex-start;
+        }
+        .blog-read-more:hover {
+            gap: 0.7rem;
+        }
+        .blog-read-more .arrow {
+            transition: transform 0.3s;
+            font-size: 1rem;
+        }
+        .blog-read-more:hover .arrow {
+            transform: translateX(3px);
+        }
+
+        /* No results */
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+        .no-results.visible {
+            display: block;
+        }
+
+        /* ========== Subscribe Section ========== */
+        .subscribe-section {
+            background: var(--bg-light);
+            padding: 5rem 2rem;
+        }
+        .subscribe-inner {
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .subscribe-inner h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 0.6rem;
+        }
+        .subscribe-inner p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        .subscribe-form {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .subscribe-form input[type="email"] {
+            flex: 1;
+            padding: 0.9rem 1.25rem;
+            border: 2px solid #e5e7eb;
+            border-radius: var(--radius-sm);
+            font-family: var(--font);
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+            background: var(--bg-white);
+        }
+        .subscribe-form input[type="email"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+        }
+        .subscribe-form button {
+            padding: 0.9rem 1.8rem;
+            border: none;
+            border-radius: var(--radius-sm);
+            background: var(--gradient);
+            color: white;
+            font-family: var(--font);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(102,126,234,0.2);
+        }
+        .subscribe-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102,126,234,0.3);
+        }
+        .subscribe-note {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        /* ========== Footer ========== */
+        footer {
+            background: #111827;
+            color: #9ca3af;
+            padding: 3rem 2rem 1.5rem;
+        }
+        .footer-grid {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        .footer-col h4 {
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .footer-col p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .footer-col a {
+            display: block;
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 0.3rem 0;
+            transition: color 0.3s;
+        }
+        .footer-col a:hover {
+            color: white;
+        }
+        .footer-logos {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .footer-logos img {
+            height: 28px;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        .footer-logos img:hover {
+            opacity: 0.9;
+        }
+        .social-links {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            padding: 0;
+        }
+        .social-links a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .social-links svg {
+            width: 18px;
+            height: 18px;
+            fill: #9ca3af;
+        }
+        .social-links a:hover svg {
+            fill: white;
+        }
+        .footer-bottom {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            border-top: 1px solid #1f2937;
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .footer-bottom p {
+            font-size: 0.8rem;
+        }
+        .footer-bottom a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --section-gap: 50px;
+            }
+
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            .page-hero {
+                padding: 3rem 1.5rem;
+            }
+
+            .blog-section {
+                padding: 3rem 1rem;
+            }
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                right: 0;
+                background: var(--gradient);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+                gap: 0;
+            }
+            nav.open {
+                display: flex;
+            }
+            nav a {
+                padding: 0.8rem 0.5rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                font-size: 1rem;
+            }
+            nav a:last-child {
+                border-bottom: none;
+            }
+            .nav-cta {
+                margin-top: 0.5rem;
+                text-align: center;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .subscribe-form {
+                flex-direction: column;
+            }
+            .subscribe-form button {
+                width: 100%;
+            }
+
+            .filter-inner {
+                gap: 0.4rem;
+            }
+            .filter-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header>
+        <div class="header-content">
+            <div class="logo"><a href="index.html">UK BTEC <span>Online</span></a></div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <nav id="nav">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="visa.html">Visa Guide</a>
+                <a href="book-consultation.html" class="nav-cta">Book a Consultation</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========== PAGE HERO ========== -->
+    <section class="page-hero fade-in" id="hero">
+        <h1>Resources &amp; Guides</h1>
+        <p>Everything you need to know about the BTEC pathway to university.</p>
+    </section>
+
+    <!-- ========== FILTER BAR ========== -->
+    <div class="filter-section">
+        <div class="filter-inner">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="guide">Guides</button>
+            <button class="filter-btn" data-filter="article">Articles</button>
+            <button class="filter-btn" data-filter="visa">Visa</button>
+            <button class="filter-btn" data-filter="story">Student Stories</button>
+        </div>
+    </div>
+
+    <!-- ========== BLOG GRID ========== -->
+    <section class="blog-section fade-in" id="blogGrid">
+        <div class="blog-grid fade-in-stagger" id="articleGrid">
+
+            <!-- Article 1: What Is BTEC? -->
+            <div class="blog-card" data-category="guide">
+                <div class="blog-card-body">
+                    <span class="blog-category">Guide</span>
+                    <h3>What Is BTEC? A Complete Guide for Parents and Students</h3>
+                    <p class="blog-excerpt">Everything parents and students need to know about the Pearson Edexcel BTEC qualification &mdash; how it works, how it&rsquo;s assessed, and why it&rsquo;s a genuine route to Russell Group universities.</p>
+                    <a href="#" class="blog-read-more">
+                        Read More <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Article 2: BTEC vs A-Levels -->
+            <div class="blog-card" data-category="guide">
+                <div class="blog-card-body">
+                    <span class="blog-category">Guide</span>
+                    <h3>BTEC vs A-Levels: The Complete Comparison</h3>
+                    <p class="blog-excerpt">Which qualification is right for you? We compare assessment methods, grading, UCAS points, university acceptance, workload, and which learning styles suit each qualification best.</p>
+                    <a href="#" class="blog-read-more">
+                        Read More <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Article 3: Written Reports vs Exams -->
+            <div class="blog-card" data-category="article">
+                <div class="blog-card-body">
+                    <span class="blog-category">Article</span>
+                    <h3>Written Reports vs Exams: Why BTEC Might Be Better</h3>
+                    <p class="blog-excerpt">How the BTEC assessment model works &mdash; deep-dive written research reports instead of timed exam halls. We explore why this approach suits so many learners and delivers better outcomes.</p>
+                    <a href="#" class="blog-read-more">
+                        Read More <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Article 4: Russell Group Universities That Accept BTEC -->
+            <div class="blog-card" data-category="guide">
+                <div class="blog-card-body">
+                    <span class="blog-category">Guide</span>
+                    <h3>Russell Group Universities That Accept BTEC</h3>
+                    <p class="blog-excerpt">A complete list of Russell Group universities that accept Pearson Edexcel BTEC qualifications for entry, with grade requirements, subject preferences, and application tips for each institution.</p>
+                    <a href="#" class="blog-read-more">
+                        Read More <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Article 5: How to Apply to UK Universities With a BTEC -->
+            <div class="blog-card" data-category="guide">
+                <div class="blog-card-body">
+                    <span class="blog-category">Guide</span>
+                    <h3>How to Apply to UK Universities With a BTEC</h3>
+                    <p class="blog-excerpt">The complete UCAS application process for BTEC students &mdash; writing your personal statement, choosing references, converting your grades to UCAS tariff points, and making your application stand out.</p>
+                    <a href="#" class="blog-read-more">
+                        Read More <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Article 6: Visa Guide -->
+            <div class="blog-card" data-category="visa">
+                <div class="blog-card-body">
+                    <span class="blog-category">Visa</span>
+                    <h3>Visa Guide: Studying Abroad With a BTEC</h3>
+                    <p class="blog-excerpt">How a Pearson Edexcel BTEC qualification strengthens your student visa application &mdash; for Australia, Canada, the UK, and beyond. Includes documentation tips and country-specific advice.</p>
+                    <a href="#" class="blog-read-more">
+                        Read More <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Article 7: From Dubai to Durham -->
+            <div class="blog-card" data-category="story">
+                <div class="blog-card-body">
+                    <span class="blog-category">Student Story</span>
+                    <h3>From Dubai to Durham: A BTEC Student Journey</h3>
+                    <p class="blog-excerpt">How an international student moved from Dubai to the UK, completed a Pearson Edexcel BTEC Business qualification, achieved a Distinction, and secured a place at Durham University.</p>
+                    <a href="#" class="blog-read-more">
+                        Read More <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Article 8: Why 95% Achieve Distinction -->
+            <div class="blog-card" data-category="article">
+                <div class="blog-card-body">
+                    <span class="blog-category">Article</span>
+                    <h3>Why 95% of Our Students Achieve Distinction</h3>
+                    <p class="blog-excerpt">The teaching system that delivers results &mdash; structured feedback cycles, clear criteria walkthroughs, UK-qualified teacher support, and the assessment model that sets students up for the highest grade.</p>
+                    <a href="#" class="blog-read-more">
+                        Read More <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="no-results" id="noResults">
+            <p>No resources found in this category. Try selecting a different filter.</p>
+        </div>
+    </section>
+
+    <!-- ========== SUBSCRIBE SECTION ========== -->
+    <section class="subscribe-section fade-in">
+        <div class="subscribe-inner">
+            <h2>Stay Informed</h2>
+            <p>Get BTEC updates, study tips, and university pathway guides delivered straight to your inbox.</p>
+            <form class="subscribe-form" id="subscribeForm" action="#" method="post">
+                <input type="email" id="subscribeEmail" placeholder="Enter your email address" required aria-label="Email address">
+                <button type="submit">Subscribe</button>
+            </form>
+            <p class="subscribe-note">No spam. Unsubscribe anytime. We respect your privacy.</p>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>UK BTEC Online</h4>
+                <p>A UK-based online Pearson Edexcel BTEC school. No exams &mdash; written reports only. 95% Distinction rate. A-level equivalent. Russell Group university pathway.</p>
+                <div class="footer-logos">
+                    <img src="images/EdexcelLogo.png" alt="Edexcel" loading="lazy">
+                    <img src="images/Edexcel.svg.webp" alt="Pearson Edexcel" loading="lazy">
+                    <img src="images/Cambridge_University_Crest_-_flat.png" alt="University of Cambridge" style="height: 32px;" loading="lazy">
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="visa.html">Visa Guide</a>
+                <a href="blog.html">Resources</a>
+                <a href="book-consultation.html">Book a Consultation</a>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <a href="index.html#faq">FAQ</a>
+                <a href="mailto:rhys.coombes@gmail.com">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Academic Integrity Policy</a>
+                <a href="#">Cookie Preferences</a>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook" title="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                    </a>
+                    <a href="#" aria-label="YouTube" title="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29.22 29.22 0 001 11.75a29.22 29.22 0 00.46 5.33 2.78 2.78 0 001.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29.22 29.22 0 00.46-5.33 29.22 29.22 0 00-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram" title="Instagram">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn" title="LinkedIn">
+                        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 UK BTEC Online. A UK-based online Pearson Edexcel BTEC school.</p>
+            <p>All qualification claims verified against Pearson Edexcel BTEC, Ofqual, and relevant university admissions requirements.</p>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                nav.classList.toggle('open');
+            });
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('open');
+                });
+            });
+        }
+
+        // Intersection Observer — Fade In
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in, .fade-in-stagger').forEach(el => observer.observe(el));
+
+        // Category Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.blog-card');
+        const noResults = document.getElementById('noResults');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+                let visibleCount = 0;
+
+                cards.forEach(card => {
+                    const category = card.dataset.category;
+                    if (filter === 'all' || category === filter) {
+                        card.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Show/hide no results message
+                noResults.classList.toggle('visible', visibleCount === 0);
+            });
+        });
+
+        // Subscribe Form
+        const subscribeForm = document.getElementById('subscribeForm');
+        if (subscribeForm) {
+            subscribeForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('subscribeEmail').value.trim();
+                if (email) {
+                    subscribeForm.innerHTML = '<p style="color: #10b981; font-weight: 600; font-size: 1.05rem;">Thank you for subscribing! Check your inbox for your first update.</p>';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

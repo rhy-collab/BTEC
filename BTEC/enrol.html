@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Enrol — Your Step-by-Step Guide | UK BTEC Online</title>
+    <meta name="description" content="Follow our simple step-by-step enrolment process for the Pearson Edexcel BTEC qualification. From free consultation to start learning — we guide you every step.">
+    <meta property="og:title" content="How to Enrol — Your Step-by-Step Guide | UK BTEC Online">
+    <meta property="og:description" content="Follow our simple step-by-step enrolment process for the Pearson Edexcel BTEC qualification. From free consultation to start learning.">
+    <meta property="og:url" content="https://www.ukbtec.online/enrol.html">
+    <link rel="canonical" href="https://www.ukbtec.online/enrol.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ========== CSS Custom Properties ========== */
+        :root {
+            --primary: #667eea;
+            --primary-dark: #764ba2;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-reverse: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            --primary-light: rgba(102,126,234,0.1);
+            --primary-mid: rgba(102,126,234,0.5);
+            --text-dark: #111827;
+            --text-body: #4b5563;
+            --text-muted: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 10px 30px rgba(102,126,234,0.12);
+            --shadow-lg: 0 20px 40px rgba(102,126,234,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --max-width: 1200px;
+            --header-height: 72px;
+            --section-gap: 80px;
+        }
+
+        /* ========== Reset & Base ========== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-body);
+            background: var(--bg-white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========== Animations ========== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-in-stagger > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .fade-in-stagger.visible > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-in-stagger.visible > *:nth-child(1) { transition-delay: 0s; }
+        .fade-in-stagger.visible > *:nth-child(2) { transition-delay: 0.1s; }
+        .fade-in-stagger.visible > *:nth-child(3) { transition-delay: 0.2s; }
+        .fade-in-stagger.visible > *:nth-child(4) { transition-delay: 0.3s; }
+        .fade-in-stagger.visible > *:nth-child(5) { transition-delay: 0.4s; }
+        .fade-in-stagger.visible > *:nth-child(6) { transition-delay: 0.5s; }
+
+        /* ========== Header / Nav ========== */
+        header {
+            background: var(--gradient);
+            color: white;
+            height: var(--header-height);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+        .header-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; }
+        .logo a { color: white; text-decoration: none; }
+        .logo span { opacity: 0.85; font-weight: 400; }
+        nav { display: flex; align-items: center; gap: 0.25rem; }
+        nav a {
+            color: white; text-decoration: none; padding: 0.5rem 0.9rem;
+            font-size: 0.9rem; font-weight: 500; opacity: 0.88;
+            transition: opacity 0.3s; white-space: nowrap;
+        }
+        nav a:hover { opacity: 1; }
+        nav a.active { opacity: 1; border-bottom: 2px solid white; padding-bottom: 3px; }
+        .nav-cta {
+            background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.5);
+            border-radius: var(--radius-sm); padding: 0.5rem 1.2rem !important;
+            font-weight: 600 !important; opacity: 1 !important;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .nav-cta:hover { background: rgba(255,255,255,0.3); transform: scale(1.02); }
+
+        /* Hamburger */
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            background: none; border: none; cursor: pointer; padding: 4px;
+        }
+        .hamburger span {
+            display: block; width: 24px; height: 2.5px;
+            background: white; border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* ========== Page Hero ========== */
+        .page-hero {
+            background: var(--gradient);
+            color: white; padding: 4.5rem 2rem; text-align: center;
+        }
+        .page-hero h1 {
+            font-size: 3rem; font-weight: 800; margin-bottom: 1rem;
+            letter-spacing: -0.5px; line-height: 1.15;
+        }
+        .page-hero p {
+            font-size: 1.15rem; opacity: 0.92; max-width: 650px;
+            margin: 0 auto; line-height: 1.7;
+        }
+
+        /* ========== Global Section Styles ========== */
+        .section { padding: var(--section-gap) 2rem; max-width: var(--max-width); margin: 0 auto; }
+        .section-full { background: var(--bg-light); padding: var(--section-gap) 0; }
+        .section-full .section { padding: 0 2rem; }
+        .section-dark {
+            background: var(--gradient); color: white; padding: var(--section-gap) 0;
+        }
+        .section-dark .section { padding: 0 2rem; }
+        .section-dark h2, .section-dark .section-intro { color: white; }
+        .section-dark .section-intro { opacity: 0.9; }
+
+        h2 {
+            font-size: 2.4rem; font-weight: 800; color: var(--text-dark);
+            margin-bottom: 0.5rem; letter-spacing: -0.5px;
+        }
+        .section-intro {
+            font-size: 1.1rem; color: var(--text-muted);
+            margin-bottom: 3rem; max-width: 700px; line-height: 1.7;
+        }
+
+        /* ========== Steps Section ========== */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            counter-reset: step;
+        }
+        .step-card {
+            background: var(--bg-white);
+            border: 1px solid #f3f4f6;
+            border-radius: var(--radius-lg);
+            padding: 2rem 2rem 2rem 3.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.4s, box-shadow 0.4s;
+            position: relative;
+            counter-increment: step;
+        }
+        .step-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
+        }
+        .step-card:before {
+            content: "0" counter(step);
+            position: absolute; top: 1.5rem; left: 1rem;
+            font-size: 0.85rem; font-weight: 800;
+            color: var(--primary); opacity: 0.4;
+            line-height: 1;
+        }
+        .step-card:first-child:before,
+        .step-card:nth-child(2):before,
+        .step-card:nth-child(3):before,
+        .step-card:nth-child(4):before,
+        .step-card:nth-child(5):before { content: "0" counter(step); }
+        .step-card h3 {
+            font-size: 1.15rem; font-weight: 700; color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        .step-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+        .step-icon {
+            width: 48px; height: 48px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1rem; flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+        .step-card:hover .step-icon { transform: scale(1.05); }
+        .step-icon svg { width: 22px; height: 22px; fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .step-card .step-top { display: flex; align-items: flex-start; gap: 1rem; }
+        .step-card .step-top-content { flex: 1; }
+
+        /* ========== Requirements Two-Column ========== */
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .two-col h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-dark); font-weight: 700; }
+        .two-col ul { list-style: none; margin-bottom: 1.5rem; }
+        .two-col li {
+            padding: 0.5rem 0 0.5rem 2rem; position: relative;
+            color: var(--text-body); line-height: 1.8;
+        }
+        .two-col li:before {
+            content: "\2713";
+            position: absolute; left: 0; color: var(--primary);
+            font-weight: bold; font-size: 1.1rem;
+        }
+
+        /* Requirement / Checklist Cards */
+        .req-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .req-card {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #f3f4f6;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .req-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        .req-card .req-icon {
+            font-size: 2rem; margin-bottom: 0.75rem; display: block;
+        }
+        .req-card h4 { font-size: 1.1rem; color: var(--text-dark); margin-bottom: 0.5rem; font-weight: 700; }
+        .req-card p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.7; }
+        .req-card .req-detail {
+            margin-top: 0.75rem; padding: 0.5rem 0.75rem;
+            background: var(--primary-light); border-radius: var(--radius-sm);
+            font-size: 0.85rem; color: var(--primary); font-weight: 500;
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+        }
+        .checklist li {
+            padding: 0.75rem 0 0.75rem 2.2rem;
+            position: relative; color: var(--text-body);
+            border-bottom: 1px solid #f3f4f6; font-size: 0.95rem;
+        }
+        .checklist li:last-child { border-bottom: none; }
+        .checklist li:before {
+            content: "\2610";
+            position: absolute; left: 0; color: var(--primary);
+            font-size: 1.3rem; font-weight: 400;
+        }
+
+        /* ========== Pricing ========== */
+        .pricing-section { padding: 3rem 2rem; }
+        .pricing-head {
+            text-align: center; max-width: 650px; margin: 0 auto 3rem;
+        }
+        .pricing-head p { color: var(--text-muted); font-size: 1.05rem; }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            max-width: var(--max-width); margin: 0 auto;
+        }
+        .pricing-card {
+            background: var(--bg-white); border: 2px solid #e5e7eb;
+            border-radius: var(--radius-md); padding: 1.75rem 1.25rem; text-align: center;
+            transition: all 0.3s; position: relative;
+        }
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        .pricing-card.featured {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(102,126,234,0.2);
+            transform: scale(1.03);
+        }
+        .pricing-card.featured:hover {
+            transform: scale(1.03) translateY(-4px);
+        }
+        .pricing-card .badge {
+            position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+            background: var(--gradient); color: white; padding: 0.3rem 1rem;
+            border-radius: 50px; font-size: 0.7rem; font-weight: 600;
+            white-space: nowrap;
+        }
+        .pricing-card h3 { font-size: 1rem; margin-bottom: 0.4rem; color: var(--text-dark); }
+        .pricing-card .price {
+            font-size: 2rem; font-weight: 800; color: var(--primary);
+            margin: 0.5rem 0; line-height: 1.2;
+        }
+        .pricing-card .price span { font-size: 0.8rem; color: var(--text-muted); font-weight: 400; }
+        .pricing-card .price-note {
+            color: var(--text-muted); font-size: 0.78rem; margin-bottom: 1rem;
+        }
+        .pricing-features { list-style: none; text-align: left; margin: 1.25rem 0; }
+        .pricing-features li {
+            padding: 0.35rem 0; color: var(--text-muted);
+            border-bottom: 1px solid #f3f4f6; font-size: 0.82rem;
+        }
+        .pricing-features li:last-child { border-bottom: none; }
+        .cta2 {
+            display: inline-block; background: #f3f4f6; color: var(--primary);
+            padding: 0.65rem 1.5rem; border-radius: var(--radius-sm);
+            text-decoration: none; font-weight: 600;
+            transition: all 0.3s; border: 2px solid transparent;
+            font-size: 0.88rem;
+        }
+        .pricing-card.featured .cta2 { background: var(--gradient); color: white; }
+        .cta2:hover { border-color: var(--primary); }
+
+        /* ========== CTA Section ========== */
+        .cta-sec {
+            background: var(--gradient); color: white;
+            padding: 4rem 2rem; text-align: center;
+            border-radius: var(--radius-lg);
+            margin-top: 3rem;
+        }
+        .cta-sec h2 { color: white; margin-bottom: 1rem; }
+        .cta-sec p { font-size: 1.15rem; margin-bottom: 2rem; opacity: 0.95; }
+        .cta-primary {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: white; color: var(--primary);
+            padding: 1rem 2.5rem; border-radius: var(--radius-sm);
+            text-decoration: none; font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1.05rem; border: none; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+        .cta-primary .arrow { transition: transform 0.3s; }
+        .cta-primary:hover .arrow { transform: translateX(4px); }
+
+        /* ========== Footer ========== */
+        footer {
+            background: #111827; color: #9ca3af;
+            padding: 3rem 2rem 1.5rem; margin-top: 0;
+        }
+        .footer-grid {
+            max-width: var(--max-width); margin: 0 auto;
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem; margin-bottom: 2rem;
+        }
+        .footer-col h4 {
+            color: white; font-size: 0.9rem; font-weight: 600;
+            margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .footer-col p { font-size: 0.85rem; line-height: 1.7; margin-bottom: 1rem; color: #9ca3af; }
+        .footer-col a {
+            display: block; color: #9ca3af; text-decoration: none;
+            font-size: 0.85rem; padding: 0.3rem 0;
+            transition: color 0.3s;
+        }
+        .footer-col a:hover { color: white; }
+        .footer-logos { display: flex; gap: 1rem; align-items: center; margin-top: 1rem; flex-wrap: wrap; }
+        .footer-logos img { height: 28px; opacity: 0.6; transition: opacity 0.3s; }
+        .footer-logos img:hover { opacity: 0.9; }
+        .social-links { display: flex; gap: 0.75rem; margin-top: 0.5rem; }
+        .social-links a {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: rgba(255,255,255,0.1); display: flex;
+            align-items: center; justify-content: center;
+            transition: background 0.3s; padding: 0;
+        }
+        .social-links a:hover { background: rgba(255,255,255,0.2); }
+        .social-links svg { width: 18px; height: 18px; fill: #9ca3af; }
+        .social-links a:hover svg { fill: white; }
+        .footer-bottom {
+            max-width: var(--max-width); margin: 0 auto;
+            border-top: 1px solid #1f2937; padding-top: 1.5rem;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 0.5rem;
+        }
+        .footer-bottom p { font-size: 0.8rem; color: #9ca3af; }
+        .footer-bottom a { color: var(--primary); text-decoration: none; font-size: 0.8rem; }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 1024px) {
+            .page-hero h1 { font-size: 2.4rem; }
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+            .steps-grid { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; }
+        }
+
+        @media (max-width: 768px) {
+            :root { --section-gap: 50px; }
+            h1 { font-size: 2rem; }
+            .page-hero h1 { font-size: 2rem; }
+            .page-hero { padding: 3rem 1.5rem; }
+            h2 { font-size: 1.7rem; }
+            .section-intro { font-size: 1rem; }
+            .section { padding: var(--section-gap) 1rem; }
+            .section-full .section { padding: 0 1rem; }
+            .two-col { grid-template-columns: 1fr; }
+            .req-grid { grid-template-columns: 1fr; }
+
+            nav { display: none; position: fixed; top: var(--header-height); left: 0; right: 0;
+                  background: var(--gradient); flex-direction: column; padding: 1rem;
+                  box-shadow: 0 10px 20px rgba(0,0,0,0.2); gap: 0; }
+            nav.open { display: flex; }
+            nav a { padding: 0.8rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 1rem; }
+            nav a:last-child { border-bottom: none; }
+            .nav-cta { margin-top: 0.5rem; text-align: center; }
+            .hamburger { display: flex; }
+
+            .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+
+            .pricing-grid { grid-template-columns: 1fr; }
+            .pricing-card.featured { transform: none; }
+            .pricing-card.featured:hover { transform: translateY(-4px); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header>
+        <div class="header-content">
+            <div class="logo"><a href="index.html">UK BTEC <span>Online</span></a></div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <nav id="nav">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="visa.html">Visa Guide</a>
+                <a href="enrol.html" class="active">Enrol</a>
+                <a href="fees.html">Fees</a>
+                <a href="mailto:rhys.coombes@gmail.com?subject=Enrol%20-%20UK%20BTEC%20Online" class="nav-cta">Enrol Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========== PAGE HERO ========== -->
+    <section class="page-hero">
+        <h1>How to Enrol</h1>
+        <p>Your step-by-step guide to joining UK BTEC Online. From your first conversation to your first lesson — we make the process simple and clear.</p>
+    </section>
+
+    <!-- ========== 5-STEP PROCESS ========== -->
+    <section class="section-full" id="steps">
+        <div class="section">
+            <h2>Your 5-Step Enrolment Journey</h2>
+            <p class="section-intro">Getting started with your Pearson Edexcel BTEC qualification is straightforward. Follow these five steps and you&rsquo;ll be learning with us in no time.</p>
+            <div class="steps-grid fade-in-stagger" id="stepsGrid">
+                <!-- Step 1 -->
+                <div class="step-card">
+                    <div class="step-top">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                        </div>
+                        <div class="step-top-content">
+                            <h3>Step 1: Free Consultation</h3>
+                            <p>Book a no-obligation call with Rhys. We&rsquo;ll discuss your goals, answer your questions, and confirm whether the BTEC written-report pathway is right for you or your child. No pressure, no commitment &mdash; just honest advice.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="step-card">
+                    <div class="step-top">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        </div>
+                        <div class="step-top-content">
+                            <h3>Step 2: Choose Your Plan</h3>
+                            <p>Select the pricing option that works best for your budget &mdash; Monthly, 6-Monthly, Annual, or Full Course. The more you commit upfront, the more you save. Every plan includes the same full Pearson Edexcel BTEC qualification and teacher support.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="step-card">
+                    <div class="step-top">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        </div>
+                        <div class="step-top-content">
+                            <h3>Step 3: Complete Enrolment</h3>
+                            <p>Sign up via our secure enrolment form, submit your documents, and receive your welcome pack. We&rsquo;ll send you everything you need &mdash; your student portal access, lesson schedule, and course materials &mdash; within 48 hours.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="step-card">
+                    <div class="step-top">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                        </div>
+                        <div class="step-top-content">
+                            <h3>Step 4: Pearson Registration</h3>
+                            <p>We register you directly with Pearson Edexcel as an official learner. You&rsquo;ll receive your unique candidate number and be entered into the Pearson system. We handle all the paperwork &mdash; you just focus on learning.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Step 5 -->
+                <div class="step-card">
+                    <div class="step-top">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        </div>
+                        <div class="step-top-content">
+                            <h3>Step 5: Start Learning</h3>
+                            <p>Attend your first live lesson, meet your UK-qualified teacher, and begin working on your first written report. You&rsquo;ll get your lesson schedule, assignment briefs, and a clear 2-year roadmap. The journey to your Distinction starts here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ENTRY REQUIREMENTS ========== -->
+    <section class="section" id="requirements">
+        <h2>Entry Requirements</h2>
+        <p class="section-intro">The Pearson Edexcel BTEC Level 3 qualification is designed to be accessible to a wide range of learners. Here&rsquo;s what you need to get started.</p>
+        <div class="req-grid fade-in-stagger" id="reqGrid">
+            <div class="req-card">
+                <span class="req-icon">🎂</span>
+                <h4>Age Requirement</h4>
+                <p>You must be <strong>16 years or older</strong> at the start of the course. There is no upper age limit &mdash; adult learners are welcome and have successfully completed our programme.</p>
+                <div class="req-detail">Minimum age: 16+. No maximum.</div>
+            </div>
+            <div class="req-card">
+                <span class="req-icon">🌍</span>
+                <h4>English Proficiency</h4>
+                <p>You need a working proficiency in English. This means IELTS 5.5 (or equivalent) OR you can take our free English assessment to confirm your level. We assess reading, writing, and comprehension.</p>
+                <div class="req-detail">IELTS 5.5 / CEFR B2 / Equivalent assessment</div>
+            </div>
+            <div class="req-card">
+                <span class="req-icon">📚</span>
+                <h4>Prior Qualifications</h4>
+                <p>No specific prior qualifications are required to enrol. Whether you&rsquo;ve completed GCSEs, IGCSEs, high school, or are returning to study after a break, you can join the programme.</p>
+                <div class="req-detail">No formal prerequisites needed</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== WHAT YOU'LL NEED ========== -->
+    <section class="section-full" id="documents">
+        <div class="section">
+            <div class="two-col fade-in">
+                <div>
+                    <h3>What You&rsquo;ll Need to Enrol</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Before you enrol, please prepare the following documents and information. This ensures a smooth, fast registration process.</p>
+                    <ul class="checklist">
+                        <li><strong>Passport or National ID</strong> — for identity verification and Pearson registration</li>
+                        <li><strong>Proof of Address</strong> — utility bill, bank statement, or government-issued document (last 3 months)</li>
+                        <li><strong>English Proficiency Evidence</strong> — IELTS 5.5 certificate OR we can arrange a free online assessment</li>
+                        <li><strong>Previous School Reports</strong> — optional but helpful to understand your academic background</li>
+                        <li><strong>Payment Method</strong> — bank transfer, debit/credit card, or PayPal details for your chosen plan</li>
+                        <li><strong>Parent/Guardian Consent</strong> — required if the student is under 18 at the time of enrolment</li>
+                        <li><strong>Access to a Computer &amp; Internet</strong> — stable connection for live lessons and submitting reports</li>
+                    </ul>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div class="req-card" style="margin: 0;">
+                        <h4 style="font-size: 1rem;">Quick Tip</h4>
+                        <p style="font-size: 0.9rem;">Don&rsquo;t worry if you&rsquo;re missing something on this list. During your free consultation, Rhys will walk you through exactly what&rsquo;s needed for your specific situation. We&rsquo;re here to help, not to create barriers.</p>
+                    </div>
+                    <div class="req-card" style="margin: 0;">
+                        <h4 style="font-size: 1rem;">After You Enrol</h4>
+                        <p style="font-size: 0.9rem;">Once your enrolment is complete, you&rsquo;ll receive: access to your student portal, your lesson schedule, course materials and assignment briefs, your Pearson candidate number, and a welcome guide with everything you need to know.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRICING ========== -->
+    <section class="section" id="pricing">
+        <div class="pricing-head">
+            <h2>Choose Your Plan</h2>
+            <p>One programme, one level of support. You choose how to pay &mdash; the more you commit upfront, the more you save.</p>
+        </div>
+
+        <div class="pricing-grid fade-in-stagger" id="pricingGrid">
+            <div class="pricing-card">
+                <h3>Monthly</h3>
+                <div class="price">£49.99<span>/month</span></div>
+                <p class="price-note">No commitment — cancel anytime</p>
+                <ul class="pricing-features">
+                    <li>✓ Full Pearson Edexcel BTEC qualification</li>
+                    <li>✓ UK-qualified teacher support</li>
+                    <li>✓ Weekly live lessons &amp; recordings</li>
+                    <li>✓ Written report guidance &amp; feedback</li>
+                    <li>✓ University progression support</li>
+                </ul>
+                <a href="mailto:rhys.coombes@gmail.com?subject=Enrol%20-%20Monthly%20%C2%A349.99%20-%20UK%20BTEC%20Online" class="cta2">Choose Plan</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>6-Monthly</h3>
+                <div class="price">£279<span>/6 months</span></div>
+                <p class="price-note">Save £21 — £46.50/month</p>
+                <ul class="pricing-features">
+                    <li>✓ Full Pearson Edexcel BTEC qualification</li>
+                    <li>✓ UK-qualified teacher support</li>
+                    <li>✓ Weekly live lessons &amp; recordings</li>
+                    <li>✓ Written report guidance &amp; feedback</li>
+                    <li>✓ University progression support</li>
+                </ul>
+                <a href="mailto:rhys.coombes@gmail.com?subject=Enrol%20-%206-Monthly%20%C2%A3279%20-%20UK%20BTEC%20Online" class="cta2">Choose Plan</a>
+            </div>
+
+            <div class="pricing-card featured">
+                <div class="badge">Most Popular</div>
+                <h3>Annual <span style="color: #f59e0b;">★</span></h3>
+                <div class="price">£499<span>/year</span></div>
+                <p class="price-note">Save £100 — £41.58/month</p>
+                <ul class="pricing-features">
+                    <li>✓ Full Pearson Edexcel BTEC qualification</li>
+                    <li>✓ UK-qualified teacher support</li>
+                    <li>✓ Weekly live lessons &amp; recordings</li>
+                    <li>✓ Written report guidance &amp; feedback</li>
+                    <li>✓ University progression support</li>
+                </ul>
+                <a href="mailto:rhys.coombes@gmail.com?subject=Enrol%20-%20Annual%20%C2%A3499%20-%20UK%20BTEC%20Online" class="cta2">Choose Plan</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Full Course (2 Years)</h3>
+                <div class="price">£899</div>
+                <p class="price-note">Save £300 — £37.46/month</p>
+                <ul class="pricing-features">
+                    <li>✓ Full Pearson Edexcel BTEC qualification</li>
+                    <li>✓ UK-qualified teacher support</li>
+                    <li>✓ Weekly live lessons &amp; recordings</li>
+                    <li>✓ Written report guidance &amp; feedback</li>
+                    <li>✓ University progression support</li>
+                </ul>
+                <a href="mailto:rhys.coombes@gmail.com?subject=Enrol%20-%20Full%20Course%20%C2%A3899%20-%20UK%20BTEC%20Online" class="cta2">Choose Plan</a>
+            </div>
+        </div>
+
+        <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.85rem;">All prices in GBP. No hidden fees. Free consultation included with every option.</p>
+    </section>
+
+    <!-- ========== CTA SECTION ========== -->
+    <section class="section">
+        <div class="cta-sec fade-in">
+            <h2>Ready to Start?</h2>
+            <p>Book your free consultation with Rhys today. No pressure, no obligation — just a friendly conversation about whether the BTEC pathway is right for you.</p>
+            <a href="book-consultation.html" class="cta-primary">
+                Book Your Free Consultation
+                <span class="arrow">→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>UK BTEC Online</h4>
+                <p>A UK-based online Pearson Edexcel BTEC school. No exams — written reports only. 95% Distinction rate. A-level equivalent. Russell Group university pathway.</p>
+                <div class="footer-logos">
+                    <img src="images/EdexcelLogo.png" alt="Edexcel">
+                    <img src="images/Edexcel.svg.webp" alt="Pearson Edexcel">
+                    <img src="images/Cambridge_University_Crest_-_flat.png" alt="University of Cambridge" style="height: 32px;">
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="index.html#why">Why Us</a>
+                <a href="index.html#teachers">Teachers</a>
+                <a href="index.html#how">How It Works</a>
+                <a href="enrol.html">Enrol</a>
+                <a href="fees.html">Fees</a>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <a href="index.html#faq">FAQ</a>
+                <a href="mailto:rhys.coombes@gmail.com">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Academic Integrity Policy</a>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook" title="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                    </a>
+                    <a href="#" aria-label="YouTube" title="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29.22 29.22 0 001 11.75a29.22 29.22 0 00.46 5.33 2.78 2.78 0 001.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29.22 29.22 0 00.46-5.33 29.22 29.22 0 00-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram" title="Instagram">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn" title="LinkedIn">
+                        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 UK BTEC Online. A UK-based online Pearson Edexcel BTEC school.</p>
+            <p><a href="#">Privacy Policy</a> &middot; <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                nav.classList.toggle('open');
+            });
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('open');
+                });
+            });
+        }
+
+        // Intersection Observer — Fade In
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in, .fade-in-stagger').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
