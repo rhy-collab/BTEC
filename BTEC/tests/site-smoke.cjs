@@ -81,7 +81,7 @@ async function checkPage(page, label) {
   const hrefs = await page.locator('a').evaluateAll(links => links.map(link => link.href));
   requiredLinks.forEach(link => assert.ok(hrefs.includes(link), `${label}: required resource link should be present: ${link}`));
 
-  const pdfResponse = await page.request.get(new URL('downloads/pearson-btec-international-level-3-business-specification.pdf', baseUrl).href);
+  const pdfResponse = await page.request.head(new URL('downloads/pearson-btec-international-level-3-business-specification.pdf', baseUrl).href);
   assert.equal(pdfResponse.status(), 200, `${label}: Pearson specification download should load`);
   assert.match(pdfResponse.headers()['content-type'] || '', /pdf|octet-stream/, `${label}: specification download should be a PDF`);
 
