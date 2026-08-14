@@ -4,7 +4,8 @@
   "description": "Landing page for BTEC Online - affordable online qualifications",
   "scripts": {
     "dev": "echo 'Open index.html in a browser'",
-    "build": "echo 'No build needed'"
+    "build": "echo 'Static site ready'",
+    "test": "node tests/site-smoke.cjs"
   },
   "keywords": [
     "BTEC",
@@ -13,5 +14,8 @@
     "qualifications"
   ],
   "author": "Rhys",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "playwright": "^1.62.1"
+  }
 }

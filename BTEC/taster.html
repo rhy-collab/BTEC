@@ -177,28 +177,15 @@
       color: #6b7280;
       font-size: 0.875rem;
       font-weight: 500;
-      transition: color var(--transition);
+      transition: color 0.3s;
       position: relative;
-    }
-
-    .nav-list a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #fff;
-      border-radius: 2px;
-      transition: width var(--transition);
+      padding: 0.5rem 0.85rem;
+      border-radius: 8px;
     }
 
     .nav-list a:hover {
-      color: #fff;
-    }
-
-    .nav-list a:hover::after {
-      width: 100%;
+      color: #667eea;
+      background: rgba(102,126,234,0.1);
     }
 
     .nav-cta {
@@ -235,7 +222,7 @@
       display: block;
       width: 26px;
       height: 2.5px;
-      background: #fff;
+      background: #374151;
       border-radius: 3px;
       transition: transform var(--transition), opacity var(--transition);
     }
@@ -947,14 +934,31 @@
         top: var(--header-height);
         left: 0;
         right: 0;
-        background: var(--purple-gradient);
+        background: white;
         flex-direction: column;
         padding: 20px 24px;
         gap: 16px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid #e5e7eb;
       }
       .nav-list.open {
         display: flex;
+      }
+      .nav-list a {
+        padding: 0.8rem 0.5rem;
+        border-bottom: 1px solid #f3f4f6;
+        font-size: 1rem;
+        color: #4b5563;
+        width: 100%;
+      }
+      .nav-list a:hover {
+        background: rgba(102,126,234,0.1);
+      }
+      .nav-list li {
+        width: 100%;
+      }
+      .nav-list li:last-child a {
+        border-bottom: none;
       }
       .nav-toggle {
         display: flex;
@@ -1015,7 +1019,7 @@
   <!-- ===== Sticky Header ===== -->
   <header class="header" role="banner">
     <div class="container">
-      <a href="index.html" class="logo">BTEC <span>Online</span></a>
+      <a href="index.html" class="logo">UK BTEC <span>Online</span></a>
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -1024,8 +1028,8 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="curriculum.html">Curriculum</a></li>
-          <li><a href="visa-guide.html">Visa Guide</a></li>
-          <li><a href="https://calendly.com/ukbtec-info/30min" class="nav-cta">Book a Consultation</a></li>
+          <li><a href="visa.html">Visa Guide</a></li>
+          <li><a href="book-consultation.html" class="nav-cta">Book a Consultation</a></li>
         </ul>
       </nav>
     </div>

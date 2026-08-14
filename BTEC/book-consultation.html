@@ -41,24 +41,45 @@
             -webkit-font-smoothing: antialiased;
         }
         header {
-            background: var(--gradient); color: white; height: var(--header-height);
-            position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            background: white;
+            color: #111827;
+            height: var(--header-height);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            border-bottom: 1px solid #f3f4f6;
         }
         .header-content {
             max-width: var(--max-width); margin: 0 auto; padding: 0 2rem;
             height: 100%; display: flex; justify-content: space-between; align-items: center;
         }
-        .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; }
-        .logo a { color: white; text-decoration: none; }
-        .logo span { opacity: 0.85; font-weight: 400; }
-        nav { display: flex; align-items: center; gap: 0.25rem; }
-        nav a {
-            color: white; text-decoration: none; padding: 0.5rem 0.9rem;
-            font-size: 0.9rem; font-weight: 500; opacity: 0.88;
-            transition: opacity 0.3s; white-space: nowrap;
+        .logo {
+            font-size: 1.3rem; font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        nav a:hover, nav a.active { opacity: 1; }
-        nav a.active { border-bottom: 2px solid white; padding-bottom: 3px; }
+        .logo a { text-decoration: none; -webkit-text-fill-color: transparent; }
+        .logo span { font-weight: 400; opacity: 0.7; }
+        nav { display: flex; align-items: center; gap: 0.1rem; }
+        nav a {
+            color: #6b7280; text-decoration: none; padding: 0.5rem 0.85rem;
+            font-size: 0.88rem; font-weight: 500;
+            transition: color 0.3s; white-space: nowrap;
+            border-radius: 8px;
+        }
+        nav a:hover { color: #667eea; background: rgba(102,126,234,0.1); }
+        nav a.active { color: #667eea; }
+
+        /* Hamburger */
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+        .hamburger span { display: block; width: 24px; height: 2.5px; background: #374151; border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
         .page-hero {
             background: var(--gradient); color: white;
@@ -236,7 +257,15 @@
             .form-card { padding: 1.5rem; }
             .form-row { grid-template-columns: 1fr; }
             .toggle-group { max-width: 100%; }
-            nav { display: none; }
+            nav { display: none; position: fixed; top: var(--header-height); left: 0; right: 0;
+                  background: white; flex-direction: column; padding: 1rem;
+                  box-shadow: 0 10px 30px rgba(0,0,0,0.1); gap: 0;
+                  border-bottom: 1px solid #e5e7eb; }
+            nav.open { display: flex; }
+            nav a { padding: 0.8rem 0.5rem; border-bottom: 1px solid #f3f4f6; font-size: 1rem; color: #4b5563; }
+            nav a:hover { background: rgba(102,126,234,0.1); }
+            nav a:last-child { border-bottom: none; }
+            .hamburger { display: flex; }
         }
     </style>
 </head>
@@ -244,12 +273,15 @@
     <header>
         <div class="header-content">
             <div class="logo"><a href="index.html">UK BTEC <span>Online</span></a></div>
-            <nav>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <nav id="nav">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="curriculum.html">Curriculum</a>
                 <a href="visa.html">Visa Guide</a>
-                <a href="https://calendly.com/ukbtec-info/30min" class="active">Book a Consultation</a>
+                <a href="book-consultation.html" class="nav-cta active">Free Consultation</a>
             </nav>
         </div>
     </header>
@@ -577,6 +609,21 @@
                 }
             });
         });
+
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                nav.classList.toggle('open');
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('open');
+                });
+            });
+        }
     </script>
 </body>
 </html>

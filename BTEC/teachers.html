@@ -485,12 +485,14 @@
             .section-full .section { padding: 0 1rem; }
 
             nav { display: none; position: fixed; top: var(--header-height); left: 0; right: 0;
-                  background: var(--gradient); flex-direction: column; padding: 1rem;
-                  box-shadow: 0 10px 20px rgba(0,0,0,0.2); gap: 0; }
+                  background: white; flex-direction: column; padding: 1rem;
+                  box-shadow: 0 10px 30px rgba(0,0,0,0.1); gap: 0;
+                  border-bottom: 1px solid #e5e7eb; }
             nav.open { display: flex; }
-            nav a { padding: 0.8rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 1rem; }
+            nav a { padding: 0.8rem 0.5rem; border-bottom: 1px solid #f3f4f6; font-size: 1rem; color: #4b5563; }
+            nav a:hover { background: rgba(102,126,234,0.1); }
             nav a:last-child { border-bottom: none; }
-            .nav-cta { margin-top: 0.5rem; text-align: center; }
+            .nav-cta { margin-top: 0.5rem; text-align: center; color: white !important; }
             .hamburger { display: flex; }
 
             .teacher-profile-header { padding: 2rem 1.5rem 5rem; }
@@ -512,7 +514,7 @@
     <!-- ========== HEADER ========== -->
     <header>
         <div class="header-content">
-            <div class="logo">UK BTEC <span>Online</span></div>
+            <div class="logo"><a href="index.html">UK BTEC <span>Online</span></a></div>
             <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
             </button>
@@ -521,7 +523,7 @@
                 <a href="about.html">About</a>
                 <a href="curriculum.html">Curriculum</a>
                 <a href="visa.html">Visa Guide</a>
-                <a href="https://calendly.com/ukbtec-info/30min" class="nav-cta">Book a Consultation</a>
+                <a href="book-consultation.html" class="nav-cta">Free Consultation</a>
             </nav>
         </div>
     </header>

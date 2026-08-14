@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://btec-sigma.vercel.app/sitemap.xml
+Sitemap: https://www.ukbtec.online/sitemap.xml
