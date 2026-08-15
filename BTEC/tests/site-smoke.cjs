@@ -91,8 +91,10 @@ async function checkPage(page, label, route = '') {
     const desktop = await browser.newPage({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 });
     await checkPage(desktop, 'desktop');
     const homeText = await desktop.locator('body').innerText();
-    assert.match(await desktop.locator('h1').innerText(), /alternative route to university/i);
+    assert.match(await desktop.locator('h1').innerText(), /size of three International A Levels/i);
     assert.doesNotMatch(homeText, /parent-friendly/i);
+    assert.match(homeText, /not three separate A Levels/i);
+    assert.match(homeText, /no traditional final written exams/i);
     assert.match(homeText, /£899/);
     assert.match(homeText, /95% historical distinction rate/i);
     assert.ok(await desktop.locator('a[href="why-btec.html"]').count(), 'desktop: BTEC Explained should be a page link');
@@ -113,6 +115,18 @@ async function checkPage(page, label, route = '') {
     assert.match(curriculumText, /February/i);
     assert.match(curriculumText, /April/i);
     assert.match(curriculumText, /within the next three months/i);
+    assert.doesNotMatch(curriculumText, /proposed/i);
+    assert.equal(await desktop.locator('.unit-detail').count(), 15, 'curriculum: all 15 taught units should have detailed guides');
+    assert.equal(await desktop.locator('.unit-detail .grade-path').count(), 15, 'curriculum: every unit should explain the grade-building path');
+    assert.match(curriculumText, /2–3 hours of live teaching/i);
+    assert.match(curriculumText, /optional one-hour drop-in/i);
+    assert.match(curriculumText, /2–3 focused hours on most study days/i);
+    assert.match(curriculumText, /20-hour Pearson Set Assignment/i);
+    assert.match(curriculumText, /10-hour Pearson Set Assignment/i);
+    assert.match(curriculumText, /5-hour Pearson Set Assignment/i);
+    assert.match(curriculumText, /40 hours of appropriate work experience/i);
+    assert.match(curriculumText, /exact authorised assignment brief/i);
+    await desktop.screenshot({ path: '/tmp/btec-curriculum-desktop.png', fullPage: true, timeout: 30000 });
 
     await checkPage(desktop, 'BTEC explained', 'why-btec.html');
     assert.match(await desktop.locator('body').innerText(), /no traditional final written exams/i);
