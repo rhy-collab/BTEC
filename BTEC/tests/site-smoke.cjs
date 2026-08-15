@@ -33,7 +33,10 @@ async function checkPage(page, label, route = '') {
   const consoleErrors = [];
   const failedRequests = [];
   page.on('console', message => {
-    if (message.type() === 'error') consoleErrors.push(message.text());
+    if (message.type() === 'error') {
+      const source = message.location().url;
+      consoleErrors.push(source ? `${message.text()} — ${source}` : message.text());
+    }
   });
   page.on('requestfailed', request => {
     if (new URL(request.url()).origin === new URL(baseUrl).origin) {
@@ -67,6 +70,11 @@ async function checkPage(page, label, route = '') {
   assert.deepEqual(nonLocalImages, [], `${label}: image sources should come only from images/`);
 
   assert.equal(await page.locator('.whatsapp img[src="images/whatsapp.svg"]').count(), 1, `${label}: WhatsApp control should use a brand image`);
+  assert.equal(await page.locator('.main-nav a[href="universities.html"]').count(), 1, `${label}: navigation should include University & careers`);
+  assert.equal(await page.locator('.main-nav a[href="visa.html"]').count(), 1, `${label}: navigation should include Visa guidance`);
+  assert.match(await page.locator('.site-footer').innerText(), /Make a clear decision with the important questions answered/i, `${label}: shared footer introduction should match`);
+  assert.match(await page.locator('.site-footer').innerText(), /University & careers[\s\S]*Visa guidance[\s\S]*Book a free call[\s\S]*Email Rhys/i, `${label}: shared footer guidance links should match`);
+  assert.match(await page.locator('.footer-disclaimer').innerText(), /Always verify the exact qualification, registration route and destination requirements before paying or enrolling/i, `${label}: shared footer disclaimer should match`);
 
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   assert.ok(overflow <= 1, `${label}: page should not overflow horizontally (overflow: ${overflow}px)`);
@@ -91,6 +99,8 @@ async function checkPage(page, label, route = '') {
     assert.ok(await desktop.locator('a[href="curriculum.html"]').count(), 'desktop: Curriculum should be a page link');
     assert.ok(await desktop.locator('a[href="experience.html"]').count(), 'desktop: Experience should be a page link');
     assert.ok(await desktop.locator('a[href="fees.html"]').count(), 'desktop: Fees should be a page link');
+    assert.ok(await desktop.locator('a[href="universities.html"]').count(), 'desktop: University & careers should be a page link');
+    assert.ok(await desktop.locator('a[href="visa.html"]').count(), 'desktop: Visa guidance should be a page link');
     assert.ok(await desktop.locator('a[href="faq.html"]').count(), 'desktop: FAQ should be a page link');
     assert.ok(await desktop.locator('main > section').count() <= 8, 'desktop: homepage should remain compact');
 
@@ -111,6 +121,14 @@ async function checkPage(page, label, route = '') {
     assert.equal(await desktop.locator('img[src="images/rhys-coombes.jpeg"]').count(), 1, 'experience: supplied Rhys portrait should be used once');
 
     await checkPage(desktop, 'fees', 'fees.html');
+    await checkPage(desktop, 'university and career guidance', 'universities.html');
+    assert.match(await desktop.locator('h1').innerText(), /clear next-step plan/i);
+    assert.match(await desktop.locator('body').innerText(), /Career guidance/i);
+
+    await checkPage(desktop, 'visa guidance', 'visa.html');
+    assert.match(await desktop.locator('h1').innerText(), /does not decide your visa/i);
+    assert.match(await desktop.locator('body').innerText(), /No visa guarantee/i);
+
     await checkPage(desktop, 'FAQ', 'faq.html');
     await desktop.locator('.faq-question').first().click();
     assert.equal(await desktop.locator('.faq-question').first().getAttribute('aria-expanded'), 'true');
@@ -129,6 +147,18 @@ async function checkPage(page, label, route = '') {
     assert.equal(pdfResponse.status(), 200, 'Pearson specification download should load');
     assert.match(pdfResponse.headers()['content-type'] || '', /pdf|octet-stream/, 'specification download should be a PDF');
 
+    const legacyRoutes = ['404.html', 'about.html', 'blog.html', 'book-consultation.html', 'contact.html', 'enrol.html', 'outcomes.html', 'privacy.html', 'taster.html', 'teachers.html', 'terms.html'];
+    for (const route of legacyRoutes) {
+      const response = await desktop.goto(new URL(route, baseUrl).href, { waitUntil: 'domcontentloaded', timeout: 15000 });
+      assert.equal(response.status(), 200, `${route}: page should return HTTP 200`);
+      assert.equal(await desktop.locator('.site-header .main-nav a[href="universities.html"]').count(), 1, `${route}: shared navigation should include University & careers`);
+      assert.equal(await desktop.locator('.site-header .main-nav a[href="visa.html"]').count(), 1, `${route}: shared navigation should include Visa guidance`);
+      assert.match(await desktop.locator('.site-footer').innerText(), /Make a clear decision with the important questions answered/i, `${route}: shared footer should render`);
+      assert.match(await desktop.locator('.footer-disclaimer').innerText(), /Always verify the exact qualification, registration route and destination requirements before paying or enrolling/i, `${route}: shared footer disclaimer should match`);
+      const legacyOverflow = await desktop.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+      assert.ok(legacyOverflow <= 1, `${route}: shared shell should not create horizontal overflow`);
+    }
+
     await desktop.goto(baseUrl);
     await desktop.screenshot({ path: '/tmp/btec-home-desktop.png', fullPage: true });
 
@@ -142,6 +172,14 @@ async function checkPage(page, label, route = '') {
     assert.equal(await mobile.locator('.menu-toggle').getAttribute('aria-expanded'), 'false');
     await mobile.locator('.menu-toggle').click();
     await mobile.screenshot({ path: '/tmp/btec-home-mobile.png', fullPage: true, timeout: 15000 });
+
+    const browserCommentViewport = await browser.newPage({ viewport: { width: 808, height: 719 }, deviceScaleFactor: 1 });
+    await checkPage(browserCommentViewport, '808px responsive view');
+    await browserCommentViewport.locator('.menu-toggle').click();
+    assert.ok(await browserCommentViewport.locator('.main-nav a[href="universities.html"]').isVisible(), '808px: University & careers should be visible in the menu');
+    assert.ok(await browserCommentViewport.locator('.main-nav a[href="visa.html"]').isVisible(), '808px: Visa guidance should be visible in the menu');
+    assert.ok(await browserCommentViewport.locator('.main-nav .button').isVisible(), '808px: call button should remain visible in the menu');
+    await browserCommentViewport.screenshot({ path: '/tmp/btec-nav-808.png', fullPage: false });
 
     console.log('Site smoke test passed: desktop + mobile, local images, navigation, FAQ, console and overflow.');
   } finally {
