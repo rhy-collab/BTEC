@@ -8,7 +8,7 @@ let baseUrl = process.env.SITE_URL;
 
 function startStaticServer() {
   const root = path.resolve(__dirname, '..');
-  const contentTypes = { '.css': 'text/css', '.html': 'text/html', '.jpeg': 'image/jpeg', '.jpg': 'image/jpeg', '.pdf': 'application/pdf', '.png': 'image/png', '.svg': 'image/svg+xml', '.webp': 'image/webp' };
+  const contentTypes = { '.css': 'text/css', '.html': 'text/html', '.js': 'text/javascript', '.jpeg': 'image/jpeg', '.jpg': 'image/jpeg', '.pdf': 'application/pdf', '.png': 'image/png', '.svg': 'image/svg+xml', '.webp': 'image/webp' };
   const server = http.createServer((request, response) => {
     const pathname = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
     const requestedFile = pathname === '/' ? 'index.html' : pathname.replace(/^\/+/, '');
@@ -29,7 +29,7 @@ function startStaticServer() {
   return new Promise(resolve => server.listen(0, '127.0.0.1', () => resolve(server)));
 }
 
-async function checkPage(page, label) {
+async function checkPage(page, label, route = '') {
   const consoleErrors = [];
   const failedRequests = [];
   page.on('console', message => {
@@ -41,7 +41,7 @@ async function checkPage(page, label) {
     }
   });
 
-  const response = await page.goto(baseUrl, { waitUntil: 'domcontentloaded', timeout: 15000 });
+  const response = await page.goto(new URL(route, baseUrl).href, { waitUntil: 'domcontentloaded', timeout: 15000 });
   assert.equal(response.status(), 200, `${label}: homepage should return HTTP 200`);
   const images = page.locator('img');
   for (let index = 0; index < await images.count(); index += 1) {
@@ -66,27 +66,6 @@ async function checkPage(page, label) {
     .filter(source => source && !source.startsWith('images/')));
   assert.deepEqual(nonLocalImages, [], `${label}: image sources should come only from images/`);
 
-  const pageText = await page.locator('body').innerText();
-  assert.match(pageText, /Level 3 Extended Diploma/i, `${label}: qualification title should be explained`);
-  assert.match(pageText, /equivalent in size to three International A Levels/i, `${label}: size equivalence should be clear`);
-  assert.match(pageText, /15 units/i, `${label}: official Extended Diploma unit count should be clear`);
-  assert.match(pageText, /95% distinction rate/i, `${label}: Rhys's supplied teaching result should be visible`);
-
-  const requiredLinks = [
-    'https://qualifications.pearson.com/en/qualifications/btec-international-level-3/business.html',
-    'https://www.youtube.com/watch?v=JFB16smPJSM&t=24s',
-    'https://www.youtube.com/watch?v=jbM4a_4aSYo',
-    'https://www.youtube.com/watch?v=Nr7GOjYTCTQ'
-  ];
-  const hrefs = await page.locator('a').evaluateAll(links => links.map(link => link.href));
-  requiredLinks.forEach(link => assert.ok(hrefs.includes(link), `${label}: required resource link should be present: ${link}`));
-
-  const pdfResponse = await page.request.head(new URL('downloads/pearson-btec-international-level-3-business-specification.pdf', baseUrl).href);
-  assert.equal(pdfResponse.status(), 200, `${label}: Pearson specification download should load`);
-  assert.match(pdfResponse.headers()['content-type'] || '', /pdf|octet-stream/, `${label}: specification download should be a PDF`);
-
-  const teacherImage = page.locator('img[src="images/rhys-coombes.jpeg"]');
-  assert.equal(await teacherImage.count(), 1, `${label}: supplied Rhys portrait should be used once`);
   assert.equal(await page.locator('.whatsapp img[src="images/whatsapp.svg"]').count(), 1, `${label}: WhatsApp control should use a brand image`);
 
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
@@ -103,9 +82,54 @@ async function checkPage(page, label) {
     console.log('Checking desktop rendering…');
     const desktop = await browser.newPage({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 });
     await checkPage(desktop, 'desktop');
-    assert.match(await desktop.locator('h1').innerText(), /three A Levels in size/i);
-    await desktop.locator('.faq-question').nth(1).click();
-    assert.equal(await desktop.locator('.faq-question').nth(1).getAttribute('aria-expanded'), 'true');
+    const homeText = await desktop.locator('body').innerText();
+    assert.match(await desktop.locator('h1').innerText(), /alternative route to university/i);
+    assert.doesNotMatch(homeText, /parent-friendly/i);
+    assert.match(homeText, /£899/);
+    assert.match(homeText, /95% historical distinction rate/i);
+    assert.ok(await desktop.locator('a[href="why-btec.html"]').count(), 'desktop: BTEC Explained should be a page link');
+    assert.ok(await desktop.locator('a[href="curriculum.html"]').count(), 'desktop: Curriculum should be a page link');
+    assert.ok(await desktop.locator('a[href="experience.html"]').count(), 'desktop: Experience should be a page link');
+    assert.ok(await desktop.locator('a[href="fees.html"]').count(), 'desktop: Fees should be a page link');
+    assert.ok(await desktop.locator('a[href="faq.html"]').count(), 'desktop: FAQ should be a page link');
+    assert.ok(await desktop.locator('main > section').count() <= 8, 'desktop: homepage should remain compact');
+
+    await checkPage(desktop, 'curriculum', 'curriculum.html');
+    const curriculumText = await desktop.locator('body').innerText();
+    assert.match(curriculumText, /15-unit/i);
+    assert.match(curriculumText, /six mandatory units and nine optional units/i);
+    assert.match(curriculumText, /20-month/i);
+    assert.match(curriculumText, /September/i);
+    assert.match(curriculumText, /February/i);
+    assert.match(curriculumText, /April/i);
+    assert.match(curriculumText, /within the next three months/i);
+
+    await checkPage(desktop, 'BTEC explained', 'why-btec.html');
+    assert.match(await desktop.locator('body').innerText(), /no traditional final written exams/i);
+
+    await checkPage(desktop, 'experience', 'experience.html');
+    assert.equal(await desktop.locator('img[src="images/rhys-coombes.jpeg"]').count(), 1, 'experience: supplied Rhys portrait should be used once');
+
+    await checkPage(desktop, 'fees', 'fees.html');
+    await checkPage(desktop, 'FAQ', 'faq.html');
+    await desktop.locator('.faq-question').first().click();
+    assert.equal(await desktop.locator('.faq-question').first().getAttribute('aria-expanded'), 'true');
+
+    const requiredLinks = [
+      'https://qualifications.pearson.com/en/qualifications/btec-international-level-3/business.html',
+      'https://www.youtube.com/watch?v=JFB16smPJSM&t=24s',
+      'https://www.youtube.com/watch?v=jbM4a_4aSYo',
+      'https://www.youtube.com/watch?v=Nr7GOjYTCTQ'
+    ];
+    await desktop.goto(new URL('why-btec.html', baseUrl).href);
+    const hrefs = await desktop.locator('a').evaluateAll(links => links.map(link => link.href));
+    requiredLinks.forEach(link => assert.ok(hrefs.includes(link), `BTEC explained: required resource link should be present: ${link}`));
+
+    const pdfResponse = await desktop.request.head(new URL('downloads/pearson-btec-international-level-3-business-specification.pdf', baseUrl).href);
+    assert.equal(pdfResponse.status(), 200, 'Pearson specification download should load');
+    assert.match(pdfResponse.headers()['content-type'] || '', /pdf|octet-stream/, 'specification download should be a PDF');
+
+    await desktop.goto(baseUrl);
     await desktop.screenshot({ path: '/tmp/btec-home-desktop.png', fullPage: true });
 
     console.log('Checking mobile rendering…');
